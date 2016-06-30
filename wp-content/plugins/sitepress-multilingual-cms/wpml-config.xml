@@ -1,0 +1,13 @@
+<wpml-config>
+  <admin-texts>
+    <key name="reales_appearance_settings">
+        <key name="reales_home_caption_title_field" />
+        <key name="reales_home_caption_subtitle_field" />
+        <key name="reales_home_caption_cta_text_field" />
+        <key name="reales_home_spotlight_title_field" />
+        <key name="reales_home_spotlight_text_field" />
+        <key name="reales_copyright_field" />
+    </key>
+  </admin-texts>
+</wpml-config>
+

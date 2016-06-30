@@ -1,0 +1,66 @@
+.incentive-page-screen{
+	h1{
+		font-size: 70px;
+		font-family: $avenir_mb;
+		line-height: 70px;
+		padding: 0 0 28px;
+		margin: 0 0 29px;
+		position: relative;
+		text-transform: uppercase;
+		&:before {
+			display: block;
+			content: ' ';
+			width: 38px;
+			height: 1px;
+			background: #ec3c40;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -19px;
+		}
+	}
+	.screen_btns{
+		padding-top: 56px;
+		text-align: center;
+		position: relative;
+		z-index: 55;
+		.animate_up{
+			display: inline-block;
+		}
+	}
+}
+.incentive.block_box{
+	padding-top: 0;
+	h3{
+		text-transform: none;
+	}
+}
+.incentive_btn{
+	width: 240px;
+	height: 240px;
+	display: block;
+	border: 2px solid #fff;
+	border-radius: 100%;
+	line-height: 32px;
+	font-size: 20px;
+	margin: 0 73px;
+	-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+	&.active{
+		border-color: $red;
+	}
+	strong{
+		font-size: 36px;
+		font-family: $avenir_mb;
+		line-height: 44px;
+		text-transform: uppercase;
+		display: block;
+	}
+	b{
+		font-weight: normal;
+		font-family: $avenir_mb;
+	}
+}
+.text_box{
+	margin: 0 auto;
+	max-width: 480px;
+}

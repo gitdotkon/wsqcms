@@ -1,0 +1,49 @@
+.header{
+	position: relative;
+	z-index: 3000;
+	@include transition(all 0.3s ease-out);
+	&.fixed{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	&.stiky{
+		.red-logo{
+			display: none;
+		}
+	}
+	&.white-header{
+		background: #fff;
+		height: 100px;
+		.white-logo{
+			display: none;
+		}
+		.red-logo{
+			display: block;
+		}
+		.menu_btn{
+			color: #ab081a;
+		}
+		.header-menu{
+			display: block;
+			position: relative;
+		}
+	}
+	&.simple-header{
+		.red-logo{
+			display: none;
+		}
+		.menu_btn{
+			color: #fff;
+		}
+	}
+
+}
+//.admin-bar{
+//	.header{
+//		&.fixed{
+//			top: 32px;
+//		}
+//	}
+//}

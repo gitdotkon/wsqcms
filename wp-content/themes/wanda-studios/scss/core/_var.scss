@@ -1,0 +1,33 @@
+/* Breakpoints */
+$xl: 1400px;
+$lg: 1200px;
+$md: 992px;
+$sm: 544px;
+$xs: 0;
+
+$tablet: 768px;
+$max_tablet: max-width 768px;
+$tablet_land: 1024px;
+$max_tablet_land: max-width 1024px;
+
+//@include breakpoint-set('to ems', true);
+
+/* Fonts */
+$avenir_r: 'Avenir Roman';
+$l_regular: 'latoregular';
+$l_light: 'latolight';
+$l_bold: 'latobold';
+
+$futura_br: 'futura_lt_bookregular';
+$avenir_mb: 'avenir_lt_65_mediumblack';
+$avenir_rr: 'avenir_lt_55_romanroman';
+$avenir_rh: 'avenir_lt_55_romanheavy';
+$avenir_ll: 'avenir_lt_35_lightlight';
+/* Social colors */
+$facebook: #4d6abb;
+$twitter: #2d96e8;
+$instagram: #4d6abb;
+$youtoube: #dd4630;
+$triangle_color: #fff;
+
+$red: #ab081a;

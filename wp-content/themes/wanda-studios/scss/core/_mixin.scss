@@ -1,0 +1,150 @@
+@mixin align-middle {
+	@include transform(translate(-50%, -50%));
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+@mixin align-midle-margin($w, $h){
+	position: absolute;
+	width: $w;
+	height: $h;
+	left: 50%;
+	top: 50%;
+	margin-top: -$h/2;
+	margin-left: -$w/2;
+}
+@mixin size($w: auto, $h: auto){
+	width: $w;
+	height: $h;
+}
+@mixin fill($top: 0, $right: 0, $bottom: 0, $left: 0){
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin textline{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin spriteWidth($sprite) {
+	width: nth($sprite,5);
+}
+@mixin spriteHeight($sprite) {
+	height: nth($sprite,6);
+}
+@mixin spriteSize($sprite){
+	@include size(nth($sprite,5), nth($sprite,6))
+}
+@mixin spritePosition($sprite) {
+	background-position: nth($sprite,3) nth($sprite,4);
+}
+@mixin spriteImage($sprite) {
+	background-image: url(nth($sprite,9));
+}
+@mixin sprite($sprite) {
+	@include spriteImage($sprite);
+	@include spritePosition($sprite);
+	@include spriteSize($sprite);
+}
+
+/* Flex box mixin */
+@mixin display_flex{
+	-js-display: flex;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+//@mixin flex($flex){
+//	-webkit-flex: 0 1 auto;
+//	-ms-flex: 0 1 auto;
+//	flex: 0 1 auto;
+//}
+///*
+//* Available:
+//	row
+//	row-reverse
+//	column
+//	column-reverse
+//*/
+//@mixin flex_dir($dir){
+//	-webkit-flex-direction: $dir;
+//	-ms-flex-direction: $dir;
+//	flex-direction: $dir;
+//}
+///*
+// Available:
+// 	no-wrap
+// 	wrap
+// 	wrap-reverse
+//*/
+//@mixin flex_wrap($wrap){
+//	-webkit-flex-wrap: $wrap;
+//	-ms-flex-wrap: $wrap;
+//	flex-wrap: $wrap;
+//}
+///*
+// Available:
+// 	flex-start
+// 	flex-end
+// 	center
+// 	space-between
+// 	space-around
+//*/
+//@mixin justify($justi){
+//	-webkit-justify-content: $justi;
+//	-ms-flex-pack: $justi;
+//	justify-content: $justi;
+//}
+///*
+// Available:
+// 	flex-start
+// 	flex-end
+// 	center
+// 	baseline
+// 	stretch
+//*/
+//@mixin align-items($align){
+//	-webkit-align-content: $align;
+//	-ms-flex-line-pack: $align;
+//	align-content: $align;
+//}
+///*
+// Available:
+// 	flex-start
+// 	flex-end
+// 	center
+// 	space-between
+// 	space-around
+// 	stretch
+//*/
+//@mixin align-content($align){
+//	-webkit-align-items: $align;
+//	-ms-flex-align: $align;
+//	align-items: $align;
+//}
+//
+//@mixin order($order){
+//	-webkit-order: $order;
+//	-ms-flex-order: $order;
+//	order: $order;
+//}
+///*
+// Available:
+// 	flex-start
+// 	flex-end
+// 	center
+// 	baseline
+// 	stretch
+//*/
+//@mixin align-self($align){
+//	-webkit-align-self: $align;
+//	-ms-flex-item-align: $align;
+//	align-self: $align;
+//}
+
+/* Animation */

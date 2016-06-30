@@ -1,0 +1,323 @@
+.facilities-page-screen{
+	h1{
+		font-size: 70px;
+		font-family: $avenir_mb;
+		line-height: 70px;
+		padding: 0 0 28px;
+		margin: 0 0 29px;
+		position: relative;
+		text-transform: uppercase;
+		&:before {
+			display: block;
+			content: ' ';
+			width: 38px;
+			height: 1px;
+			background: #ec3c40;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -19px;
+		}
+	}
+	.home_screen{
+		padding-bottom: 146px;
+		text-align: center;
+		font-size: 20px;
+		font-family: $avenir_rr;
+		line-height: 30px;
+		margin: 0 auto;
+		&>.td{
+			vertical-align: bottom;
+		}
+		div.animate_up{
+			max-width: 580px;
+			margin: 0 auto;
+		}
+	}
+	.screen_btns{
+		padding-top: 160px;
+		.animate_up{
+			display: inline-block;
+		}
+	}
+}
+.workshop_btn{
+	display: block;
+	font-size: 20px;
+	line-height: 24px;
+	height: 138px;
+	width: 138px;
+	padding: 0;
+	margin: 0 20px;
+	font-family: $avenir_rh;
+	-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+	border-radius: 100%;
+	border: 2px solid #fff;
+}
+.round_nav, .animate_faded.round_nav {
+	position: absolute;
+	top: 122px;
+	left: 50px;
+}
+.round_nav {
+	z-index: 9999;
+}
+.rn_animate_fade {
+	opacity: 0;
+	@include transition(all 6s cubic-bezier(.19,1,.22,1));
+}
+.rn_animate_faded {
+	opacity: 1;
+}
+.round_nav_inner {
+	width: 60px;
+	height: 64px;
+	position: relative;
+}
+.round_nav_icon {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.round_nav_icon [class^="icon-"], .round_nav_icon [class*=" icon-"] {
+	font-size: 16px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -8px 0 0 -8px;
+}
+.round_nav_inner_box {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include transition(all .6s cubic-bezier(.19,1,.22,1));
+}
+.round_nav_inner{
+	span{
+		display: block;
+		width: 15px;
+		height: 15px;
+		border: 2px solid #fff;
+		position: absolute;
+		border-radius: 100%;
+		overflow: hidden;
+		@include transition(all 1s cubic-bezier(.19,1,.22,1));
+		&.round_nav_active {
+			background: #fff;
+			@include transition(all 1s cubic-bezier(.19,1,.22,1));
+		}
+		&.round_nav_1{
+			top: 0;
+			left: 50%;
+			margin-left: -7px;
+		}
+		&.round_nav_2 {
+			top: 12px;
+			right: 0;
+		}
+		&.round_nav_3 {
+			bottom: 12px;
+			right: 0;
+		}
+		&.round_nav_4 {
+			bottom: 0;
+			left: 50%;
+			margin-left: -7px;
+		}
+		&.round_nav_5 {
+			bottom: 12px;
+			left: 0;
+		}
+		&.round_nav_6 {
+			top: 12px;
+			left: 0;
+		}
+	}
+}
+.round_nav:hover .round_nav_inner_box {
+	@include transform(rotateZ(30deg));
+}
+.round_nav_ul {
+	position: absolute;
+	top: 100%;
+	width: 68px;
+	-webkit-transition: opacity 1.5s cubic-bezier(.19,1,.22,1);
+	transition: opacity 1.5s cubic-bezier(.19,1,.22,1);
+	padding: 12px 0 0 0;
+	left: -9999px;
+	opacity: 0;
+	li {
+		margin: 20px 0 0 0;
+		a {
+			display: block;
+			height: 68px;
+			border: 2px solid #fff;
+			border-radius: 100%;
+			position: relative;
+			br{
+				display: none;
+			}
+			&:after,
+			&:before{
+				display: block;
+				content: ' ';
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				@include transition(all 1s cubic-bezier(.19,1,.22,1));
+			}
+			&:before{
+				background: #ab081a;
+				border-radius: 100%;
+			}
+			&:hover{
+				&:after,
+				&:before{
+					opacity: 1;
+				}
+			}
+			span {
+				color: #fff;
+				font-size: 20px;
+				font-family: $avenir_mb;
+				line-height: 28px;
+				padding: 20px 0;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 100%;
+				height: 100%;
+				@include transition(all 1s cubic-bezier(.19,1,.22,1));
+				margin-left: 26px;
+				opacity: 0;
+				width: 250px;
+			}
+		}
+	}
+	[class^="icon-"],
+	[class*=" icon-"]{
+		font-size: 40px;
+		left: 50%;
+		margin: -20px 0 0 -20px;
+		position: absolute;
+		top: 50%;
+	}
+}
+.round_nav:hover .round_nav_ul {
+	left: 0;
+	opacity: 1;
+}
+.round_nav_ul li a:hover span {
+	margin-left: 13px;
+	opacity: 1;
+}
+/* WORKSHOP PAGE */
+.work_shops {
+	position: relative;
+}
+.work_shops.four-tile .work_shops_tile {
+	float: left;
+	width: 25%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.work_shop {
+	color: #fff;
+	font-size: 20px;
+	font-family: 'avenir_lt_55_romanroman';
+	line-height: 38px;
+	height: 1080px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	&:hover{
+		cursor: pointer;
+	}
+	&:before{
+		display: block;
+		content: ' ';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.title {
+		width: 26.14%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0 78px;
+		h2 {
+			color: #fff;
+			font-size: 40px;
+			font-family: $avenir_mb;
+			line-height: 52px;
+			text-transform: uppercase;
+		}
+	}
+	.text {
+		width: 73.86%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0 158px 0 78px;
+		&:before {
+			display: block;
+			content: ' ';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: #000;
+			opacity: .65;
+		}
+		h3 {
+			color: #fff;
+			font-size: 24px;
+			font-family: $avenir_rh;
+			line-height: 32px;
+			text-transform: uppercase;
+		}
+	}
+	ul li {
+		padding: 0 0 0 28px;
+		background: url(../images/li.png) no-repeat 0 15px;
+	}
+	.text_inner {
+		position: relative;
+	}
+}
+.work_shops.four-tile .title {
+	width: 100%;
+}
+.work_shops_tile .work_shop:before {
+	background: #000;
+	opacity: .6;
+}
+.work_shops.four-tile .work_shops_tile:hover .work_shop:before, .work_shops.four-tile .work_shops_tile .work_shop:before {
+	@include transition(top 1s ease-out 0.5s);
+}
+.work_shops.four-tile .work_shops_tile:hover .work_shop:before {
+	opacity: 0.2;
+}
+.work_shops_close {
+	display: block;
+	width: 34px;
+	height: 34px;
+	position: absolute;
+	top: 80px;
+	right: 80px;
+}
