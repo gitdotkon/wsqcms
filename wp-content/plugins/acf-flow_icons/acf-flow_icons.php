@@ -5,7 +5,7 @@ Plugin Name: Advanced Custom Fields: Wanda Studio Icons
 Plugin URI: PLUGIN_URL
 Description: Icons Set for Wanda Studios
 Version: 1.0.0
-Author: DimonPDAA
+Author: Flow Asia
 Author URI: http://flow.asia
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

@@ -581,9 +581,14 @@ body.home_screen_invisible .social_btns{
 		}
 	}
 }
+.tabs{
+	overflow: hidden;
+}
 .tab{
-	display: none;
+	position: absolute;
+	left: -99999px;
+	width: 100%;
 	&.tab-active{
-		display: block;
+		position: static;
 	}
 }

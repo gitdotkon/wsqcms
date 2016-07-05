@@ -2,6 +2,7 @@
 /**
  * First screen for child page of Facilities page
  * @var $links array
+ * @var $btn_class;
  */
 $background = get_field('background');
 $description = get_field('subtitle');
@@ -23,7 +24,7 @@ if($background):?>
                     <div class="screen_btns">
                         <?php foreach ($links as $link): ?>
                             <div class="animate_up">
-                                <a href="#<?php echo strtolower(str_replace(' ', '_', $link['title'])) ?>" class="hover_btn workshop_btn">
+                                <a href="#<?php echo prepare_id($link['title']); ?>" class="hover_btn workshop_btn <?php if($btn_class){echo $btn_class;}; ?>">
                                     <span class="table">
                                         <span class="td">
                                             <?php echo $link['title']; ?>
@@ -40,7 +41,7 @@ if($background):?>
         <?php show_template('facilities/hexagonal-menu'); ?>
         <?php if($map_code): ?>
             <div class="fl_btn_box left animate_left">
-                <a href="#lightbox" data-id="https://sketchfab.com/models/<?php echo $map_code; ?>/embed" class="btn lightbox_btn">
+                <a href="#lightbox" data-id="<?php echo $map_code; ?>" class="btn lightbox_btn">
                     <span class="icon-8"></span>
                     <?php _w('View 3D Map'); ?>
                 </a>

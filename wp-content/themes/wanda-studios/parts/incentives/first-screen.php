@@ -23,7 +23,7 @@ if($background):?>
                     <div class="screen_btns sync">
                         <?php foreach ($content_list as $item): ?>
                             <div class="animate_up">
-                                <a href="#<?php echo strtolower(str_replace(' ', '_', $item['tab_title'])) ?>" class="hover_btn sync-item incentive_btn <?php if(reset($content_list) == $item){echo 'active';} ?>">
+                                <a href="#<?php echo prepare_id($item['tab_title']); ?>" class="hover_btn sync-item incentive_btn <?php if(reset($content_list) == $item){echo 'active';} ?>">
                                 <span class="table">
                                     <span class="td">
                                         <?php echo $item['round_title']; ?>

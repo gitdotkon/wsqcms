@@ -10,7 +10,7 @@ if($section_list):?>
                 <ul class="slides">
                     <?php foreach ($section_list as $section): ?>
                         <li>
-                            <div class="work_shop">
+                            <div class="work_shop" style="background-image: url(<?php echo $section['background_full']['url']; ?>)">
                                 <div class="title">
                                     <div class="table">
                                         <div class="td">
@@ -32,7 +32,7 @@ if($section_list):?>
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <a href="#" class="work_shops_close">
+            <a href="#" class="work_shops_close" id="work_shops_close">
                 <span class="icon-59"></span>
             </a>
         </div>

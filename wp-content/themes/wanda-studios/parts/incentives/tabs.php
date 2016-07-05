@@ -5,7 +5,7 @@
  */
 if($content_list):?>
     <?php foreach ($content_list as $content): ?>
-        <div class="tab <?php if(reset($content_list) == $content){echo ' tab-active'; } ?>" id="<?php echo strtolower(str_replace(' ', '_', $content['tab_title'])) ?>">
+        <div class="tab <?php if(reset($content_list) == $content){echo ' tab-active'; } ?>" id="<?php echo prepare_id($content['tab_title']); ?>">
             <div class="incentive block_box">
                 <div class="content-inner">
                     <h1><?php echo $content['content_title']; ?></h1>

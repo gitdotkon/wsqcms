@@ -11,7 +11,7 @@ if(have_posts()){
         show_template('content/header-with-menu', array(
             'class' => 'stiky fixed',
             'menu_list' => get_workshop_menu_list($post->ID),
-            'menu_item_class' => ''
+            'menu_item_class' => 'vertical-delimiter'
         ));
         // First screen
         show_template('facilities/child-page-first-screen');

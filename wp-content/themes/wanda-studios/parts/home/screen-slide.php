@@ -19,7 +19,7 @@ if($section):?>
                             </a>
                         <?php endif; ?>
                         <?php if($section['3d_map_link']): ?>
-                            <a href="#lightbox" data-id="https://sketchfab.com/models/<?php echo $section['3d_map_link'] ?>/embed" class="btn hover_btn map_btn lightbox_btn">
+                            <a href="#lightbox" data-id="<?php echo $section['3d_map_link'] ?>" class="btn hover_btn map_btn lightbox_btn">
                                 <span>
                                     <?php echo _w('View 3D Map'); ?><span class="icon-8"></span>
                                 </span></a>

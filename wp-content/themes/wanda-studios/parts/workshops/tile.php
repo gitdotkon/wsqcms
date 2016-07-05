@@ -7,7 +7,7 @@ if($section_list):?>
     <div class="tab tab-active tab_tile">
         <div class="work_shops four-tile" id="workshop_four_tile">
             <?php foreach ($section_list as $section): ?>
-                <div class="work_shops_tile" style="background-image: url(<?php echo $section['background_preview']['url']; ?>)">
+                <div class="work_shops_tile" style="background-image: url(<?php echo $section['background_preview']['url']; ?>)" id="<?php echo prepare_id($section['title']); ?>">
                     <div class="work_shop">
                         <div class="title">
                             <div class="table">

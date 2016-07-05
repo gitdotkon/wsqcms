@@ -26,7 +26,7 @@ $map = get_field('3d_map', $id);
                     <?php echo $third_title; ?>
                 </div>
                 <div class="all_view_wrapper">
-                    <a href="#lightbox" data-id="https://sketchfab.com/models/<?php echo $map; ?>/embed" class="lightbox_btn">
+                    <a href="#lightbox" data-id="<?php echo $map; ?>" class="lightbox_btn">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/360_view.png" class="all_view" alt=""/>
                     </a>
                 </div>

@@ -7,6 +7,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
+		height: 100px;
 	}
 	&.stiky{
 		.red-logo{
@@ -15,7 +16,7 @@
 	}
 	&.white-header{
 		background: #fff;
-		height: 100px;
+
 		.white-logo{
 			display: none;
 		}

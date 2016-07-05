@@ -184,21 +184,25 @@
         function changeTab($dest){
             $('.tab.tab-active').removeClass('tab-active');
             $dest.addClass('tab-active');
-            $('html, body').animate({scrollTop: $dest.offset().top - $('#header').height()})
+            var scrollTo =  $dest.offset().top - $('#header').height();
+            $('html, body').animate({scrollTop: scrollTo})
+
         }
         $('.screen_btns .sync-item').click(function(){
             var dest = $(this).attr('href');
             var $dest = $(dest);
+            changeTab($dest);
+            window.location.hash = dest;
             var index = $(this).closest('.animate_up').index();
             $('.screen_btns .active').removeClass('active');
             $header_menu.find('.active').removeClass('active');
             $header_menu.find('li').eq(index).addClass('active');
             $(this).addClass('active');
-            changeTab($dest);
             return false;
-        })
+        });
         $header_menu.find('.sync-item').click(function(){
             var dest = $(this).attr('href');
+            window.location.hash = dest;
             var $dest = $(dest);
             var index = $(this).closest('li').index();
             if($(window).width()<1025){
@@ -220,6 +224,17 @@
             changeTab($dest);
             return false;
         });
+
+        if(hash){
+            changeTab($(hash));
+            $('.screen_btns a[href^='+hash+']').addClass('active');
+            $header_menu.find('a[href^='+hash+']').closest('li').addClass('active');
+            hash = hash.replace('#', '');
+        }
+        if($('.tabs.tab-active').length>0){
+            var href = $('.tabs.tab-active').attr('id');
+        }
+
         if($(window).width()<1025){
             $header_menu.find('li').click(function(){
                 if(!$header_menu.hasClass('is_open')){
@@ -233,6 +248,91 @@
                 }
             });
         }
+
+        // Workshop slider
+        var $workshops_slider = $('#workshops_slider .flexslider');
+        if($workshops_slider.length>0){
+            function changeTabW(){
+                $('.tab.tab_tile').removeClass('tab-active');
+                $('.tab.tab_slider').addClass('tab-active');
+            }
+            var work_shops_slider = $workshops_slider.flexslider({
+                animation: 'slide',
+                slideshow: false,
+                slideshowSpeed: 8000,
+                animationSpeed: 800,
+                touch: false,
+                smoothHeight: true,
+                start: function ($slider){
+                    var $header_menu = $('#header-menu');
+                    var hash = window.location.hash;
+                    if(hash){
+                        var index = $(hash).index();
+                        changeTabW();
+                        $slider.flexAnimate(index);
+                    }
+                    $('.screen_btns .workshop_btn').click(function(){
+                        changeTabW();
+                        var index = $(this).closest('.animate_up').index();
+                        $slider.flexAnimate(index);
+                    });
+
+                    $header_menu.find('a').click(function(){
+                        changeTabW();
+                        var index = $(this).closest('li').index();
+                        if($(window).width()<1025){
+                            if(!$header_menu.hasClass('is_open')){
+                                $header_menu.addClass('is_open');
+                                return false;
+                            }else{
+                                if($(this).closest('li').hasClass('active')){
+                                    $header_menu.closest('li').removeClass('is_open');
+                                    return false;
+                                }
+                            }
+                        }
+                        $slider.flexAnimate(index);
+                    });
+
+                    $('#workshop_four_tile .work_shops_tile').click(function(){
+                        changeTabW();
+                        var index = $(this).index();
+                        window.location.hash = "#"+$(this).attr('id');
+                        $slider.flexAnimate(index);
+                    });
+                },
+                before: function ($slider) {
+                    var index = $slider.animatingTo;
+
+                    $('.screen_btns').find('.active').removeClass('active');
+                    $('.screen_btns .animate_up').eq(index).find('a').addClass('active');
+
+                    $header_menu.find('.active').removeClass('active');
+                    $header_menu.find('li').eq(index).addClass('active');
+                    console.log($('#header').height());
+                    $('html, body').animate({
+                        scrollTop: $('.first-screen').height() - $('#header').addClass('white-header').height()
+                    }, 360);
+                }
+            });
+            $('#work_shops_close').click(function(){
+                $('.tab.tab_tile').addClass('tab-active');
+                $('.tab.tab_slider').removeClass('tab-active');
+                $header_menu.find('.active').removeClass('active');
+                $('.screen_btns').find('.active').removeClass('active');
+                window.location.hash = '';
+                return false;
+            })
+        }
+
+
+        /* Backlots slider */
+        $('.stage_detail_slider .flexslider ul').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true
+        });
     });
     var lastScrollTop = 0,
         st,

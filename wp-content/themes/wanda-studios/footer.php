@@ -25,7 +25,7 @@ $map = get_field('view_3d_map', 'option');
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-        <a href="#lightbox" data-id="https://sketchfab.com/models/<?php echo $map; ?>/embed" class="btn map_btn lightbox_btn">
+        <a href="#lightbox" data-id="<?php echo $map; ?>" class="btn map_btn lightbox_btn">
             <span><i><?php _w('View 3D Map'); ?></i>
                 <span class="icon-8"></span>
             </span>

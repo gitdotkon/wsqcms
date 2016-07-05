@@ -576,9 +576,11 @@ body.page-template-the-city-page{
 			}
 		}
 		&:last-child{
-			a{
-				&:after{
-					display: none;
+			@include breakpoint(min-width 1024px){
+				a{
+					&:after{
+						display: none;
+					}
 				}
 			}
 		}

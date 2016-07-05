@@ -170,7 +170,9 @@ function get_about_menu_list($id){
     }
     return $menu_list;
 }
-
+function prepare_id($str){
+    return strtolower(str_replace(array(' ', '/', '&'), '_', strip_tags(html_entity_decode($str))));
+}
 function get_workshop_menu_list($id){
     $section_list = get_field('section_list', $id);
     $menu_list = array();
@@ -178,7 +180,7 @@ function get_workshop_menu_list($id){
         foreach ($section_list as $page){
             array_push($menu_list, array(
                 'title' => strip_tags(html_entity_decode($page['title'])),
-                'url' => strtolower(str_replace(' ', '_', $page['title'])),
+                'url' => '#'.prepare_id($page['title']),
                 'active' => false
             ));
         }

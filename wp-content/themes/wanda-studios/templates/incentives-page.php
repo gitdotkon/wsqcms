@@ -15,7 +15,7 @@ if(have_posts()){
         if($content_list){
             foreach ($content_list as $link){
                 array_push($top_menu, array(
-                    'url' => '#'.strtolower(str_replace(' ', '_', $link['tab_title'])),
+                    'url' => '#'.prepare_id($link['tab_title']),
                     'title' => $link['tab_title'],
                     'active' => reset($content_list) == $link
                 ));

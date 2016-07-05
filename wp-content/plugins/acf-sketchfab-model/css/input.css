@@ -1,0 +1,12 @@
+.sketchfab-control{
+	padding: 2px 0;
+}
+.sketchfab-container input[type=text]{
+	max-width: 300px;
+}
+.sketchfab-control input[type=number]{
+	max-width: 70px;
+}
+.link-to{
+	display: none;
+}
