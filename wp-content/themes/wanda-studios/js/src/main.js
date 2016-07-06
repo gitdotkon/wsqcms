@@ -200,6 +200,20 @@
             $(this).addClass('active');
             return false;
         });
+
+        $('.sv_icons a').click(function(){
+            var dest = $(this).attr('href');
+            var $dest = $(dest);
+            changeTab($dest);
+            window.location.hash = dest;
+
+            var index = $(this).closest('li').index();
+            $('.sv_icons .active').removeClass('active');
+            $header_menu.find('.active').removeClass('active');
+            $header_menu.find('li').eq(index).addClass('active');
+            $(this).closest('li').addClass('active');
+            return false;
+        });
         $header_menu.find('.sync-item').click(function(){
             var dest = $(this).attr('href');
             window.location.hash = dest;
@@ -220,6 +234,8 @@
             $header_menu.find('.active').removeClass('active');
             $('.screen_btns .active').removeClass('active');
             $('.screen_btns').find('.animate_up').eq(index).find('a').addClass('active');
+            $('.sv_icons .active').removeClass('active');
+            $('.sv_icons a[href^='+dest+']').closest('li').addClass('active');
             $(this).closest('li').addClass('active');
             changeTab($dest);
             return false;
@@ -228,6 +244,8 @@
         if(hash){
             changeTab($(hash));
             $('.screen_btns a[href^='+hash+']').addClass('active');
+            $('.sv_icons .active').removeClass('active');
+            $('.sv_icons a[href^='+hash+']').closest('li').addClass('active');
             $header_menu.find('a[href^='+hash+']').closest('li').addClass('active');
             hash = hash.replace('#', '');
         }

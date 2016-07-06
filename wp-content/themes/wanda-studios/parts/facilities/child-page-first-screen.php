@@ -22,7 +22,7 @@ if($background):?>
                 </div>
                 <?php if($links): ?>
                     <div class="screen_btns">
-                        <?php foreach ($links as $link): ?>
+                        <?php foreach ($links as $key => $link): ?>
                             <div class="animate_up">
                                 <a href="#<?php echo prepare_id($link['title']); ?>" class="hover_btn workshop_btn <?php if($btn_class){echo $btn_class;}; ?>">
                                     <span class="table">
@@ -32,6 +32,9 @@ if($background):?>
                                     </span>
                                 </a>
                             </div>
+                            <?php if(is_page_template('templates/post-production-page.php') && $key == 4): ?>
+                                <div class="sec_rounds"></div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>

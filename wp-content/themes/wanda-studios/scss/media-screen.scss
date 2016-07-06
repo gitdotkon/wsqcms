@@ -654,6 +654,25 @@
 			}
 		}
 	}
+
+	.sv_icons {
+		font-size: 15px;
+		padding-top: 109px;
+	}
+	.sv_icons ul li{
+		width: 177px;
+	}
+	.page-template-post-production-page{
+		.screen_btns{
+			padding-top: 35px;
+			.animate_up:first-child{
+				a{
+					font-size: 12px;
+					line-height: 15px;
+				}
+			}
+		}
+	}
 }
 @media only screen and (max-width: 1440px){
 	body {
@@ -1905,6 +1924,64 @@
 			font-size: 22px;
 		}
 	}
+	.sv_icons{
+		font-size: 18px;
+		ul li{
+			&:before{
+				left: -18px;
+			}
+		}
+	}
+	.service_page .sv_icons {
+		padding-top: 46px;
+		font-size: 18px;
+		line-height: 20px;
+	}
+	.sv_icons ul li {
+		width: 173px;
+	}
+
+	.four_grids .landing_grids ul li .txt{
+		height: auto;
+	}
+	.landing_grids{
+		.btn_medium{
+			font-size: 18px;
+			padding: 3px 43px;
+			border: 1px solid #fff;
+		}
+	}
+
+	.page-template-post-production-page{
+		.screen_btns{
+			.animate_up{
+				width: 49%;
+				a{
+					width: 150px;
+					height: 150px;
+					margin: 0 auto 26px;
+				}
+			}
+			.sec_rounds{
+				display: none;
+			}
+			.animate_up:first-child{
+				a{
+					font-size: 12px;
+					line-height: 15px;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 850px){
+	.sv_icons ul li {
+		width: 45%;
+		margin-bottom: 25px;
+		&:before{
+			display: none;
+		}
+	}
 }
 @media only screen and (max-width: 992px){
 	.four_grids{
@@ -2330,6 +2407,48 @@
 			}
 		}
 	}
+
+	.sv_icons{
+		padding-top: 15px;
+		font-size: 12px;
+		line-height: 14px;
+	}
+	.service_page .sv_icons ul li {
+		margin-bottom: 8px;
+	}
+	.service_page .sv_icons .icon {
+		margin: 0 auto 7px;
+	}
+	//.sv_icons ul li .icon {
+	//	width: 65px;
+	//	height: 65px;
+	//	background-size: 48% !important;
+	//}
+	.facilities-page-screen h1{
+		font-size: 25px;
+		line-height: 28px;
+		&:before{
+			width: 19px;
+			margin-left: -10px;
+		}
+	}
+	.pre_production ul li{
+		padding: 0;
+		br{
+			display: none;
+		}
+	}
+	.page-template-services-page{
+		.facilities-page-screen h1{
+			margin-top: 56px;
+		}
+	}
+	.pre_production{
+		padding: 50px 0 30px 0;
+	}
+	.pre_production .pre_production_inner {
+		padding: 30px 0 0 0;
+	}
 }
 @media only screen and (max-width: 460px){
 	.facilities-page-screen .screen_btns{
@@ -2340,6 +2459,14 @@
 		font-size: 12px;
 		height: 90px;
 		width: 90px;
+	}
+	.sv_icons ul li{
+		width: 41%;
+	}
+	.sv_icons ul li .icon{
+		width: 45px;
+		height: 45px;
+		background-size: 45%!important;
 	}
 }
 @media only screen and (max-height: 568px) and(orientation: landscape){
