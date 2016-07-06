@@ -1953,13 +1953,17 @@
 	}
 
 	.page-template-post-production-page{
+		.first-screen{
+			height: auto;
+			padding: 50px 0;
+		}
 		.screen_btns{
 			.animate_up{
 				width: 49%;
 				a{
-					width: 150px;
-					height: 150px;
-					margin: 0 auto 26px;
+					width: 110px;
+					height: 110px;
+					margin: 0 auto 13px;
 				}
 			}
 			.sec_rounds{
