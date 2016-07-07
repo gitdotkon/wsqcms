@@ -199,7 +199,9 @@ function foundation_scripts_and_styles() {
 	wp_enqueue_script( 'mh', get_template_directory_uri() . '/js/plugins/jquery.matchHeight-min.js', null, null, true );
 	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/js/plugins/imagesloaded.pkgd.min.js', null, null, true );
 	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/js/plugins/masonry.pkgd.min.js', null, null, true );
-
+	if(is_page_template('templates/careers-page.php')){
+		wp_enqueue_script( 'nicefile', get_template_directory_uri() . '/js/plugins/jquery.nicefileinput.min.js', null, null, true );
+	}
 	wp_enqueue_script( 'global', get_template_directory_uri() . '/js/main.js', null, null, true ); /* This should go first */
 	wp_enqueue_script( 'animate', get_template_directory_uri() . '/js/animate.js', null, null, true ); /* This should go first */
 	$js_options = array(
@@ -431,4 +433,3 @@ function fixed_height(){
 //	wp_mail('dimonpdaa@gmail.com','',  $old_status . ' ' . $new_status );
 //}
 //add_action( 'save_post', 'save_order_function' );
-?>

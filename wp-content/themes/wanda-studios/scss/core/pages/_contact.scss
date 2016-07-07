@@ -1,0 +1,310 @@
+.page-template-contact-us-page{
+	.first-screen{
+		.home_screen{
+			color: #fff;
+			font-family: $avenir_rr;
+			font-size: 20px;
+			line-height: 28px;
+			text-align: center;
+			position: relative;
+			padding: 0 170px 0;
+			height: 100%;
+			max-width: 100%;
+		}
+	}
+	.facilities-page-screen .home_screen>.td{
+		vertical-align: middle;
+	}
+	.desktop-bg{
+		&:before {
+			display: block;
+			content: ' ';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: #000;
+			opacity: .7;
+		}
+	}
+	.contact_inner {
+		position: relative;
+	}
+	.mobile_contact_form{
+		display: none;
+	}
+	h1{
+		color: #fff;
+		font-size: 72px;
+		line-height: 72px;
+		text-align: center;
+		padding: 0 0 24px;
+		margin: 0 auto 30px;
+		&:before {
+			display: block;
+			content: ' ';
+			width: 38px;
+			height: 1px;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			background: #ec3c40;
+			margin: 0 0 0 -19px;
+		}
+	}
+	.contact_box {
+		position: relative;
+		overflow: hidden;
+		padding: 38px 0 0 0;
+		&:before {
+			display: block;
+			content: ' ';
+			width: 1px;
+			height: 100%;
+			background: #fff;
+			position: absolute;
+			top: 53px;
+			left: 50%;
+			opacity: .3;
+		}
+	}
+	.contact_form {
+		text-align: left;
+		width: 46.01%;
+		float: left;
+		position: relative;
+	}
+	.contact_info {
+		width: 46.2%;
+		float: right;
+		padding: 55px 0 0 0;
+		color: #fff;
+		font-size: 20px;
+		font-family: $avenir_rr;
+		line-height: 32px;
+		text-align: left;
+		h3 {
+			color: #fff;
+			font-size: 36px;
+			font-family: 'avenir_lt_55_romanheavy';
+			line-height: 44px;
+			text-transform: uppercase;
+			padding: 0 0 26px;
+		}
+		ul {
+			padding: 0 0 47px;
+			li {
+				height: 64px;
+				padding: 0 0 0 68px;
+				margin: 0 0 15px;
+				position: relative;
+				[class^="icon-"],
+				[class*=" icon-"]{
+					font-size: 50px;
+					position: absolute;
+					top: 5px;
+					left: 0;
+				}
+			}
+		}
+	}
+	.social_btns {
+		position: static;
+	}
+
+
+	.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="password"], .field input[type="file"], .field textarea, .field select, .field .customSelect, .field .NFI-wrapper {
+		color: #fff;
+		font-size: 20px;
+		font-family: $avenir_rr;
+		line-height: 26px;
+		padding: 25px 0 17px;
+		border: none;
+		background: transparent;
+		border-bottom: 1px solid #fff;
+		position: relative;
+		margin: 0;
+		-webkit-appearance: none;
+		width: 100%;
+		border-radius: 0;
+	}
+	.field_captcha {
+		padding: 0 152px 0 0;
+		width: 52.54%;
+		float: left;
+		img {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	}
+	.field {
+		clear: both;
+		position: relative;
+		label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: #fff;
+			font-size: 20px;
+			font-family: $avenir_rr;
+			line-height: 26px;
+			padding: 25px 0 17px;
+			.red_required {
+				color: #ab081a;
+			}
+		}
+		textarea {
+			font-size: 18px;
+			border: 1px solid #fff;
+			border-radius: 4px;
+			margin: 32px 0 17px 0;
+			padding: 20px;
+			height: 133px;
+		}
+	}
+	.field_name {
+		width: 47.86%;
+		float: left;
+		clear: none;
+	}
+	.field_email {
+		width: 47.86%;
+		float: right;
+		clear: none;
+	}
+}
+#map {
+	height: 450px;
+	img{
+		-webkit-filter: grayscale(100%);
+		-moz-filter: grayscale(100%);
+		-ms-filter: grayscale(100%);
+		-o-filter: grayscale(100%);
+		filter: grayscale(100%);
+	}
+}
+.wrong {
+	display: none;
+	background: #c80000;
+	padding: 0 10px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 18px;
+	line-height: 32px;
+	position: absolute;
+	top: 100%;
+	right: 0;
+}
+.error .wrong{
+	display: block;
+}
+input[type="submit"], button {
+	color: #ab081a;
+	font-size: 20px;
+	font-weight: normal;
+	font-family: $avenir_rr;
+	line-height: 31px;
+	text-align: center;
+	text-transform: uppercase;
+	height: 63px;
+	width: auto;
+	padding: 15px 106px;
+	border-radius: 30px;
+	-webkit-appearance: none;
+	border: 1px solid #ab081a;
+	display: block;
+	margin: 0 auto;
+	background: #fff;
+}
+input[type="submit"]:hover, button:hover {
+	cursor: pointer;
+}
+input[type="submit"]:hover, button:hover {
+	color: #fff;
+	background: #ab081a;
+}
+.contact_form input[type="submit"] {
+	color: #fff;
+	font-size: 20px;
+	font-family: 'avenir_lt_55_romanheavy';
+	line-height: 27px;
+	text-align: center;
+	border: 2px solid #fff;
+	border-radius: 30px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 13px 78px;
+	margin: 0;
+	background: transparent;
+	height: 57px;
+}
+.thank-you {
+	display: none;
+	position: absolute;
+	background: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #000;
+	text-align: center;
+	font-size: 18px;
+	font-family: 'avenir_lt_55_romanroman';
+	border-radius: 5px;
+	.close {
+		position: absolute;
+		top: 37px;
+		right: 42px;
+		display: block;
+		width: 25px;
+		height: 25px;
+		background: url('../images/apply_close.png') no-repeat;
+	}
+	strong {
+		display: block;
+		margin-bottom: 40px;
+		font-size: 36px;
+		font-family: 'avenir_lt_65_mediumblack';
+	}
+}
+#apply_form{
+	position: relative;
+}
+#contact_form.wait:before,
+#contact_form2.wait:before,
+#apply_form.wait:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff url('../images/loading.gif') no-repeat center;
+	opacity: .8;
+	z-index: 10;
+}
+.filter_box:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.header.white-header  .filter_box{
+	@include breakpoint(max-width 1025px){
+		display: none;
+	}
+}
+.mobile_filter_box{
+	display: none;
+	@include breakpoint(max-width 1025px){
+		display: block;
+		.filter_box{
+			display: block;
+		}
+	}
+}

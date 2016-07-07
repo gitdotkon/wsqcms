@@ -8,6 +8,9 @@
 		left: 0;
 		right: 0;
 		height: 100px;
+		.filter_box{
+			display: none;
+		}
 	}
 	&.stiky{
 		.red-logo{
@@ -29,6 +32,9 @@
 		.header-menu{
 			display: block;
 			position: relative;
+		}
+		.filter_box{
+			display: block;
 		}
 	}
 	&.simple-header{

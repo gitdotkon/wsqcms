@@ -294,6 +294,7 @@ a.hover_btn.active:before {
 }
 body.home{
 	margin-top: 0 !important;
+	background: #191919;
 	#wpadminbar{
 		display: none !important;
 	}
@@ -655,3 +656,20 @@ body .scrollbar-inner > .scroll-element .scroll-element_track {
 //	left: 0;
 //	width: 100%;
 //}
+.shape-outside{
+	display: block;
+	float: left;
+	height: 100%;
+	width: 10px;
+	shape-outside: circle(50%);
+}
+textarea,
+input[type=text]{
+	@include input-placeholder{
+		color: #fff;
+		font-size: 20px;
+		font-family: $avenir_rr;
+		line-height: 26px;
+		opacity: 1;
+	}
+}

@@ -8,6 +8,18 @@
         items: {
             route: 'items',
             method: 'GET'
+        },
+        contact: {
+            route: 'contact-us',
+            method: 'POST'
+        },
+        mailto: {
+            route: 'send-mail',
+            method: 'POST'
+        },
+        apply: {
+            route: 'apply-form',
+            method: 'POST'
         }
     };
 
@@ -351,6 +363,243 @@
             slidesToScroll: 1,
             dots: true
         });
+
+        // Contact form
+        var $contact_form;
+        if ($(window).width() <= 1024) {
+            $contact_form = $('#contact_form_2');
+        } else {
+            $contact_form = $('#contact_form');
+        }
+        $(document).on('click', '.error input', function () {
+            $(this).closest('.field').removeClass('error');
+        });
+        if ($contact_form.length > 0) {
+            function get_cookie(cookie_name) {
+                var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+                if (results)
+                    return ( unescape(results[2]) );
+                else
+                    return null;
+            }
+            function isValidEmailAddress(emailAddress) {
+                var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+                return pattern.test(emailAddress);
+            }
+            $('.thank-you .close').click(function () {
+                $('.thank-you').hide();
+                $contact_form.find('.field input, .field textarea').val('');
+                $contact_form.find('.placeholder').show();
+                return false;
+            });
+            $contact_form.submit(function (e) {
+                /* Validate form */
+                console.log('sss');
+                var self = $(this);
+                var name = self.find('input.name').val().trim();
+                var email = self.find('input.email').val().trim();
+                var valid = true;
+                if (name.length == 0) {
+                    self.find('input.name').closest('.field').addClass('error');
+                    valid = false;
+                }
+                if (email.length == 0 || !isValidEmailAddress(email)) {
+                    self.find('.email').closest('.field').addClass('error');
+                    valid = false;
+                }
+
+                var data = $(this).serialize();
+
+                var url = $(this).attr('action');
+                var lastI = window.location.href.lastIndexOf('/');
+                url = window.location.href.substr(0, lastI) + '/' + url;
+
+
+                if (!valid) {
+                    return false;
+                } else {
+                    /* Check captcha */
+                    var cookie = get_cookie('captcha');
+                    var response = doAjax(routes.contact, {
+                        validation: $contact_form.find('.field_captcha input').val()
+                    });
+                    response.success(function(cookie_valid){
+                        console.log(cookie_valid);
+                        if(cookie_valid.status == 1){
+                            $contact_form.addClass('wait');
+                            var send_response = doAjax(routes.mailto, data);
+                            console.log(data);
+                            send_response.success(function(res){
+                                console.log(res);
+                            });
+                            $('.thank-you').show();
+                            $(self).removeClass('wait');
+                            // setTimeout(function(){
+                            //     window.location.reload();
+                            // }, 4000);
+                            send_response.error(function(e){
+                               //console.log(e);
+                            });
+                            send_response.complete(function(e){
+                               console.log(e);
+                            });
+                        }else{
+                            console.log('Wrong Captcha');
+                            $contact_form.find('.field_captcha').addClass('error');
+                        }
+                    });
+                    // $.post(url, {cookie: cookie, validation: $contact_form.find('.field_captcha input').val()}, function(cookie_valid){
+                    //     console.log(cookie_valid);
+                    //     console.log(cookie_valid.status == 1);
+                    //     console.log(typeof cookie_valid.status);
+                    //     if(cookie_valid == '"ok"'){
+                    //         $(this).addClass('wait');
+                    //         $.post(url, data, function (res) {
+                    //             $('.thank-you').show();
+                    //             $(self).removeClass('wait');
+                    //             setTimeout(function(){
+                    //                 window.location.reload();
+                    //             }, 2000);
+                    //         }).error(function () {
+                    //
+                    //         });
+                    //     }else{
+                    //         console.log('Wrong Captcha');
+                    //         $contact_form.find('.field_captcha').addClass('error');
+                    //     }
+                    //
+                    // })
+                }
+                return false;
+            });
+
+            $('.contact_form :input').keyup(function () {
+                if (!$(this).val()) {
+                    $(this).siblings('label').show();
+                } else {
+                    $(this).siblings('label').hide();
+                }
+            });
+        }
+
+        $('.job .title').click(function () {
+            var $job = $(this).parent('.job');
+            if (!$job.hasClass('job_open')) {
+                $('.job_open').removeClass('job_open').find('.desc').slideUp();
+                $job.addClass('job_open').find('.desc').slideDown();
+            } else {
+                $job.removeClass('job_open').find('.desc').slideUp();
+            }
+
+            return false;
+        });
+
+        /* Job filter */
+        var $job_list = $('#job_list');
+        $('.filter_location li').click(function(){
+            var target = $(this).attr('data-location');
+            $('.filter_location .active').removeClass('active');
+            var title = $(this).addClass('active').html();
+
+            $(this).closest('.span').find('.current').html(title);
+            $(this).closest('.span').find('.current').attr('data-current', target);
+
+            var other_filter_val = $('.filter_title_wrapper .current').attr('data-current');
+
+            $job_list.find('.job').hide();
+            if(other_filter_val!= "0"){
+                $job_list.find('.job[data-location=' + target + '][data-title='+other_filter_val+']').show();
+            }else{
+                $job_list.find('.job[data-location=' + target + ']').show();
+            }
+
+        });
+        $('.filter_title li').click(function(){
+            var target = $(this).attr('data-title');
+            var title = $(this).addClass('active').html();
+
+            $(this).closest('.span').find('.current').html(title);
+            $(this).closest('.span').find('.current').attr('data-current', target);
+
+            var other_filter_val = $('.filter_location_wrapper .current').attr('data-current');
+
+            $job_list.find('.job').hide();
+            if(other_filter_val!= "0"){
+                $job_list.find('.job[data-title=' + target + '][data-location='+other_filter_val+']').show();
+            }else{
+                $job_list.find('.job[data-title=' + target + ']').show();
+            }
+        });
+        $('.filter_reset').click(function(){
+            $job_list.find('.job').show();
+            $('.filter_location_wrapper .current').html($('.filter_location_wrapper .current').attr('data-default'));
+            $('.filter_title_wrapper .current').html($('.filter_title_wrapper .current').attr('data-default'));
+            $('.filter_location_wrapper .current').attr('data-current', 0);
+            $('.filter_title_wrapper .current').attr('data-current', 0);
+            return false;
+        });
+        
+        // Apply filter
+        $('.apply_close').click(function () {
+            $('.white_overlay').hide();
+            $('.apply_wrapper').fadeOut();
+
+            return false;
+        });
+        $("input[type=file].nice").nicefileinput({
+            label: $("input[type=file].nice").attr('data-title')
+        });
+
+        $('.apply_btn').click(function () {
+            $('.white_overlay').show();
+            $($(this).attr('href')).fadeIn();
+            var title = $(this).closest('.job').attr('data-title');
+            var email = $(this).closest('.job').attr('data-apply');
+            console.log(title);
+            $('#job_title').val(title);
+            $('#apply_email').val(email);
+            return false;
+        });
+
+        var $apply_form = $('#apply_form');
+        if($apply_form.length>0){
+            $apply_form.find('.required input').change(function(){
+                $(this).closest('.required').removeClass('error');
+            });
+            $apply_form.submit(function(){
+                var is_valid = true;
+                $(this).find('.require').each(function(){
+                    if($(this).find('input').val() == ''){
+                        $(this).addClass('error');
+                        is_valid = false;
+                    }
+                });
+                if(is_valid){
+                    var data = new FormData($(this)[0]);
+                    $apply_form.addClass('wait');
+                    $.ajax( flow.api_base + routes.apply.route,{
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        type: 'POST',
+                        success: function(res){
+                            if(res.status = '1'){
+                                $('.white_overlay').hide();
+                                $('.apply_wrapper').fadeOut();
+                                $apply_form[0].reset();
+                                $apply_form.removeClass('wait');
+                            }
+                        },
+                        error: function(e){
+                            console.log('errr');
+                            console.log(e);
+                        }
+                    })
+                }
+                return false;
+            })
+        }
     });
     var lastScrollTop = 0,
         st,

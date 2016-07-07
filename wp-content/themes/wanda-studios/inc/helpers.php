@@ -179,7 +179,7 @@ function get_workshop_menu_list($id){
     if($section_list){
         foreach ($section_list as $page){
             array_push($menu_list, array(
-                'title' => strip_tags(html_entity_decode($page['title'])),
+                'title' => strip_tags(html_entity_decode(str_replace('-', '', $page['title']))),
                 'url' => '#'.prepare_id($page['title']),
                 'active' => false
             ));
