@@ -71,13 +71,13 @@ if(have_posts()){
                                     </span>
                                 </div>
                                 <div class="apply_form_item  require">
-                                    <input type="text" name="phone" placeholder="<?php _w('Phone'); ?>"/>
+                                    <input type="text" name="phone"  placeholder="<?php _w('Phone'); ?>"/>
                                     <span class="wrong">
                                         <?php _w('The phone number you entered is not valid'); ?>
                                     </span>
                                 </div>
                                 <div class="apply_form_item  require">
-                                    <input type="text" name="email" placeholder="<?php _w('Email'); ?>"/>
+                                    <input type="text" name="email"  placeholder="<?php _w('Email'); ?>"/>
                                     <span class="wrong">
                                         <?php _w('The email address you entered is not valid'); ?>
                                     </span>

@@ -45,7 +45,7 @@ if($background_image):?>
         <?php endif; ?>
         <?php if($video_code): ?>
             <div class="fl_btn_box right animate_right">
-                <a href="#lightbox2" data-id="<?php echo $video_code; ?>" class="btn view_video lightbox_btn">
+                <a href="#lightbox2" data-id="<?php echo $video_code['url']; ?>" class="btn view_video lightbox_btn">
                     <span class="icon-22"></span>
                     <?php _w($video_title?:'View Video'); ?>
                 </a>
