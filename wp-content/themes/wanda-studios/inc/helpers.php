@@ -201,3 +201,19 @@ function get_workshop_menu_list($id){
     }
     return false;
 }
+
+function show_spec($text){
+    $text_arr = explode("\n", $text);
+    if($text_arr){
+        if(count($text_arr)>0){
+            echo $text_arr[0];
+            for($i=1; $i<count($text_arr); $i++){
+                echo '<div class="tree_line">';
+                echo $text_arr[$i];
+                echo '</div>';
+            }
+        }else{
+            echo $text_arr[0];
+        }
+    }
+}

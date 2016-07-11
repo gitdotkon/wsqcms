@@ -40,6 +40,7 @@ if($about_title):?>
                                             <?php else: ?>
                                                 <?php echo $item['content_list'][0]['text_line']; ?>
                                             <?php endif; ?>
+                                            <span class="dot"></span>
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>

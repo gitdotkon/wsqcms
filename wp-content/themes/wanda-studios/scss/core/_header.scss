@@ -12,6 +12,10 @@
 			display: none;
 		}
 	}
+	&.static{
+		position: static;
+		height: 100px;
+	}
 	&.stiky{
 		.red-logo{
 			display: none;

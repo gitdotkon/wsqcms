@@ -1515,7 +1515,7 @@
 	top: 0;
 	right: 0;
 	z-index: 1111;
-	padding: 0 0 0 128px;
+	padding: 0 0 0 0;
 }
 .specs_inner {
 	position: relative;
@@ -1548,6 +1548,18 @@
 		li{
 			padding: 0 0 26px;
 			position: relative;
+			padding-left: 26px;
+			margin-left: 53px;
+			.dot{
+				display: inline-block;
+				width: 9px;
+				height: 9px;
+				background: #acacac;
+				border-radius: 100%;
+				position: absolute;
+				top: 9px;
+				left: 0;
+			}
 		}
 	}
 	ul li ul {
