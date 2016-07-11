@@ -511,7 +511,7 @@
 		}
 
 	}
-	.incentive_btn{
+	.wide_incentive_btn{
 		width: 150px;
 		height: 150px;
 		margin: 0 55px;
@@ -1549,7 +1549,7 @@
 				position: absolute;
 				bottom: 0;
 				left: 50%;
-				background: #ab081a;
+				background: $red;
 				width: 16px;
 				height: 1px;
 				margin-left: -8px;
@@ -1754,7 +1754,7 @@
 			padding-top: 31px;
 		}
 	}
-	.incentive_btn{
+	.wide_incentive_btn{
 		font-size: 15px;
 		line-height: 18px;
 		width: 150px;
@@ -1979,7 +1979,7 @@
 		position: absolute;
 		bottom: 0;
 		left: 50%;
-		background: #ab081a;
+		background: $red;
 		width: 16px;
 		height: 1px;
 		margin-left: -8px;
@@ -2187,8 +2187,8 @@
 			height: 40px;
 		}
 		.contact_form input[type="submit"] {
-			color: #ab081a;
-			border-color: #ab081a;
+			color: $red;
+			border-color: $red;
 			position: static;
 			margin: 37px auto 11px;
 		}
@@ -2816,7 +2816,7 @@
 	.incentive-page-screen{
 
 	}
-	.incentive_btn{
+	.wide_incentive_btn{
 		width: 110px;
 		height: 110px;
 		font-size: 10px;

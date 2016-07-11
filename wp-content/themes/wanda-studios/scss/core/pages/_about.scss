@@ -18,7 +18,7 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
-				background: #000;
+				background: $black;
 				opacity: .6;
 			}
 		}
@@ -104,7 +104,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: #000;
+			background: $black;
 			opacity: .6;
 		}
 	}
@@ -350,7 +350,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #000;
+		background: $black;
 		opacity: .6;
 	}
 	cite{
@@ -483,7 +483,7 @@
 	padding: 40px 0 27px 0;
 	h2{
 		position: relative;
-		color: #000;
+		color: $black;
 		font-size: 70px;
 		font-family: $avenir_mb;
 		line-height: 70px;
@@ -568,7 +568,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: #ab081a;
+			background: $red;
 			opacity: .9;
 		}
 	}
@@ -633,7 +633,7 @@
 	font-family: $avenir_rr;
 	background: #fff;
 	h2{
-		color: #000;
+		color: $black;
 		font-size: 48px;
 		font-family: 'avenir_lt_65_mediumblack';
 		line-height: 56px;
@@ -682,7 +682,7 @@
 		}
 		[class^="icon-"],
 		[class*=" icon-"]{
-			color: #de302f;
+			color: $light_red;
 			font-size: 50px;
 			position: absolute;
 			top: 0;
@@ -716,7 +716,7 @@
 		right: 0;
 		padding: 0 50px 0 76px;
 		h2 {
-			color: #000;
+			color: $black;
 			font-size: 70px;
 			font-family: 'avenir_lt_65_mediumblack';
 			line-height: 70px;
@@ -758,9 +758,9 @@
 				clear: both;
 			}
 			&.active {
-				color: #ab081a;
+				color: $red;
 				.name {
-					color: #000;
+					color: $black;
 				}
 			}
 		}
@@ -786,7 +786,7 @@
 		max-height: 583px;
 	}
 	.name {
-		color: #ab081a;
+		color: $red;
 		font-size: 35px;
 		line-height: 43px;
 	}
@@ -841,7 +841,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #000;
+		background: $black;
 		opacity: .5;
 	}
 	&:after {
@@ -940,7 +940,7 @@
 		}
 	}
 	.red {
-		color: #ab081a;
+		color: $red;
 		font-family: $avenir_rh;
 	}
 }
@@ -968,7 +968,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: #000;
+			background: $black;
 			opacity: .5;
 		}
 	}
@@ -1033,9 +1033,9 @@
 		margin: 0 auto;
 	}
 	h2 {
-		color: #000;
+		color: $black;
 		font-size: 70px;
-		font-family: 'avenir_lt_65_mediumblack';
+		font-family: $avenir_mb;
 		line-height: 70px;
 		text-shadow: none;
 		text-transform: uppercase;
@@ -1112,7 +1112,7 @@
 		}
 	}
 	h2 {
-		color: #000;
+		color: $black;
 		font-size: 70px;
 		font-family: $avenir_mb;
 		line-height: 70px;
@@ -1198,7 +1198,7 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			background: #000;
+			background: $black;
 			opacity: .5;
 			border-radius: 30px 30px 0 0;
 		}
@@ -1258,7 +1258,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #000;
+		background: $black;
 		opacity: .5;
 	}
 	.text {
@@ -1353,7 +1353,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #000;
+		background: $black;
 		opacity: .5;
 	}
 	h2{
@@ -1392,7 +1392,7 @@
 	background: #fff;
 	padding: 40px 0 55px 0;
 	h2 {
-		color: #000;
+		color: $black;
 		font-size: 70px;
 		font-family: $avenir_mb;
 		line-height: 70px;
@@ -1477,7 +1477,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #000;
+		background: $black;
 		opacity: .5;
 	}
 }
@@ -1540,7 +1540,7 @@
 }
 .specs_list{
 	strong {
-		color: #ab081a;
+		color: $red;
 		font-weight: normal;
 		font-family: $avenir_rh;
 	}

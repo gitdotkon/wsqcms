@@ -85,7 +85,7 @@ $map = get_field('view_3d_map', 'option');
     <a href="#" class="lightbox_close"></a>
 </div>
 <?php
-
+show_template('content/main-menu');
 wp_footer(); ?>
 </body>
 </html>

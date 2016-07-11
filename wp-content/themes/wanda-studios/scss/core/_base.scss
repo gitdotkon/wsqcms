@@ -46,7 +46,7 @@ table {
 	border-spacing: 0;
 }
 :focus {/* remember to define focus styles! */
-	outline: 0 dotted #000 !important;
+	outline: 0 dotted $black !important;
 }
 div:focus {
 	outline: none !important;
@@ -80,24 +80,14 @@ sup {
 }
 .scale {
 	display: inline-block;
-	transition: all .3s ease-in;
-	-o-transition: all .3s ease-in;
-	-moz-transition: all .3s ease-in;
-	-webkit-transition: all .3s ease-in;
+	@include transition(all .3s ease-in);
 	overflow: hidden;
 }
 .scale img {
-	transition: all .3s ease-in;
-	-o-transition: all .3s ease-in;
-	-moz-transition: all .3s ease-in;
-	-webkit-transition: all .3s ease-in;
+	@include transition(all .3s ease-in);
 }
 .scale:hover img {
-	-moz-transform: scale(1.1);
-	-webkit-transform: scale(1.1);
-	-o-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	transform: scale(1.1);
+	@include transform(scale(1.1));
 }
 
 /***********************************************************************************/
@@ -239,12 +229,12 @@ blockquote{
 	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 	&:hover{
 		color: #fff;
-		border-color: #de302f;
+		border-color: $light_red;
 	}
 	&.red_btn{
 		color: #fff;
-		background: #ab081a;
-		border-color: #ab081a;
+		background: $red;
+		border-color: $red;
 		&:hover {
 			opacity: .8;
 		}
@@ -273,7 +263,7 @@ a.hover_btn.active:before {
 }
 .hover_btn:hover:before, a.hover_btn:hover:before, a.hover_btn.active:before {
 	opacity: 1;
-	background-color: #de302f;
+	background-color: $light_red;
 	@include transform(rotate3d(0, 0, 1, 0deg));
 	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -327,7 +317,7 @@ body.home{
 	height: 64px;
 	position: fixed;
 	right: 0;
-	background: #de302f url(../images/close.png) no-repeat 50% 50%;
+	background: $light_red url(../images/close.png) no-repeat 50% 50%;
 	@include transition(opacity .4s ease-in-out);
 	top: -9999px;
 	z-index: 9999;
@@ -374,7 +364,7 @@ html.full-height, html.full-height body{
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: #000;
+		background: $black;
 		opacity: .5;
 	}
 	&.desktop-bg{
@@ -607,7 +597,7 @@ body.admin-bar{
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #ab081a !important;
+	background: $red !important;
 	border-radius: 100% !important;
 }
 .scrollbar-inner > .scroll-element, .scrollbar-inner > .scroll-element div {

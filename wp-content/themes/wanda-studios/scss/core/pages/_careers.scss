@@ -47,9 +47,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	color: #000;
+	color: $black;
 	font-size: 20px;
-	font-family: 'avenir_lt_55_romanheavy';
+	font-family: $avenir_rh;
 	line-height: 30px;
 	text-align: center;
 	text-shadow: none;
@@ -64,7 +64,7 @@
 }
 .filter_box span ul, .filter_box .span ul {
 	font-size: 16px;
-	font-family: 'avenir_lt_55_romanroman';
+	font-family: $avenir_rr;
 	line-height: 26px;
 	position: absolute;
 	top: 100%;
@@ -79,7 +79,7 @@
 	cursor: pointer;
 }
 .filter_box [class^="icon-"], .filter_box [class*=" icon-"] {
-	color: #ab081a;
+	color: $red;
 	font-size: 14px;
 	position: absolute;
 	top: 44px;
@@ -89,20 +89,20 @@
 	display: block;
 }
 .filter_reset {
-	color: #ab081a;
+	color: $red;
 	font-size: 20px;
-	font-family: 'avenir_lt_55_romanroman';
+	font-family: $avenir_rr;
 	line-height: 27px;
 	text-align: center;
 	text-transform: uppercase;
-	border: 1px solid #ab081a;
+	border: 1px solid $red;
 	border-radius: 30px;
 	display: inline-block;
 	padding: 12px 46px;
 	margin-left: 26px;
 	&:hover{
 		color: #fff;
-		background: #ab081a;
+		background: $red;
 	}
 }
 .filter_box{
@@ -168,7 +168,7 @@
 	}
 }
 .apply_btn, a.apply_btn {
-	color: #ab081a;
+	color: $red;
 	font-size: 20px;
 	font-family: $avenir_mb;
 	line-height: 29px;
@@ -182,7 +182,7 @@
 }
 .apply_btn:hover, a.apply_btn:hover {
 	color: #fff;
-	background: #ab081a;
+	background: $red;
 }
 .job_toggle {
 	font-size: 20px;
@@ -203,8 +203,8 @@
 }
 .job_open .title {
 	color: #fff;
-	background: #ab081a;
-	border-color: #ab081a;
+	background: $red;
+	border-color: $red;
 }
 .job_toggle .icon .icon-54 {
 	display: block;
@@ -308,18 +308,18 @@
 	float: right !important;
 }
 .nice .NFI-button {
-	color: #ab081a;
+	color: $red;
 	font-size: 18px;
 	line-height: 27px;
 	text-align: center;
-	font-family: 'avenir_lt_55_romanroman';
+	font-family: $avenir_rr;
 	background: #fff;
 	padding: 12px 29px;
 	border-radius: 30px;
-	border: 1px solid #ab081a;
+	border: 1px solid $red;
 	text-shadow: none;
 	&:hover{
-		background: #ab081a;
+		background: $red;
 		color: #fff;
 	}
 }
