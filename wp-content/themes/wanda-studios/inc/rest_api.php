@@ -35,6 +35,10 @@ function fa_register_api_hooks()
         'methods' => 'GET',
         'callback' => 'get_galleries',
     ));
+    register_rest_route(FA_API_NAMESPACE, '/gallery-items/', array(
+        'methods' => 'GET',
+        'callback' => 'get_galleries_images',
+    ));
 }
 function check_code($c1, $c2){
     return trim(md5($c1)) == $c2;
@@ -145,7 +149,32 @@ function fa_get_all_team()
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;
 }
-
+function get_galleries_images(){
+    $return = '';
+    if($_GET['gallery_id']){
+        $images_prepared = get_site_transient('galley_images_'.$_GET['gallery_id']);
+        if(!$images_prepared){
+            $images = get_field('images', $_GET['gallery_id']);
+            $images_prepared = array();
+            if($images){
+                foreach ($images as $image){
+                    $images_prepared[] = array(
+                        'full' => $image['url'],
+                        'mobile' => $image['sizes']['large']
+                    );
+                }
+                set_site_transient('galley_images_'.$_GET['gallery_id'], $images_prepared, 3600);
+            }
+        }
+        $return['images_list'] = $images_prepared;
+    }else{
+        $return['status'] = 0;
+    }
+    
+    $response = new WP_REST_Response($return);
+    $response->header('Access-Control-Allow-Origin', '*');
+    return $response;
+}
 function fa_get_item_detail(){
     $return = '';
     if(isset($_GET['id'])){

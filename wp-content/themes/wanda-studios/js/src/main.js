@@ -28,9 +28,13 @@
         gallery: {
             route: 'galleries',
             method: 'GET'
+        },
+        gallery_images: {
+            route: 'gallery-items',
+            method: 'GET'
         }
     };
-
+    var galleries_images = [];
     function doAjax(endpoint, data) {
         return $.ajax({
             url: flow.api_base + endpoint.route,
@@ -72,8 +76,34 @@
         }
 
         /* Light box */
-        $(document).on('click', '.lightbox_btn, .video-gallery', function () {
+        function create_slider(images){
+            var template = _.template($('#gallery_slider').html());
+            var slider = template({slides: images});
+
+            $('#gallery_slider_slick').append(slider);
+            $('#gallery_slider_slick').slick({
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false
+            });
+        }
+        function gallery_slider(gallery_id){
+            if(galleries_images[gallery_id]){
+                //console.log(galleries_images.gallery_id);
+                create_slider(galleries_images[gallery_id]);
+            }else{
+                var response = doAjax(routes.gallery_images, {'gallery_id': gallery_id});
+                response.success(function(data){
+                    //console.log(data);
+                    galleries_images[gallery_id] = data['images_list'];
+                    create_slider(galleries_images[gallery_id]);
+                });
+            }
+        }
+        $(document).on('click', '.lightbox_btn, .video-gallery, .show_gallery', function () {
             var $lightbox = $($(this).attr('href'));
+
             if (!$lightbox.hasClass('lightbox_visible')) {
                 var src = $(this).attr('data-id');
                 if(src){
@@ -83,6 +113,9 @@
                         var vid = document.getElementById('video_palyer');
                         vid.play();
                         $('html').addClass('video_playing');
+                    }else if($(this).hasClass('view_gallery')){
+                        // Show and init gallery slider
+                        gallery_slider(src);
                     }else{
                         $lightbox.find('iframe').attr('src', src);
                     }
@@ -101,6 +134,11 @@
                 var vid = document.getElementById('video_palyer');
                 vid.pause();
             }
+            if($('#gallery_slider_slick').hasClass('slick-initialized')){
+                $('#gallery_slider_slick').slick('unslick');
+                $('#gallery_slider_slick').html('');
+            }
+
             return false;
         });
         /* Light box end */
