@@ -1,10 +1,6 @@
 (function ($) {
     /* REST setting begin */
     var routes = {
-        news:{
-            route: 'news/',
-            method: 'GET'
-        },
         items: {
             route: 'items',
             method: 'GET'
@@ -20,6 +16,18 @@
         apply: {
             route: 'apply-form',
             method: 'POST'
+        },
+        news: {
+            route: 'news',
+            method: 'GET'
+        },
+        videos: {
+            route: 'videos',
+            method: 'GET'
+        },
+        gallery: {
+            route: 'galleries',
+            method: 'GET'
         }
     };
 
@@ -64,14 +72,15 @@
         }
 
         /* Light box */
-        $(document).on('click', '.lightbox_btn', function () {
+        $(document).on('click', '.lightbox_btn, .video-gallery', function () {
             var $lightbox = $($(this).attr('href'));
             if (!$lightbox.hasClass('lightbox_visible')) {
                 var src = $(this).attr('data-id');
                 if(src){
                     if($(this).hasClass('view_video')){
-                        $('#video').attr('src', src);
-                        var vid = document.getElementById('video');
+                        $('#video_palyer').attr('src', src);
+                        console.log(src);
+                        var vid = document.getElementById('video_palyer');
                         vid.play();
                         $('html').addClass('video_playing');
                     }else{
@@ -89,7 +98,7 @@
             $('.has_lightbox_visible').removeClass('has_lightbox_visible');
             if($('html').hasClass('video_playing')){
                 $('html').removeClass('video_playing');
-                var vid = document.getElementById('video');
+                var vid = document.getElementById('video_palyer');
                 vid.pause();
             }
             return false;
@@ -196,6 +205,7 @@
         function changeTab($dest){
             $('.tab.tab-active').removeClass('tab-active');
             $dest.addClass('tab-active');
+            console.log($dest);
             var scrollTo =  $dest.offset().top - $('#header').height();
             $('html, body').animate({scrollTop: scrollTo})
 
@@ -228,8 +238,10 @@
         });
         $header_menu.find('.sync-item').click(function(){
             var dest = $(this).attr('href');
+            console.log($(this).attr('href'));
             window.location.hash = dest;
             var $dest = $(dest);
+
             var index = $(this).closest('li').index();
             if($(window).width()<1025){
                 if(!$header_menu.hasClass('is_open')){
@@ -547,9 +559,12 @@
 
             return false;
         });
-        $("input[type=file].nice").nicefileinput({
-            label: $("input[type=file].nice").attr('data-title')
-        });
+        if($("input[type=file].nice").length>0){
+            $("input[type=file].nice").nicefileinput({
+                label: $("input[type=file].nice").attr('data-title')
+            });
+        }
+
 
         $('.apply_btn').click(function () {
             $('.white_overlay').show();
@@ -567,6 +582,7 @@
             $apply_form.find('.required input').change(function(){
                 $(this).closest('.required').removeClass('error');
             });
+
             $apply_form.submit(function(){
                 var is_valid = true;
                 $(this).find('.require').each(function(){
@@ -600,6 +616,84 @@
                 return false;
             })
         }
+
+        /// Load more
+        
+        $('#more_news').click(function(){
+            var per_page = $('#news_per_page').val();
+            var news_count = $('#news_count').val();
+            var response = doAjax(routes.news, {
+                'news_count': news_count,
+                'news_per_page': per_page
+            });
+            $('.load_more').addClass('wait');
+            response.success(function(data){
+                //hide wheel
+                if(parseInt(data.available) == 0){
+                    $('#more_news').hide();
+                }else{
+                    $('#news_count').val(parseInt($('#news_count').val())+data.news.length);
+                }
+                console.log(data);
+                var template = _.template($('#news-item').html());
+                var result_html = template({news: data.news});
+                
+                $('#news_container').append(result_html);
+                $('.load_more').removeClass('wait');
+            })
+            return false;
+        });
+        // More video
+        $('#more_video').click(function(){
+            var per_page = $('#video_per_page').val();
+            var videos_count = $('#videos_count').val();
+            var response = doAjax(routes.videos, {
+                'videos_count': videos_count,
+                'videos_per_page': per_page
+            });
+            $('.load_more').addClass('wait');
+            response.success(function(data){
+                //hide wheel
+                if(parseInt(data.available) == 0){
+                    $('#more_video').hide();
+                }else{
+                    $('#videos_count').val(parseInt($('#videos_count').val())+data.videos.length);
+                }
+                console.log(data);
+                var template = _.template($('#video-item').html());
+                var result_html = template({videos: data.videos});
+
+                $('#video_container').append(result_html);
+                $('.load_more').removeClass('wait');
+            })
+            return false;
+        });
+        // More gallery
+        $('#more_gallery').click(function(){
+            var gallery_per_page = $('#gallery_per_page').val();
+            var gallery_count = $('#gallery_count').val();
+            var response = doAjax(routes.gallery, {
+                'gallery_count': gallery_count,
+                'gallery_per_page': gallery_per_page
+            });
+            $('.load_more').addClass('wait');
+            response.success(function(data){
+                //hide wheel
+                if(parseInt(data.available) == 0){
+                    $('#more_gallery').hide();
+                }else{
+                    $('#gallery_count').val(parseInt($('#gallery_count').val())+data.gallery.length);
+                }
+                console.log(data);
+                var template = _.template($('#gallery-item').html());
+                var result_html = template({galleries: data.gallery});
+
+                $('#gallery_container').append(result_html);
+                $('.load_more').removeClass('wait');
+            })
+            return false;
+        });
+
     });
     var lastScrollTop = 0,
         st,

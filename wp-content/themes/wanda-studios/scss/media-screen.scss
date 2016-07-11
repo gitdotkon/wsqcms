@@ -145,6 +145,17 @@
 		font-size: 16px;
 		line-height: 22px;
 	}
+
+	.page-template-media-center-page{
+		.news {
+			font-size: 14px;
+			line-height: 20px;
+		}
+		.news_item .text {
+			padding: 15px 15px 0;
+		}
+	}
+
 }
 @media only screen and (max-width: 1440px) and (min-width: 1025px){
 	/* Home page */
@@ -189,6 +200,11 @@
 	}
 	.livechat_btn_up{
 		top: 27px;
+	}
+	.header{
+		.livechat_btn_up{
+			top: 33px;
+		}
 	}
 	.menu_btn [class^="icon-"], .menu_btn [class*=" icon-"],
 	.livechat_btn [class*=" icon-"], .livechat_btn [class^=icon-]{
@@ -727,6 +743,65 @@
 		padding-top: 96px;
 		padding-bottom: 10px;
 	}
+
+	.press_detail_inner{
+		max-width: 925px;
+		h1.detail_title {
+			font-size: 30px;
+			line-height: 36px;
+		}
+	}
+	.single{
+		.content {
+			font-size: 15px;
+			line-height: 22px;
+			p{
+				padding-bottom: 22px;
+			}
+			h3 {
+				 font-size: 18px;
+				 line-height: 24px;
+			}
+		}
+	}
+	.page-template-media-center-page{
+		.news h2.title, .news h2.title a {
+			font-size: 18px;
+			line-height: 24px;
+		}
+		.news {
+			padding-left: 94px;
+			padding-right: 94px;
+			.category{
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+		.news_inner {
+			max-width: 1220px;
+			margin: 0 auto;
+		}
+		.news_item .img .date {
+			font-size: 24px;
+			line-height: 26px;
+			width: 54px;
+			height: 54px;
+		}
+		.news_item .img .date .month {
+			font-size: 15px;
+			line-height: 20px;
+		}
+	}
+
+	.load_more a.load_more_btn {
+		font-size: 16px;
+		line-height: 24px;
+		padding: 10px 40px;
+	}
+	.gallery a .video_title{
+		font-size: 24px;
+		line-height: 30px;
+	}
 }
 @media only screen and (max-width: 1440px){
 	body {
@@ -775,6 +850,17 @@
 @media only screen and (max-width: 1365px){
 	.side{
 		padding-right: 20px;
+	}
+	.gallery ul li.no_ml, .gallery ul li:nth-child(3n+1) {
+		clear: none;
+		margin-left: 2.36%;
+	}
+	.gallery ul li{
+		width: 48%;
+	}
+	.gallery ul li:nth-child(2n+1) {
+		margin-left: 0;
+		clear: both;
 	}
 }
 @media only screen and (max-width: 1150px){
@@ -2283,6 +2369,96 @@
 		right: -7px;
 		font-size: 14px;
 	}
+	.apply_box{
+		width: 100%;
+	}
+	.nice .NFI-button{
+		width: 100%;
+		input[type=file]{
+			width: 100%;
+		}
+	}
+	.apply_box .NFI-wrapper:before{
+		right: 0;
+	}
+
+	.press_detail_inner {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.press_detail{
+		h1.detail_title {
+			font-size: 30px;
+			line-height: 36px;
+		}
+		.round_share {
+			-webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+			transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+		}
+		.round_share:hover {
+			-webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+			transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+			right: 59px;
+		}
+		.content h3 {
+			font-size: 22px;
+			line-height: 30px;
+		}
+	}
+
+	.press_detail{
+		padding-top: 55px;
+	}
+	.page-template-media-center-page{
+		.news,
+		.gallery {
+			padding: 0 50px 60px;
+		}
+		.news_item {
+			height: auto !important;
+			.img {
+				position: relative;
+				padding-bottom: 50%;
+				height: auto;
+				width: 100%;
+			}
+		}
+		.news_item.news_item_w2_h2, .news_item.news_item_w2, .news_item {
+			width: 100%;
+		}
+		.news_item_w2_h2 .img:before, .news_item_w2 .img:before, .news_item .img:before {
+			top: auto;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 15px;
+			background: url(../images/news_arr_up.png) no-repeat 50% 50%;
+		}
+		.news_item .text {
+			height: auto;
+			position: relative;
+			padding: 15px;
+			width: 100%;
+		}
+		.news_item.news_item_w2_h2 .img:before, .news_item.news_item_w2 .img:before, .news_item .img:before, .news_item.news_item_h2 .img:before {
+			top: auto;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 15px;
+			background: url(../images/news_arr_up.png) no-repeat 50% 50%;
+		}
+		.news_item.news_item_ml {
+			margin-left: 0;
+		}
+	}
+
+	.livechat_btn{
+		display: none;
+	}
+	.load_more a.load_more_btn {
+		padding: 14px 72px;
+	}
 }
 @media only screen and (max-width: 769px){
 	.cr_cols ul li {
@@ -2292,6 +2468,18 @@
 	.cr_cols .icon{
 		height: 36px;
 		background-size: contain;
+	}
+	.gallery ul li.no_ml, .gallery ul li:nth-child(3n+1), .gallery ul li:nth-child(2n+1) {
+		clear: none;
+		margin-left: 0;
+	}
+	.gallery ul li{
+		width: 100%;
+		margin: 0 auto 30px;
+	}
+	.gallery a .video_title{
+		font-size: 22px;
+		line-height: 28px;
 	}
 }
 @media only screen and (max-width: 850px){
@@ -2321,6 +2509,24 @@
 	.hws ul li {
 		width: auto;
 		float: none;
+	}
+	.apply_box h3{
+		font-size: 24px;
+	}
+	.apply_box input[type=text], .apply_box input[type=email] {
+		font-size: 17px;
+		line-height: 23px;
+		padding: 15px 0;
+		width: 100%;
+	}
+	.apply_box textarea{
+		height: 131px;
+	}
+	.apply_box{
+		button, input[type=submit]{
+			height: 50px;
+			line-height: 19px;
+		}
 	}
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px){
@@ -2785,6 +2991,64 @@
 	}
 
 	.cr_cols, .cr_cols a {
+		font-size: 17px;
+		line-height: 20px;
+	}
+	.press_detail{
+		.detail_title_box {
+			padding-right: 0;
+			h1.detail_title {
+				font-size: 22px;
+				line-height: 28px;
+			}
+		}
+		.content {
+			font-size: 18px;
+			line-height: 24px;
+			text-align: left;
+			p {
+				padding-bottom: 20px;
+			}
+			h3 {
+				font-size: 20px;
+				line-height: 24px;
+			}
+		}
+	}
+	.round_share {
+		margin: -75px -10px 0 0;
+		width: 100%;
+		padding: 0px 0px 0 0;
+		height: auto;
+		text-align: right;
+	}
+	.round_share:hover {
+		right: 0;
+	}
+	.round_share a.round_share_btn {
+		display: none;
+	}
+	.round_share a.round_wechat, .round_share a.round_weibo, .round_share a.round_twitter, .round_share a.round_facebook {
+		position: relative;
+		opacity: 1;
+		display: inline-block;
+		margin: 0 10px;
+	}
+	.round_share:hover a.round_wechat, .round_share:hover a.round_weibo, .round_share:hover a.round_twitter, .round_share:hover a.round_facebook {
+		top: 0;
+		left: 0;
+	}
+	.detail_meta {
+		padding: 0 0 26px;
+	}
+
+	.page-template-media-center-page {
+		.news {
+			padding: 0 20px 60px;
+		}
+	}
+	.load_more a.load_more_btn {
+		padding: 10px 50px;
 		font-size: 17px;
 		line-height: 20px;
 	}

@@ -81,6 +81,19 @@ function _w($content = '')
     echo __($content, FA_THEME);
 }
 
+function get_news_class($i){
+    $class = '';
+    $class_array = array(
+        'news_item_w2_h2',
+        'news_item_w2 news_item_fr',
+        'news_item_w2 news_item_fr',
+        'news_item_h2',
+        'news_item_h2 news_item_ml',
+        'news_item_w2_h2 news_item_fr'
+    );
+    return $class_array[$i];
+}
+
 
 function getQrImg(){
     $social = get_field('social', 'options');

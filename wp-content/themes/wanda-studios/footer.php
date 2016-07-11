@@ -81,7 +81,7 @@ $map = get_field('view_3d_map', 'option');
     <a href="#" class="lightbox_close"></a>
 </div>
 <div class="lightbox" id="lightbox2">
-    <video id="video" src=""></video>
+    <video id="video_palyer" src=""></video>
     <a href="#" class="lightbox_close"></a>
 </div>
 <?php

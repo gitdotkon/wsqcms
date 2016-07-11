@@ -23,6 +23,18 @@ function fa_register_api_hooks()
         'methods' => 'POST',
         'callback' => 'apply_career',
     ));
+    register_rest_route(FA_API_NAMESPACE, '/news/', array(
+        'methods' => 'GET',
+        'callback' => 'get_news',
+    ));
+    register_rest_route(FA_API_NAMESPACE, '/videos/', array(
+        'methods' => 'GET',
+        'callback' => 'get_videos',
+    ));
+    register_rest_route(FA_API_NAMESPACE, '/galleries/', array(
+        'methods' => 'GET',
+        'callback' => 'get_galleries',
+    ));
 }
 function check_code($c1, $c2){
     return trim(md5($c1)) == $c2;
@@ -150,6 +162,122 @@ function fa_get_item_detail(){
         $return['meta'] = $tmp_meta;
     }
 
+    $response = new WP_REST_Response($return);
+    $response->header('Access-Control-Allow-Origin', '*');
+    return $response;
+}
+
+function get_videos(){
+    $return = '';
+    $offset = 0;
+    $per_page = 6;
+    $return['available'] = 1;
+    if($_GET['videos_count']){
+        $offset = $_GET['videos_count'];
+    }
+    if($_GET['videos_per_page']){
+        $per_page = $_GET['videos_per_page'];
+    }
+    $args = array(
+        'post_type' => 'video',
+        'posts_per_page' => $per_page,
+        'offset' => $offset
+    );
+    $videos_list = get_query_posts($args);
+    if($videos_list){
+        foreach ($videos_list as $video){
+            $file = get_field('video', $video->ID);
+            $return['videos'][] = array(
+                'title' => $video->post_title,
+                'file' => $file['url'],
+                'thumb' => get_attached_img_url($video->ID)?:get_stylesheet_directory_uri().'/images/gallery.jpg'
+            );
+        }
+        if(count($videos_list)<= $per_page){
+            $return['available'] = 0;
+        }
+    }else{
+        $return['available'] = 0;
+    }
+
+    $response = new WP_REST_Response($return);
+    $response->header('Access-Control-Allow-Origin', '*');
+    return $response;
+}
+function get_galleries(){
+    $return = '';
+    $offset = 0;
+    $per_page = 6;
+    $return['available'] = 1;
+    if($_GET['gallery_count']){
+        $offset = $_GET['gallery_count'];
+    }
+    if($_GET['gallery_per_page']){
+        $per_page = $_GET['gallery_per_page'];
+    }
+    $args = array(
+        'post_type' => 'gallery',
+        'posts_per_page' => $per_page,
+        'offset' => $offset
+    );
+    $gallery_list = get_query_posts($args);
+    if($gallery_list){
+        foreach ($gallery_list as $gallery){
+            $images = get_field('images', $gallery->ID);
+                if($images){
+                    $return['gallery'][] = array(
+                    'title' => $gallery->post_title,
+                    'count' => count($images),
+                    'thumb' => $images[0]['url']?:get_stylesheet_directory_uri().'/images/gallery.jpg'
+                );
+            }
+        }
+        if(count($gallery_list)<= $per_page){
+            $return['available'] = 0;
+        }
+    }else{
+        $return['available'] = 0;
+    }
+
+    $response = new WP_REST_Response($return);
+    $response->header('Access-Control-Allow-Origin', '*');
+    return $response;
+}
+function get_news(){
+    $return = '';
+    $offset = 0;
+    $per_page = 6;
+    $return['available'] = 1;
+    if($_GET['news_count']){
+        $offset = $_GET['news_count'];
+    }
+    if($_GET['news_per_page']){
+        $per_page = $_GET['news_per_page'];
+    }
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => $per_page,
+        'offset' => $offset
+    );
+    $news_list = get_query_posts($args);
+    if($news_list){
+        foreach ($news_list as $news){
+            $return['news'][] = array(
+                'title' => get_field('short_title', $news->ID)?:$news->post_title,
+                'url' => get_permalink($news->ID),
+                'excerpt' => $news->post_excerpt,
+                'thumb' => get_attached_img_url($news->ID),
+                'month' => date('M', strtotime($news->post_date)),
+                'day' => date('d', strtotime($news->post_date))
+            );
+        }
+        if(count($news_list)<= $per_page){
+            $return['available'] = 0;
+        }
+    }else{
+        $return['available'] = 0;
+    }
+    
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;

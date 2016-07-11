@@ -201,6 +201,7 @@ function foundation_scripts_and_styles() {
 	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/js/plugins/masonry.pkgd.min.js', null, null, true );
 	if(is_page_template('templates/careers-page.php')){
 		wp_enqueue_script( 'nicefile', get_template_directory_uri() . '/js/plugins/jquery.nicefileinput.min.js', null, null, true );
+		wp_enqueue_script( 'validation', get_template_directory_uri() . '/js/plugins/Validform_v5.3.2_min.js', null, null, true );
 	}
 	wp_enqueue_script( 'global', get_template_directory_uri() . '/js/main.js', null, null, true ); /* This should go first */
 	wp_enqueue_script( 'animate', get_template_directory_uri() . '/js/animate.js', null, null, true ); /* This should go first */
