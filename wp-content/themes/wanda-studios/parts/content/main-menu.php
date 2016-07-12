@@ -16,9 +16,15 @@
             </div>
             <!-- -->
             <div class="main_nav_list">
-                <div class="left"></div>
-                <div class="meddle"></div>
-                <div class="right"></div>
+                <div class="left">
+                    <?php wp_nav_menu( array( 'theme_location' => 'left-main-menu' )); ?>
+                </div>
+                <div class="middle">
+                    <?php wp_nav_menu( array( 'theme_location' => 'middle-main-menu' )); ?>
+                </div>
+                <div class="right">
+                    <?php wp_nav_menu( array( 'theme_location' => 'right-main-menu' )); ?>
+                </div>
                 <div class="clear"></div>
             </div>
             <?php show_template('content/lang-switcher'); ?>

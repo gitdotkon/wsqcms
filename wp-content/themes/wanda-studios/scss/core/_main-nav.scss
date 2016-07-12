@@ -140,6 +140,22 @@ body.main_nav_visible .main_nav {
 	.right {
 		width: 32.25%;
 		float: right;
+		margin-left: 0;
+	}
+
+	span.menu-expand {
+		cursor: pointer;
+		background: url('../images/sub-menu-arr2.png') no-repeat;
+		width: 17px;
+		height: 9px;
+		position: relative;
+		margin-left: 16px;
+		top: -3px;
+		display: inline-block;
+	}
+	.open span.menu-expand {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
 	}
 	ul {
 		padding: 40px 0 0 0;
@@ -175,6 +191,45 @@ body.main_nav_visible .main_nav {
 			}
 		}
 	}
+	.middle,
+	.right{
+		ul{
+			padding-top: 0;
+			li.menu-item-has-children{
+				color: #ab081a;
+				padding: 0;
+				&.current_page_item{
+					&>a{
+						color: $red;
+					}
+				}
+				&>a{
+					color: #323232;
+					font-size: 28px;
+					font-family: $avenir_rh;
+					line-height: 36px;
+					text-shadow: none;
+					padding: 0;
+					&:hover{
+						color: $red;
+					}
+				}
+				ul{
+					padding-top: 40px;
+					li.current_page_item{
+						a{
+							color: $red;
+							span{
+								background: $red;
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
 }
 .main_nav_box {
 	max-width: 1240px;
@@ -187,7 +242,6 @@ body.main_nav_visible .main_nav {
 	padding: 30px 0 0 0;
 	input[type="submit"] {
 		position: absolute;
-		width: 40px;
 		height: 100%;
 		top: 0;
 		right: 0;
@@ -195,8 +249,10 @@ body.main_nav_visible .main_nav {
 		padding: 0;
 		border: none;
 		background: transparent;
+		width: 40px;
 	}
 	input[type="text"] {
+		width: 100%;
 		font-size: 30px;
 		font-family: $avenir_rr;
 		line-height: 42px;

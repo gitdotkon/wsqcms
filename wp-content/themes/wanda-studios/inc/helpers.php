@@ -129,6 +129,16 @@ function area_field_for_career($column_name, $post_id){
     }
     return;
 }
+
+function stage_cat_field_for_stage($column_name, $post_id){
+    if($column_name == 'stage_cat'){
+        $stage_cats = get_the_terms($post_id, 'stage_cat');
+        if($stage_cats && isset($stage_cats[0])){
+            echo $stage_cats[0]->name;
+        }
+    }
+    return;
+}
 /**
 * Return country code by IP
  */
@@ -216,4 +226,24 @@ function show_spec($text){
             echo $text_arr[0];
         }
     }
+}
+
+function get_count_stage($tax_id){
+    return get_term($tax_id, 'stage_cat')->count;
+}
+
+function get_word($num){
+    $words = array(
+        __('One'),
+        __('two'),
+        __('third'),
+        __('four'),
+        __('five'),
+        __('six'),
+        __('seven'),
+        __('eight'),
+        __('nine'),
+        __('ten')
+    );
+    return $words[$num-1];
 }

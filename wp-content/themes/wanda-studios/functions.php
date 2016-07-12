@@ -403,6 +403,7 @@ $dynamic_admin = new DynamicAdmin();
 $dynamic_admin->addField('page',    'template', 'Page Template', 'template_detail_field_for_page');
 $dynamic_admin->addField('team',    'position', 'Position',      'position_detail_field_for_team');
 $dynamic_admin->addField('career',  'area',     'Area',          'area_field_for_career');
+$dynamic_admin->addField('stage',  'stage_cat',     'Stage category',          'stage_cat_field_for_stage');
 
 $dynamic_admin->run();
 //
@@ -412,6 +413,10 @@ $dynamic_admin->run();
 
 function get_custom_class(){
 	$class = ' ';
+	if(is_page_template('templates/stages-page.php')){
+		$class .= ' footer_bottom';
+		return $class;
+	}
 	if(!is_front_page() && !is_page_template('templates/about-page.php') && !is_page_template('templates/facilities-page.php')){ // if not front and stage page
 		$class .= 'footer_visible';
 	}else{
