@@ -47,8 +47,8 @@
 		}
 		&.active{
 			.icon{
-				border-color: $red;
-				background-color: $red;
+				border-color: #ab081a;
+				background-color: #ab081a;
 			}
 		}
 	}
@@ -65,7 +65,7 @@
 	text-shadow: none;
 	font-family: $avenir_ll;
 	h2{
-		color: $black;
+		color: #000;
 		font-size: 70px;
 		font-family: $avenir_mb;
 		line-height: 70px;
@@ -81,7 +81,7 @@
 		margin: 0 0 13px;
 	}
 	[class^="icon-"], [class*=" icon-"]{
-		color: $red;
+		color: #ab081a;
 		font-size: 25px;
 	}
 	.pre_production_inner {
@@ -96,7 +96,7 @@
 		vertical-align: top;
 	}
 	.line_title {
-		color: $red;
+		color: #ab081a;
 		font-size: 25px;
 		font-family: $avenir_mb;
 		line-height: 30px;
@@ -108,7 +108,7 @@
 			content: ' ';
 			width: 32px;
 			height: 1px;
-			background: $red;
+			background: #ab081a;
 			position: absolute;
 			top: 100%;
 			left: 50%;

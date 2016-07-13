@@ -302,7 +302,7 @@
             changeTab($dest);
             return false;
         });
-
+        
         if(hash){
             if(!$('body').hasClass('page-template-stages-page')){
                 changeTab($(hash));
@@ -752,7 +752,7 @@
 
         // Menu scrips
 
-        $('.main_nav_list .left .menu-item-has-children>a').after('<span class="menu-expand"></span>');
+        $('.main_nav_list .menu-item-has-children>a').after('<span class="menu-expand"></span>');
 
         $('.middle, .right').find('.sub-menu a').each(function(){
 
@@ -780,8 +780,8 @@
                 $li.removeClass('open');
                 $submenu.slideUp();
             }else{
-                $('.main_nav_list .left .open .sub-menu').slideUp();
-                $('.main_nav_list .left .open').removeClass('open');
+                $('.main_nav_list .open .sub-menu').slideUp();
+                $('.main_nav_list .open').removeClass('open');
                 $li.addClass('open');
                 $submenu.slideDown();
             }

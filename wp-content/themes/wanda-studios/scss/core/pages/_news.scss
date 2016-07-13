@@ -12,7 +12,7 @@
 	padding: 0 0 34px 0;
 }
 .back_btn, a.back_btn {
-	color: $red;
+	color: #ab081a;
 	font-size: 24px;
 	font-family: $avenir_rr;
 	line-height: 34px;
@@ -109,7 +109,7 @@ h1.detail_title {
 		}
 		&:after{
 			background: url(../images/round_share_btn.png) no-repeat 50% 50%;
-			border: 2px solid $red;
+			border: 2px solid #ab081a;
 		}
 	}
 }
@@ -168,7 +168,7 @@ h1.detail_title {
 		padding: 0 20px 60px;
 		background: #f3f3f3;
 		.category {
-			color: $red;
+			color: #ab081a;
 			font-size: 18px;
 			font-family: 'avenir_lt_65_mediumblack';
 			line-height: 24px;
@@ -310,7 +310,7 @@ h1.detail_title {
 			text-transform: uppercase;
 			width: 72px;
 			height: 72px;
-			background: $red;
+			background: #ab081a;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -338,18 +338,18 @@ h1.detail_title {
 		}
 	}
 	a.load_more_btn {
-		color: $red;
+		color: #ab081a;
 		font-size: 20px;
-		font-family: $avenir_rh;
+		font-family: 'avenir_lt_55_romanheavy';
 		line-height: 27px;
 		text-align: center;
 		text-transform: uppercase;
 		display: inline-block;
-		border: 1px solid $red;
+		border: 1px solid #ab081a;
 		border-radius: 40px;
 		padding: 28px 129px;
 		&:hover{
-			background: $red;
+			background: #ab081a;
 			color: #fff;
 		}
 	}
@@ -360,7 +360,7 @@ h1.detail_title {
 	h3 {
 		color: #fff;
 		font-size: 30px;
-		font-family: $avenir_rh;
+		font-family: 'avenir_lt_55_romanheavy';
 		line-height: 38px;
 		text-align: center;
 		text-transform: uppercase;
@@ -411,7 +411,7 @@ h1.detail_title {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background: $black;
+				background: #000;
 				opacity: .5;
 			}
 		}

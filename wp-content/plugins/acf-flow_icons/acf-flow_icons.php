@@ -18,7 +18,7 @@ if( ! defined( 'ABSPATH' ) ) exit;
 // check if class already exists
 if( !class_exists('acf_plugin_flow_icons') ) :
 
-	require_once 'classes/nav_menu_edit_custom.php';
+	//require_once 'classes/nav_menu_edit_custom.php';
 class acf_plugin_flow_icons {
 	
 	/*
@@ -48,7 +48,7 @@ class acf_plugin_flow_icons {
 		// https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
 		load_plugin_textdomain( 'acf-flow_icons', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
 		
-		$custom_menu = new CustomMenu();
+		//$custom_menu = new CustomMenu();
 		// include field
 		add_action('acf/include_field_types', 	array($this, 'include_field_types')); // v5
 		add_action('acf/register_fields', 		array($this, 'include_field_types')); // v4

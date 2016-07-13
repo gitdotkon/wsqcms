@@ -348,7 +348,7 @@ add_action('admin_head', 'admin_style');
 	function wordpress_login_styling() { ?>
 		<style type="text/css">
 			.login #login h1 a {
-				background-image: url('<?php echo get_header_image(); ?>');
+				background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/images/sign-in-logo.png');
 				background-size: contain;
 				background-position: 50% 50%;
 				width: auto;

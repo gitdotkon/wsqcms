@@ -7,13 +7,7 @@
     <div class="main_nav_inner">
         <div class="main_nav_box">
             <!-- Cut into form.php -->
-            <div class="search_form">
-                <form>
-                    <input type="text" placeholder="Search by keyword..."/>
-                    <span class="icon-60"></span>
-                    <input type="submit" value=""/>
-                </form>
-            </div>
+            <?php get_search_form(); ?>
             <!-- -->
             <div class="main_nav_list">
                 <div class="left">

@@ -193,6 +193,11 @@ body.main_nav_visible .main_nav {
 	}
 	.middle,
 	.right{
+		@include breakpoint(min-width 1025px){
+			span.menu-expand{
+				display: none;
+			}
+		}
 		ul{
 			padding-top: 0;
 			li.menu-item-has-children{

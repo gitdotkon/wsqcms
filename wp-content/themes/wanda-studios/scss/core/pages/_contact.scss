@@ -24,7 +24,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: $black;
+			background: #000;
 			opacity: .7;
 		}
 	}
@@ -155,7 +155,7 @@
 			line-height: 26px;
 			padding: 25px 0 17px;
 			.red_required {
-				color: $red;
+				color: #ab081a;
 			}
 		}
 		textarea {
@@ -204,7 +204,7 @@
 	display: block;
 }
 input[type="submit"], button {
-	color: $red;
+	color: #ab081a;
 	font-size: 20px;
 	font-weight: normal;
 	font-family: $avenir_rr;
@@ -216,7 +216,7 @@ input[type="submit"], button {
 	padding: 15px 106px;
 	border-radius: 30px;
 	-webkit-appearance: none;
-	border: 1px solid $red;
+	border: 1px solid #ab081a;
 	display: block;
 	margin: 0 auto;
 	background: #fff;
@@ -226,7 +226,7 @@ input[type="submit"]:hover, button:hover {
 }
 input[type="submit"]:hover, button:hover {
 	color: #fff;
-	background: $red;
+	background: #ab081a;
 }
 .contact_form input[type="submit"] {
 	color: #fff;
@@ -252,10 +252,10 @@ input[type="submit"]:hover, button:hover {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	color: $black;
+	color: #000;
 	text-align: center;
 	font-size: 18px;
-	font-family: $avenir_rr;
+	font-family: 'avenir_lt_55_romanroman';
 	border-radius: 5px;
 	.close {
 		position: absolute;

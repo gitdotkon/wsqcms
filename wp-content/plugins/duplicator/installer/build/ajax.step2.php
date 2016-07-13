@@ -1,8 +1,7 @@
 <?php
 // Exit if accessed directly
 if (! defined('DUPLICATOR_INIT')) {
-	$_baseURL =  strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
-	$_baseURL =  "http://" . $_baseURL;
+	$_baseURL = "http://" . strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 	header("HTTP/1.1 301 Moved Permanently");
 	header("Location: $_baseURL");
 	exit; 
@@ -17,13 +16,13 @@ error_reporting(E_ERROR);
 //DATABASE UPDATES
 //====================================================================================================
 
-$ajax2_start = DupUtil::get_microtime();
+$ajax2_start = DUPX_Util::get_microtime();
 
 //MYSQL CONNECTION
-$dbh = DupUtil::db_connect($_POST['dbhost'], $_POST['dbuser'], html_entity_decode($_POST['dbpass']), $_POST['dbname'], $_POST['dbport']);
+$dbh = DUPX_Util::db_connect($_POST['dbhost'], $_POST['dbuser'], html_entity_decode($_POST['dbpass']), $_POST['dbname'], $_POST['dbport']);
 $charset_server = @mysqli_character_set_name($dbh);
 @mysqli_query($dbh, "SET wait_timeout = {$GLOBALS['DB_MAX_TIME']}");
-DupUtil::mysql_set_charset($dbh, $_POST['dbcharset'], $_POST['dbcollate']);
+DUPX_Util::mysql_set_charset($dbh, $_POST['dbcharset'], $_POST['dbcollate']);
 
 //POST PARAMS
 $_POST['blogname'] = mysqli_real_escape_string($dbh, $_POST['blogname']);
@@ -97,14 +96,22 @@ $path_new_json = str_replace('"', "", json_encode($_POST['path_new']));
 
 array_push($GLOBALS['REPLACE_LIST'], 
 		array('search' => $_POST['url_old'],  'replace' => $_POST['url_new']), 
-		array('search' => $url_old_json,	  'replace' => $url_new_json), 
 		array('search' => $_POST['path_old'], 'replace' => $_POST['path_new']), 
-		array('search' => $path_old_json,	  'replace' => $path_new_json), 		
-		array('search' => rtrim(DupUtil::unset_safe_path($_POST['path_old']), '\\'), 'replace' => rtrim($_POST['path_new'], '/'))
+		array('search' => $url_old_json,	  'replace' => $url_new_json), 
+		array('search' => $path_old_json,	  'replace' => $path_new_json), 	
+		array('search' => urlencode($_POST['path_old']), 'replace' => urlencode($_POST['path_new'])), 
+		array('search' => urlencode($_POST['url_old']),  'replace' => urlencode($_POST['url_new'])),
+		array('search' => rtrim(DUPX_Util::unset_safe_path($_POST['path_old']), '\\'), 'replace' => rtrim($_POST['path_new'], '/'))
 );
 
+//Remove trailing slashes
+function _dupx_array_rtrim(&$value) {
+    $value = rtrim($value, '\/');
+}
+array_walk_recursive($GLOBALS['REPLACE_LIST'], _dupx_array_rtrim);
+
 @mysqli_autocommit($dbh, false);
-$report = DUPX_Serializer::load($dbh, $GLOBALS['REPLACE_LIST'], $_POST['tables'], $GLOBALS['TABLES_SKIP_COLS'], $_POST['fullsearch']);
+$report = DUPX_UpdateEngine::load($dbh, $GLOBALS['REPLACE_LIST'], $_POST['tables'], $_POST['fullsearch']);
 @mysqli_commit($dbh);
 @mysqli_autocommit($dbh, true);
 
@@ -116,8 +123,8 @@ $JSON['step2'] = $report;
 $JSON['step2']['warn_all'] = 0;
 $JSON['step2']['warnlist'] = array();
 
-DUPX_Serializer::log_stats($report);
-DUPX_Serializer::log_errors($report);
+DUPX_UpdateEngine::log_stats($report);
+DUPX_UpdateEngine::log_errors($report);
 
 //Reset the postguid data
 if ($_POST['postguid']) {
@@ -205,8 +212,8 @@ $patterns = array("/('|\")WP_HOME.*?\)\s*;/",
 				  "/('|\")PATH_CURRENT_SITE.*?\)\s*;/");						
 $replace  = array("'WP_HOME', '{$_POST['url_new']}');",
 				  "'WP_SITEURL', '{$_POST['url_new']}');",
-				  "'DOMAIN_CURRENT_SITE', {$mu_newDomainHost}');",
-				  "'PATH_CURRENT_SITE', {$mu_newUrlPath}');");
+				  "'DOMAIN_CURRENT_SITE', '{$mu_newDomainHost}');",
+				  "'PATH_CURRENT_SITE', '{$mu_newUrlPath}');");
 $config_file = @file_get_contents('wp-config.php', true);
 $config_file = preg_replace($patterns, $replace, $config_file);
 file_put_contents('wp-config.php', $config_file);
@@ -220,17 +227,17 @@ fclose($fp);
 
 
 //===============================
-//WARNING TESTS
+//NOTICE TESTS
 //===============================
 DUPX_Log::Info("\n--------------------------------------");
-DUPX_Log::Info("WARNINGS");
+DUPX_Log::Info("NOTICES");
 DUPX_Log::Info("--------------------------------------");
 $config_vars = array('WP_CONTENT_DIR', 'WP_CONTENT_URL', 'WPCACHEHOME', 'COOKIE_DOMAIN', 'WP_SITEURL', 'WP_HOME', 'WP_TEMP_DIR');
-$config_found = DupUtil::string_has_value($config_vars, $config_file);
+$config_found = DUPX_Util::string_has_value($config_vars, $config_file);
 
 //Files
 if ($config_found) {
-	$msg = 'WP-CONFIG WARNING: The wp-config.php has one or more of these values "' . implode(", ", $config_vars) . '" which may cause issues please validate these values by opening the file.';
+	$msg = 'WP-CONFIG NOTICE: The wp-config.php has one or more of the following values set [' . implode(", ", $config_vars) . '].  Please validate these values are correct by opening the file and checking the values.';
 	$JSON['step2']['warnlist'][] = $msg;
 	DUPX_Log::Info($msg);
 }
@@ -240,7 +247,7 @@ $result = @mysqli_query($dbh, "SELECT option_value FROM `{$GLOBALS['FW_TABLEPREF
 if ($result) {
 	while ($row = mysqli_fetch_row($result)) {
 		if (strlen($row[0])) {
-			$msg = "MEDIA SETTINGS WARNING: The table '{$GLOBALS['FW_TABLEPREFIX']}options' has at least one the following values ['upload_url_path','upload_path'] set please validate settings. These settings can be changed in the wp-admin by going to Settings->Media area see 'Uploading Files'";
+			$msg = "MEDIA SETTINGS NOTICE: The table '{$GLOBALS['FW_TABLEPREFIX']}options' has at least one the following values ['upload_url_path','upload_path'] set please validate settings. These settings can be changed in the wp-admin by going to Settings->Media area see 'Uploading Files'";
 			$JSON['step2']['warnlist'][] = $msg;
 			DUPX_Log::Info($msg);
 			break;
@@ -249,7 +256,7 @@ if ($result) {
 }
 
 if (empty($JSON['step2']['warnlist'])) {
-	DUPX_Log::Info("No Warnings Found\n");
+	DUPX_Log::Info("No Notices Found\n");
 }
 
 $JSON['step2']['warn_all'] = empty($JSON['step2']['warnlist']) ? 0 : count($JSON['step2']['warnlist']);
@@ -258,10 +265,10 @@ mysqli_close($dbh);
 @unlink('database.sql');
 
 //CONFIG Setup
-DUPX_Config::Setup();
+DUPX_ServerConfig::Setup();
 
-$ajax2_end = DupUtil::get_microtime();
-$ajax2_sum = DupUtil::elapsed_time($ajax2_end, $ajax2_start);
+$ajax2_end = DUPX_Util::get_microtime();
+$ajax2_sum = DUPX_Util::elapsed_time($ajax2_end, $ajax2_start);
 DUPX_Log::Info("********************************************************************************");
 DUPX_Log::Info('STEP 2 COMPLETE @ ' . @date('h:i:s') . " - TOTAL RUNTIME: {$ajax2_sum}");
 DUPX_Log::Info("********************************************************************************");

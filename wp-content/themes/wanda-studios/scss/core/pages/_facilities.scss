@@ -184,7 +184,7 @@
 				@include transition(all 1s cubic-bezier(.19,1,.22,1));
 			}
 			&:before{
-				background: $red;
+				background: #ab081a;
 				border-radius: 100%;
 			}
 			&:hover{
@@ -292,7 +292,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: $black;
+			background: #000;
 			opacity: .65;
 		}
 		h3 {
@@ -330,7 +330,7 @@
 	width: 100%;
 }
 .work_shops_tile .work_shop:before {
-	background: $black;
+	background: #000;
 	opacity: .6;
 }
 .work_shops.four-tile .work_shops_tile:hover .work_shop:before, .work_shops.four-tile .work_shops_tile .work_shop:before {
@@ -428,7 +428,7 @@
 		text-shadow: none;
 		background: #f3f3f3;
 		h2{
-			color: $black;
+			color: #000;
 			font-size: 70px;
 			font-family: $avenir_mb;
 			line-height: 70px;
@@ -459,7 +459,7 @@
 			margin: 0 auto;
 		}
 		&.block_2{
-			color: $red;
+			color: #ab081a;
 			font-size: 25px;
 			font-family: $avenir_mb;
 			line-height: 30px;
@@ -552,7 +552,7 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			background: $black;
+			background: #000;
 			opacity: .5;
 		}
 	}
@@ -685,7 +685,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background: $black;
+			background: #000;
 			opacity: .5;
 		}
 	}
@@ -715,7 +715,7 @@
 			bottom: 0;
 			left: 50%;
 			margin-left: -19px;
-			background: $red;
+			background: #ab081a;
 		}
 	}
 	.desc {
@@ -724,7 +724,7 @@
 	}
 }
 .red_cols {
-	color: $red;
+	color: #ab081a;
 	font-size: 20px;
 	font-family: $avenir_mb;
 	line-height: 26px;
@@ -748,7 +748,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	background: $red;
+	background: #ab081a;
 	margin-left: -16px;
 }
 .red_cols_inner:before {

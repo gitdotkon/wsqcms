@@ -2970,10 +2970,22 @@
 		float: none;
 		margin: 0;
 		li{
+			position: relative;
 			border-bottom: 1px solid #d3d3d3;
 			padding: 0;
 			.sub-menu{
 				display: none;
+				li{
+					margin: 0 20px 12px 20px;
+					&:last-child{
+						border: none;
+					}
+				}
+				a{
+					font-size: 18px;
+					font-family: $avenir_rr, sans-serif;
+					line-height: 24px;
+				}
 			}
 			a span{
 				display: none;
@@ -2985,6 +2997,20 @@
 				font-size: 18px;
 				font-family: 'avenir_lt_55_romanheavy';
 			}
+		}
+	}
+	.search_form .icon-60{
+		top: 24px;
+		font-size: 30px;
+	}
+	.search_form input[type=text]{
+		padding: 10px 0;
+	}
+	.main_nav_list .left ul ul{
+		padding-top: 0;
+		margin-bottom: 0;
+		li:last-child{
+			border: none;
 		}
 	}
 	.main_nav_list span.menu-expand {
@@ -3008,6 +3034,34 @@
 	}
 	.main_nav_list:before{
 		display: none;
+	}
+	.home{
+		.logo,
+		.menu_btn{
+			position: fixed;
+		}
+	}
+	.mobile_stages_slider_nav{
+		li.active{
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			top: 0;
+		}
+
+	}
+	.mobile_stages_slider_nav.is_open{
+		ul{
+			background: #fff;
+			padding-top: 43px;
+		}
+		li{
+			display: block;
+			a:after{
+				display: none;
+			}
+		}
 	}
 }
 @media only screen and (max-width: 769px){
@@ -3649,6 +3703,37 @@
 			padding: 32px 10px 19px;
 			margin-bottom: 26px;
 		}
+	}
+
+	.search_form input[type=text]{
+		font-size: 18px;
+		@include input-placeholder{
+			font-size: 18px;
+		}
+	}
+	.search_form .icon-60{
+		top: 15px;
+	}
+	.main_nav_logo {
+		left: 20px;
+		top: 0;
+		max-width: 32px;
+	}
+	.main_nav_close {
+		right: 20px;
+		top: 18px;
+	}
+	.main_nav_header{
+		height: 58px;
+	}
+	.lang_switcher{
+		padding: 70px 0 20px;
+	}
+	.page-template-stages-page .stage_index{
+		font-size: 18px;
+	}
+	.page-template-stages-page .stage_list a{
+		padding: 14px 54px 14px 22px;
 	}
 }
 @media only screen and (max-width: 460px){
