@@ -39,6 +39,10 @@ function fa_register_api_hooks()
         'methods' => 'GET',
         'callback' => 'get_galleries_images',
     ));
+    register_rest_route(FA_API_NAMESPACE, '/search/', array(
+        'methods' => 'GET',
+        'callback' => 'get_search_result',
+    ));
 }
 function check_code($c1, $c2){
     return trim(md5($c1)) == $c2;
@@ -140,10 +144,28 @@ function send_mail(){
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;
 }
-function fa_get_all_team()
+function get_search_result()
 {
     $return = '';
-
+    if($_GET['s']){
+        $args = array(
+            's' => $_GET['s'],
+            'posts_per_page' => -1,
+            'post_type' => array('post', 'page')
+        );
+        $search_result = get_query_posts($args);
+        $results = array();
+        if($search_result){
+            foreach ($search_result as $item){
+                $results[] = array(
+                    'title' => $item->post_title,
+                    'url' => get_permalink($item->ID),
+                    'excerpt' => apply_filters('the_content', $item->post_excerpt)
+                );
+            }
+        }
+        $return['results'] = $results;
+    }
     
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');

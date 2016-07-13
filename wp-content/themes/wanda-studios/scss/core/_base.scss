@@ -720,3 +720,25 @@ html.has_lightbox_visible{
 		overflow: hidden;
 	}
 }
+
+.error404{
+	.content-inner{
+		padding: 250px 0;
+		max-width: 100%;
+		background: #f3f3f3;
+		@include breakpoint(max-width 1025px){
+			padding: 150px 0;
+		}
+	}
+}
+.page-template-backlots-page{
+	.header.white-header  .header-menu{
+		display: none;
+	}
+}
+.menu_is_open{
+	overflow: hidden;
+	body{
+		overflow: hidden;
+	}
+}

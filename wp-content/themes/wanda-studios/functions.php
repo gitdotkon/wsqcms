@@ -196,6 +196,7 @@ function foundation_scripts_and_styles() {
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.min.js', null, null, true );
 	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/plugins/jquery.flexslider-min.js', null, null, true );
 	wp_enqueue_script( 'scrollbar', get_template_directory_uri() . '/js/plugins/jquery.scrollbar.min.js', null, null, true );
+	wp_enqueue_script( 'nicescroll', get_template_directory_uri() . '/js/plugins/jquery.nicescroll.min.js', null, null, true );
 	wp_enqueue_script( 'mh', get_template_directory_uri() . '/js/plugins/jquery.matchHeight-min.js', null, null, true );
 	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/js/plugins/imagesloaded.pkgd.min.js', null, null, true );
 	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/js/plugins/masonry.pkgd.min.js', null, null, true );

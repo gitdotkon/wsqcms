@@ -9,6 +9,7 @@
             <!-- Cut into form.php -->
             <?php get_search_form(); ?>
             <!-- -->
+            
             <div class="main_nav_list">
                 <div class="left">
                     <?php wp_nav_menu( array( 'theme_location' => 'left-main-menu' )); ?>
@@ -30,4 +31,14 @@
         </a>
         <a href="#" class="main_nav_close"><span class="icon-59"></span></a>
     </div>
+    <script type="text/template" id="search-item">
+        <% _.each(results, function(item, index){ %>
+            <div class="result-article">
+                <h2><a href="<%= item.url %>"><%= item.title %></a></h2>
+                <div class="short">
+                    <%= item.excerpt %>
+                </div>
+            </div>
+        <% }); %>
+    </script>
 </div>
