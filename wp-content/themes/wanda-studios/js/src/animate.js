@@ -468,42 +468,29 @@
         }
 
         $('.back_top').click(function () {
-            if ($(this).hasClass('mobile_back_top')) {
-                if (!$body.hasClass('home')) { // and not if stage page
-                    $('html, body').animate({
-                        scrollTop: 0
-                    }, 600);
-                } else {
-                    $body.removeClass('stages_header_bg');
-                    $body.removeClass('mobile_footer_visible');
-                    $('.wrapper').removeAttr('class').addClass('wrapper');
-                    $('.wrapper').data({'swipe-index': 0});
-                    $('.nav_container ul li').first().find('a').trigger('click');
-                }
-                return false;
+
+            if (!$body.hasClass('home') && !$body.hasClass('page-template-stages-page')) { // and not if stage page
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 600);
+                console.log('Top');
             } else {
-                if ($body.hasClass('not_full_screen_page') || $body.hasClass('facilities_list_pages')) {
-                    $('html, body').animate({
-                        scrollTop: 0
-                    }, 600);
-                } else {
-                    if ($body.hasClass('facilities_list_pages')) {
-                        setTimeout(function () {
-                            animate(0);
-                        }, 0);
-                    } else {
-                        $body.removeClass('footer_visible');
-                        setTimeout(function () {
-                            $('.nav_container ul li').first().find('a').trigger('click');
-                            if ($body.hasClass('stages_page')) {
-                                animate(0);
-                            }
-                        }, 100);
-                    }
-                }
-                return false;
+                console.log('Top');
+                $body.removeClass('stages_header_bg');
+                $body.removeClass('mobile_footer_visible');
+                $('.wrapper').removeAttr('class').addClass('wrapper');
+                $body.removeClass('footer_visible');
+                $('.wrapper').data({'swipe-index': 0});
+                setTimeout(function () {
+                    $('.nav_container ul li').first().find('a').trigger('click');
+                    animate(0);
+                }, 100);
+                //$('.nav_container ul li').first().find('a').trigger('click');
             }
+            return false;
         });
+
+
     });
 
 

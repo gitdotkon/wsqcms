@@ -4,7 +4,6 @@
  */
 
 $languages = icl_get_languages('skip_missing=0&orderby=code');
-
 ?>
 <div class="lang_switcher">
     <ul>

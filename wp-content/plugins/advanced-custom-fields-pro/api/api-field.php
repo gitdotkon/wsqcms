@@ -1077,8 +1077,8 @@ function acf_maybe_get_field( $selector, $post_id = false, $strict = true ) {
 			
 		// get reference
 		$field_key = acf_get_field_reference( $selector, $post_id );
-		
-		
+
+
 		if( $field_key ) {
 			
 			$selector = $field_key;
@@ -1091,7 +1091,7 @@ function acf_maybe_get_field( $selector, $post_id = false, $strict = true ) {
 		
 	}
 	
-	
+
 	// get field key
 	$field = acf_get_field( $selector );
 	

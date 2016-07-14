@@ -99,7 +99,7 @@ body.main_nav_visible .main_nav {
 		}
 		li{
 			margin: 0;
-			padding: 46px 0 0 0;
+			padding: 30px 0 0 0;
 			color: #323232;
 			font-size: 28px;
 			font-family: $avenir_rh;
@@ -330,6 +330,11 @@ body.main_nav_visible .main_nav {
 				color: $red;
 			}
 		}
+	}
+}
+.main_nav_list .left li, .main_nav_list .left li a{
+	br{
+		display: none;
 	}
 }
 // Search form

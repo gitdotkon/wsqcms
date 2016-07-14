@@ -187,7 +187,9 @@
             return false;
         });
         /* Light box end */
-
+        
+        /* Back to top */
+       
         /* Contact page (Map script) */
         var map = $('#map');
         if($(map).length>0){
@@ -288,8 +290,11 @@
         function changeTab($dest){
             $('.tab.tab-active').removeClass('tab-active');
             $dest.addClass('tab-active');
-            console.log($dest);
-            var scrollTo =  $dest.offset().top - $('#header').height();
+            var h = 0;
+            if($('#header').length>0){
+                h = $('#header').height();
+            }
+            var scrollTo =  $dest.offset().top - h;
             $('html, body').animate({scrollTop: scrollTo})
 
         }
@@ -691,18 +696,24 @@
                                 $('.apply_wrapper').fadeOut();
                                 $apply_form[0].reset();
                                 $apply_form.removeClass('wait');
+                                $('.thank-you-interest').show();
                             }
                         },
                         error: function(e){
                             console.log('errr');
                             console.log(e);
                         }
-                    })
+                    });
+                    setTimeout(function(){
+                        $('.thank-you-interest').show();
+                    }, 1000);
                 }
                 return false;
             })
         }
-
+        $('.page-template-templatesit-services-php, .page-template-services-page').find('.landing_grids_inner a').click(function(){
+            return false;
+        });
         /// Load more
         
         $('#more_news').click(function(){

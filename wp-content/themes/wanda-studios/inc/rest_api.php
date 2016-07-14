@@ -50,29 +50,32 @@ function check_code($c1, $c2){
 function apply_career(){
     $return = '';
     $emailto = $_POST['apply_email'];
-    $body = '
-        <b>Job title:</b>'.$_POST['job_title']?:"".'
-        <b>Name: </b>'.$_POST['name']?:"".'<br /><br />
-        <b>Phone: </b>'.$_POST['phone']?:"".'<br /><br />
-        <b>Email: </b>'.$_POST['email']?:"".'<br /><br />
-        <b>Message: </b><br />'.$_POST['message']?:"".'<br />';
+    $message_template = get_field('career_apply_email_body', 'options');
+    $message_prepared = str_replace(array('[job_title]', '[name]', '[phone]', '[email]', '[message]'), array(
+        $_POST['job_title']?:"",
+        $_POST['name']?:"",
+        $_POST['phone']?:"",
+        $_POST['email']?:"",
+        $_POST['message']
+    ), $message_template);
+    $body = apply_filters('the_content', $message_prepared);
 
     $mail = new PHPMailer;
 
-
+    $email = get_field('email_for_apply_career', 'options');
     $mail->isSMTP();
     $mail->SMTPDebug = 0;
     $mail->SMTPAuth = true;
-    $mail->Port = 25;
-    $mail->Host = 'mail.wanda.com.cn';
-    $mail->Port = '25';
-    $mail->Username = 'fc_0206';
-    $mail->Password = 'd5ntfh03';
-    $mail->setFrom('fc_0206@wanda.com.cn');
+    $mail->Port = get_field('smtp_host', 'options')?:25;
+    $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
+    $mail->Port = get_field('smtp_port', 'options')?:'25';
+    $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
+    $mail->Password = get_field('password', 'options')?:'d5ntfh03';
+    $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
     //$mail->addAddress('dylan@flow.asia', 'Dylan');
-    $mail->addAddress('dimonpdaa@gmail.com', 'Chris');
+    $mail->addAddress(get_field('email_for_apply_career', 'options')?:'dylan@flow.asia', 'Dylan');
     //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
-    $mail->Subject = 'Contact from Wanda Studios';
+    $mail->Subject = get_field('career_apply_subject', 'options')?:'Contact from Wanda Studios';
     $mail->msgHTML($body);
     if(isset($_FILES['file'])){
         $mail->AddAttachment($_FILES['file']['tmp_name'],
@@ -80,12 +83,7 @@ function apply_career(){
     }
 //
 ////send the message, check for errors
-    $r = $mail->send();
-    if($r){
-        $return['status'] = '1';
-    }else{
-        $return['status'] = '0';
-    }
+    $mail->send();
     $return['status'] = '1';
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
@@ -113,28 +111,29 @@ function validate_captcha(){
 function send_mail(){
     $return = '';
 
-
-    $body = '
-        <b>Subject: </b>'.$_POST['subject']?:"".'<br /><br />
-        <b>Name: </b>'.$_POST['name']?:"".'<br /><br />
-        <b>Email: </b>'.$_POST['email']?:"".'<br /><br />
-        <b>Company name: </b>'.$_POST['company']?:"".'<br /><br />
-        <b>Message: </b><br />'.$_POST['message']?:"".'<br />';
-
+    $message_template = get_field('contact_us_email_body', 'options');
+    $message_prepared = str_replace(array('[subject]', '[name]', '[email]', '[company]', '[message]'), array(
+        $_POST['subject']?:"",
+        $_POST['name']?:"",
+        $_POST['email']?:"",
+        $_POST['company']?:"",
+        $_POST['message']?:""
+    ), $message_template);
+    $body = apply_filters('the_content', $message_prepared);
     $mail = new PHPMailer;
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
+    $mail->SMTPDebug = 0;
     $mail->SMTPAuth = true;
-    $mail->Port = 25;
-    $mail->Host = 'mail.wanda.com.cn';
-    $mail->Port = '25';
-    $mail->Username = 'fc_0206';
-    $mail->Password = 'd5ntfh03';
-    $mail->setFrom('fc_0206@wanda.com.cn');
+    $mail->Port = get_field('smtp_port', 'options')?:25;
+    $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
+    $mail->Port = get_field('smtp_port', 'options')?:'25';
+    $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
+    $mail->Password = get_field('password', 'options')?:'d5ntfh03';
+    $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
     //$mail->addAddress('dylan@flow.asia', 'Dylan');
-    $mail->addAddress('dimonpdaa@gmail.com', 'Chris');
+    $mail->addAddress(get_field('email_for_contact_us', 'options')?:'dylan@flow.asia', 'Dylan');
     //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
-    $mail->Subject = 'Contact from Wanda Studios';
+    $mail->Subject = get_field('contact_us_subject', 'options')?:__('Contact from Wanda Studios');
     $mail->msgHTML($body);
 //
 ////send the message, check for errors

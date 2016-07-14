@@ -28,6 +28,13 @@
 			width: 900px;
 		}
 	}
+	.block_box_title_wrapper h2{
+		font-size: 60px;
+		line-height: 72px;
+	}
+	.specs{
+		width: 890px;
+	}
 }
 @media only screen and (max-width: 1650px) and (min-width: 1441px){
 	.fl_specs .img {
@@ -78,6 +85,9 @@
 	.footer_bottom .footer{
 		bottom: -622px;
 	}
+	.block_box_title_wrapper{
+		padding: 0 0 0 48px;
+	}
 }
 @media only screen and (max-width: 1650px) and (min-width: 1441px){
 	.fl_specs .img {
@@ -123,6 +133,9 @@
 		.stage_screen_tile {
 			left: -205px;
 		}
+	}
+	.specs {
+		width: 780px;
 	}
 }
 @media screen and (max-width: 1520px){
@@ -198,7 +211,7 @@
 		padding-top: 20px;
 	}
 	.main_nav_list .left li {
-		padding-top: 35px;
+		padding-top: 20px;
 		line-height: 30px;
 	}
 	.main_nav_list {
@@ -216,7 +229,7 @@
 	.main_nav_list,
 	.search-result-container{
 		max-width: 96%;
-		margin: 50px auto 0;
+		margin: 26px auto 0;
 	}
 	.main_nav_header {
 		height: 80px;
@@ -1022,6 +1035,17 @@
 		line-height: 28px;
 		margin-bottom: 0;
 	}
+
+	.specs {
+		width: 681px;
+	}
+	.block_box_title_wrapper h2 {
+		font-size: 48px;
+		line-height: 53px;
+	}
+	.hr_box {
+		height: 780px;
+	}
 }
 @media only screen and (max-width: 1440px){
 	body {
@@ -1098,6 +1122,12 @@
 
 }
 @media only screen and (max-width: 1200px){
+	.specs {
+		width: 546px;
+	}
+	.specs_list ul li{
+		padding: 0 0 17px
+	}
 	.page-template-stages-page{
 		.stage_screen_btns_wrapper .stage_screen_btns span {
 			margin: 0 5px;
@@ -3092,8 +3122,62 @@
 			}
 		}
 	}
+
+	.specs_inner:before{
+		display: none;
+	}
+	.specs {
+		width: 100%;
+		position: static;
+		height: auto;
+
+		.specs_inner{
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+	}
+	.specs_list ul li {
+		padding: 0 0 17px 26px;
+	}
+	.block_box_title_wrapper h2{
+		text-align: center;
+		padding: 0;
+		margin: 0;
+		max-width: 100%;
+		font-size: 52px;
+		line-height: 68px;
+		br{
+			display: none;
+		}
+	}
+	.hr_box{
+
+		height: auto;
+		.hw_img_bg{
+			width: 100%;
+			height: 250px;
+			position: static;
+			text-align: center;
+		}
+		.block_box_title_wrapper{
+			height: 250px;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	.specs .specs_inner{
+		padding:30px 20px;
+	}
+	.specs_list ul li{
+		margin-left: 0;
+	}
 }
 @media only screen and (max-width: 769px){
+	.block_box_title_wrapper h2{
+		font-size: 48px;
+		line-height: 56px;
+	}
 	.cr_cols ul li {
 		width: 48%;
 		margin-bottom: 21px;
@@ -3225,6 +3309,10 @@
 	}
 }
 @media only screen and (max-width: 640px){
+	.block_box_title_wrapper h2{
+		font-size: 38px;
+		line-height: 46px;
+	}
 	.foot_share{
 		display: none;
 	}

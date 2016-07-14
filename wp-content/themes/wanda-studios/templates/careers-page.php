@@ -83,7 +83,7 @@ if(have_posts()){
                                     </span>
                                 </div>
                                 <div class="apply_form_item">
-                                    <input type="file" name="file" data-title="<?php _w('Upload Your Resume'); ?>" class="nicefileinput nice"/>
+                                    <input type="file" accept="image/jpeg,image/jpg,application/pdf,application/doc, application/docx," name="file" data-title="<?php _w('Upload Your Resume'); ?>" class="nicefileinput nice"/>
                                 </div>
                                 <div class="apply_form_item">
                                     <textarea name="message" placeholder="<?php _w('Drop a line...'); ?>"></textarea>
@@ -92,6 +92,14 @@ if(have_posts()){
                                     <input type="submit" value="<?php _w('Submit'); ?>"/>
                                 </div>
                             </form>
+                            <div class="thank-you-interest">
+                                <div class="table">
+                                    <div class="td">
+                                        <h3><?php _w('Thank You !'); ?></h3>
+                                        <p><?php _w('Thank you for your interest in this position. A representative will be in touch with you as soon as possible.') ?></p>
+                                    </div>
+                                </div>
+                            </div>
                             <a href="#" class="apply_close"></a>
                         </div>
                     </div>

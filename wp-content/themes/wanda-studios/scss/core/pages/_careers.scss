@@ -243,6 +243,7 @@
 	position: absolute;
 	top: 38px;
 	right: 39px;
+	z-index: 30;
 }
 .apply_box {
 	background: #fff;
@@ -352,4 +353,19 @@
 	overflow: hidden !important;
 	position: relative;
 	padding-top: 22px;
+}
+.thank-you-interest{
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	color: #000;
+	text-align: center;
+	padding: 0 50px;
+	font-size: 18px;
+	z-index: 20;
+	font-family: 'avenir_lt_55_romanroman';
 }

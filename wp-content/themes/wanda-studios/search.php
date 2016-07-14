@@ -11,7 +11,7 @@ get_header(); ?>
 <?php if ( have_posts() ) : ?>
 	<?php // Header
 	show_template('content/header-with-menu', array(
-		'class' => 'white-header fixedc'
+		'class' => 'white-header fixed'
 	)); ?>
 
 	<div id="search-result-container" class="search-result-container">

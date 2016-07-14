@@ -17,7 +17,7 @@
         <div class="td">
             <div class="stage_screen_tile"></div>
             <h2><?php the_title(); ?></h2>
-            <h3><?php echo $stage_tax_size_m . __('sqm') . $stage_tax_size_ft . __('sqf'); ?></h3>
+            <h3><?php echo $stage_tax_size_m . __('sqm'). ' / ' . $stage_tax_size_ft . __('sqf'); ?></h3>
             <div class="stage-desc">
                 <strong><?php echo __('Connected with ') . get_the_title(); ?></strong>
                 <?php the_content(); ?>
