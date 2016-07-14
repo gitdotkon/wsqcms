@@ -383,6 +383,10 @@
                 $('#header-menu').find('li').eq(0).addClass('active');
                 $('body').addClass('show_cats');
             }
+            if($('body').hasClass('page-template-services-page')){
+                $('.screen_btns .animate_up').eq(0).find('a').addClass('active');
+                $('#header-menu').find('li').eq(0).addClass('active');
+            }
         }
         if($('.tabs.tab-active').length>0){
             var href = $('.tabs.tab-active').attr('id');

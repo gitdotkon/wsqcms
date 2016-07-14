@@ -1383,6 +1383,49 @@
 	.mobile_more, .mobile_more .title {
 		display: block;
 	}
+	.all_view_wrapper {
+		width: 55px;
+		margin: 24px auto 0;
+		position: relative;
+		z-index: 11;
+	}
+	.home{
+		.mobile_more{
+			padding-top: 10px;
+		}
+		.mobile_more .title{
+			display: inline-block;
+			padding: 7px 38px 7px 0;
+			background: url(../images/arr.png) no-repeat 100% 0;
+			background-size: auto 27px;
+		}
+		.mobile_more{
+			.ico.animate_up{
+				display: none;
+			}
+		}
+		a.btn.incentive_btn{
+			color: #fff;
+			line-height: 18px;
+			font-size: 14px;
+			font-family: 'futura_lt_bookregular';
+			display: inline-block;
+			padding: 9px 30px;
+			/* border: 1px solid #fff; */
+			border-radius: 4px;
+			margin-top: 17px;
+			margin-bottom: 0;
+		}
+	}
+	.page-template-stages-page .stage_index{
+		width: 156px;
+	}
+	.main_nav_inner{
+		overflow: scroll;
+	}
+	.search_form{
+		padding: 24px 0 0;
+	}
 	.mobile_more{
 		padding-top: 24px;
 	}
@@ -3172,6 +3215,25 @@
 	.specs_list ul li{
 		margin-left: 0;
 	}
+	.stage_detail_slider .text{
+		font-size: 38px;
+	}
+	.stage_detail_slider .slick-dots li.slick-active button{
+		margin: 0;
+	}
+	.apply_box .NFI-wrapper:before{
+		display: none;
+	}
+	.apply_box input[type=text].NFI-filename{
+		width: 100%;
+		position: static;
+		max-width: 100%;
+		border-bottom: 1px solid #000 !important;
+	}
+	.apply_box{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 @media only screen and (max-width: 769px){
 	.block_box_title_wrapper h2{
@@ -3200,6 +3262,84 @@
 	}
 	.single-stage .stage_box .text_box{
 		padding-left: 0;
+	}
+
+	.stage_detail_slider .slick-arrow,
+	#gallery_slider_slick .slick-arrow{
+		width: 40px;
+		&:before{
+			background-size: 40px;
+		}
+		&:after{
+			background-position: 18px 50%;
+		}
+	}
+	#gallery_slider_slick .slick-arrow.slick-prev:after, .stage_detail_slider .slick-arrow.slick-prev:after{
+		background-position: 14px 50%;
+	}
+	.stage_detail_slider .text,
+	#gallery_slider_slick .text{
+		font-size: 28px;
+		bottom: 68px;
+	}
+	.slick-arrow:after,
+	#gallery_slider_slick  .slick-arrow:after{
+		background-position: 14px 50%;
+	}
+	.stage_detail_slider .slick-dots li button,
+	.slick-dots li,
+	#gallery_slider_slick .slick-dots li button,
+	#gallery_slider_slick .slick-dots li{
+		width: 15px;
+		height: 15px;
+	}
+	.single-stage .specs h3{
+		margin-left: 0;
+	}
+	.single-stage .specs ul li{
+		padding-left: 0;
+	}
+	.gallery h3{
+		font-size: 28px;
+		line-height: 36px;
+	}
+	.gallery .view_btn{
+		padding: 6px 60px;
+		font-size: 18px;
+	}
+	.nice .NFI-button{
+		font-size: 15px;
+		padding: 7px 29px;
+	}
+	.apply_form_item{
+		button, input[type=submit]{
+			padding: 7px 57px;
+			width: 100%;
+			font-size: 15px;
+			height: 43px;
+		}
+	}
+	.apply_box input[type=email], .apply_box input[type=text] {
+		font-size: 15px;
+		line-height: 18px;
+		width: 100%;
+		padding: 12px 0;
+		@include input-placeholder{
+			font-size: 15px;
+			line-height: 18px;
+		}
+	}
+	.NFI-wrapper{
+		margin-bottom: 23px;
+	}
+	.apply_box textarea{
+		padding: 5px;
+		font-size: 15px;
+		margin-bottom: 15px;
+		@include input-placeholder{
+			font-size: 15px;
+			line-height: 18px;
+		}
 	}
 }
 @media only screen and (max-width: 850px){
@@ -3309,6 +3449,25 @@
 	}
 }
 @media only screen and (max-width: 640px){
+	.home{
+		a.btn.incentive_btn{
+			padding: 6px 16px;
+			line-height: 14px;
+			font-size: 10px;
+		}
+	}
+	.page-template-media-center-page .gallery, .page-template-media-center-page .news{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.gallery .view_btn{
+		padding: 6px 40px;
+		font-size: 14px;
+	}
+	.gallery h3{
+		font-size: 24px;
+		line-height: 28px;
+	}
 	.block_box_title_wrapper h2{
 		font-size: 38px;
 		line-height: 46px;
@@ -3855,8 +4014,100 @@
 	.main_nav_list .left li .sub-menu li, .main_nav_list .middle li .sub-menu li, .main_nav_list .right li .sub-menu li{
 		margin-bottom: 5px;
 	}
+	.page-template-media-center-page .news_item .img .date{
+		font-size: 22px;
+		width: 63px;
+		height: 63px;
+	}
+	.page-template-media-center-page .news_item .img .date .month{
+		font-size: 14px;
+		line-height: 13px
+	}
 }
 @media only screen and (max-width: 460px){
+	#mobile_stage .side_stage_pic div.stage_item_trigger{
+		width: 280px;
+		height: 170px;
+		padding: 10px 20px 22px 16px;
+	}
+	.stage-desc{
+		br{
+			display: none;
+		}
+	}
+	.page-template-facilities-page .page-list-description li {
+		height: 50%;
+		max-height: 270px;
+		min-height: 350px;
+	}
+	.single-stage .text_box a.btn{
+		margin-bottom: 15px;
+	}
+	.page-template-stages-page .stage_list a{
+		font-size: 14px;
+	}
+	.page-template-stages-page .stage_list a {
+		padding: 7px 54px 7px 22px;
+	}
+	.page-template-stages-page .stage_list a .icon-5{
+		top: 9px;
+		right: 9px;
+		font-size: 29px;
+	}
+	.page-template-stages-page .stage_pic h2{
+		font-size: 16px;
+		line-height: 19px;
+	}
+	.page-template-stages-page .stage_index, .search_form input[type=text] {
+		font-size: 14px;
+	}
+	.page-template-stages-page .stage_index{
+		width: 116px;
+	}
+	.page-template-stages-page .view_btn{
+		padding: 1px 28px;
+		line-height: 27px;
+		font-size: 15px;
+	}
+	.page-template-incentives-page{
+		.header-menu li.active a{
+			max-width: 210px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			text-align: left;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	.stage_detail_slider .slick-arrow, #gallery_slider_slick .slick-arrow{
+		background: $red;
+		height: 40px;
+		top: 50%;
+		border-radius: 100%;
+		margin: 0 10px;
+		@include transform(translate(0, -50%));
+	}
+	.gallery .view_btn {
+		padding: 1px 40px;
+	}
+	.gallery h3 {
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.stage_detail_slider .slick-dots {
+		bottom: 15px;
+	}
+	.stage_detail_slider .text, #gallery_slider_slick .text{
+		font-size: 15px;
+		bottom: 28px;
+	}
+	#gallery_slider_slick .slick-arrow.slick-prev:after, .stage_detail_slider .slick-arrow.slick-prev:after {
+		background-position: 12px 50%;
+	}
+	.stage_detail_slider .slick-arrow:after, #gallery_slider_slick .slick-arrow:after {
+		background-position: 14px 50%;
+	}
 	.facilities-page-screen .screen_btns{
 		width: 100%
 	}
@@ -3873,6 +4124,13 @@
 		width: 45px;
 		height: 45px;
 		background-size: 45%!important;
+	}
+	.filter_box span, .filter_box .span{
+		margin: 4px 0 0 20px
+	}
+	.filter_reset{
+		margin-left: 0;
+		padding: 4px 14px;
 	}
 }
 @media only screen and (max-width: 400px){

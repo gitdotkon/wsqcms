@@ -73,6 +73,9 @@
 	text-align: left;
 	background: #eee;
 	display: none;
+	z-index: 100;
+	min-width: 137px;
+
 }
 .filter_box span ul li, .filter_box .span ul li {
 	padding: 6px 15px;
