@@ -304,21 +304,28 @@ function get_news(){
     if($_GET['news_per_page']){
         $per_page = $_GET['news_per_page'];
     }
+    
     $args = array(
         'post_type' => 'post',
         'posts_per_page' => $per_page,
         'offset' => $offset
     );
+    if($_GET['cat']){
+        $args['category_name'] = $_GET['cat'];
+    }
     $news_list = get_query_posts($args);
     if($news_list){
         foreach ($news_list as $news){
+            $cats = get_the_category($news->ID);
+            $cat = $cats[0]->name;
             $return['news'][] = array(
                 'title' => get_field('short_title', $news->ID)?:$news->post_title,
                 'url' => get_permalink($news->ID),
                 'excerpt' => $news->post_excerpt,
                 'thumb' => get_attached_img_url($news->ID),
                 'month' => date('M', strtotime($news->post_date)),
-                'day' => date('d', strtotime($news->post_date))
+                'day' => date('d', strtotime($news->post_date)),
+                'cat' => $cat?:__('News')
             );
         }
         if(count($news_list)<= $per_page){

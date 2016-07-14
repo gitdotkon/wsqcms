@@ -303,6 +303,11 @@
             var $dest = $(dest);
             changeTab($dest);
             window.location.hash = dest;
+            if(dest == '#news'){
+                $('body').addClass('show_cats');
+            }else{
+                $('body').removeClass('show_cats');
+            }
             var index = $(this).closest('.animate_up').index();
             $('.screen_btns .active').removeClass('active');
             $header_menu.find('.active').removeClass('active');
@@ -329,7 +334,11 @@
             console.log($(this).attr('href'));
             window.location.hash = dest;
             var $dest = $(dest);
-
+            if(dest == '#news'){
+                $('body').addClass('show_cats');
+            }else{
+                $('body').removeClass('show_cats');
+            }
             var index = $(this).closest('li').index();
             if($(window).width()<1025){
                 if(!$header_menu.hasClass('is_open')){
@@ -361,8 +370,19 @@
                 $('.sv_icons a[href^=' + hash + ']').closest('li').addClass('active');
                 $header_menu.find('a[href^=' + hash + ']').closest('li').addClass('active');
                 hash = hash.replace('#', '');
+                if(hash == 'news'){
+                    $('body').addClass('show_cats');
+                }else{
+                    $('body').removeClass('show_cats');
+                }
             }
 
+        }else{
+            if($('body').hasClass('page-template-media-center-page')){
+                $('.screen_btns .animate_up').eq(0).find('a').addClass('active');
+                $('#header-menu').find('li').eq(0).addClass('active');
+                $('body').addClass('show_cats');
+            }
         }
         if($('.tabs.tab-active').length>0){
             var href = $('.tabs.tab-active').attr('id');
@@ -715,13 +735,66 @@
             return false;
         });
         /// Load more
-        
+        $('#mobile_sub-cat').change(function(){
+            var cat = $( "#mobile_sub-cat option:selected" ).val();
+            $('.news-category-list .active').removeClass('active');
+            $(this).closest('li').addClass('active');
+            $('#news_category').val(cat);
+            var per_page = 6;
+            var response = doAjax(routes.news, {
+                'news_per_page': per_page,
+                'cat': cat
+            });
+            $('.load_more').addClass('wait');
+            response.success(function(data){
+                //hide wheel
+                if(parseInt(data.available) == 0){
+                    $('#more_news').hide();
+                }else{
+                    $('#news_count').val(parseInt($('#news_count').val())+data.news.length);
+                }
+                var template = _.template($('#news-item').html());
+                var result_html = template({news: data.news});
+                $('#news_container').find('.news_item').remove();
+                $('#news_container').append(result_html);
+                $('.load_more').removeClass('wait');
+            })
+            return false;
+        });
+        $('.news-category-list a').click(function(){
+            var cat = $(this).attr('data-slug');
+            $('.news-category-list .active').removeClass('active');
+            $(this).closest('li').addClass('active');
+            $('#news_category').val(cat);
+            var per_page = 6;
+            var response = doAjax(routes.news, {
+                'news_per_page': per_page,
+                'cat': cat
+            });
+            $('.load_more').addClass('wait');
+            response.success(function(data){
+                //hide wheel
+                if(parseInt(data.available) == 0){
+                    $('#more_news').hide();
+                }else{
+                    $('#news_count').val(parseInt($('#news_count').val())+data.news.length);
+                }
+                var template = _.template($('#news-item').html());
+                var result_html = template({news: data.news});
+                $('#news_container').find('.news_item').remove();
+                $('#news_container').append(result_html);
+                $('.load_more').removeClass('wait');
+            })
+            return false;
+        });
         $('#more_news').click(function(){
             var per_page = $('#news_per_page').val();
             var news_count = $('#news_count').val();
+            var cat = $('#news_category').val();
             var response = doAjax(routes.news, {
                 'news_count': news_count,
-                'news_per_page': per_page
+                'news_per_page': per_page,
+                'cat': cat
             });
             $('.load_more').addClass('wait');
             response.success(function(data){
