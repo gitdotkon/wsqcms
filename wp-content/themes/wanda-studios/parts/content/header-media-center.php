@@ -15,7 +15,7 @@ $post_cats = get_categories(array('type' => 'post'));
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/wanda-top-white.svg" class="white-logo" alt=""/>
     </a>
     <ul class="header-menu" id="header-menu">
-        <li class=" vertical-delimiter">
+        <li class=" vertical-delimiter news-item">
             <a href="#news" class="sync-item"><?php _w('News'); ?></a>
         </li>
         <li class="sync-item vertical-delimiter">

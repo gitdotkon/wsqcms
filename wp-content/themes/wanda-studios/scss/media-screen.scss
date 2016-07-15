@@ -85,6 +85,9 @@
 	.footer_bottom .footer{
 		bottom: -622px;
 	}
+	.mobile_footer_visible.footer_bottom .footer{
+		bottom: 0;
+	}
 	.block_box_title_wrapper{
 		padding: 0 0 0 48px;
 	}
@@ -300,6 +303,11 @@
 	}
 	.livechat_btn_up{
 		top: 27px;
+	}
+	.home{
+		.livechat_btn_up{
+			top: 34px;
+		}
 	}
 	.header{
 		.livechat_btn_up{
@@ -692,7 +700,7 @@
 
 	.page-template-marine-page .fl_specs .img,
 	.page-template-marine-page .fl_specs .text {
-		height: 454px;
+		height: 500px;
 	}
 	.fl_specs .img {
 		width: 30%;
@@ -1049,6 +1057,22 @@
 	.specs_list ul li{
 		padding-bottom: 20px;
 	}
+	.back_top{
+		width: 64px;
+		height: 64px;
+	}
+	.back_top, .back_top [class*=" icon-"], .back_top [class^=icon-] {
+		line-height: 64px;
+		font-size: 29px;
+		/* padding: 19px 0; */
+	}
+	.qrcode{
+		margin: 0 auto;
+		width: 98px;
+	}
+	.foot_widgets .foot_widget{
+		padding: 0 0 0 54px;
+	}
 }
 @media only screen and (max-width: 1440px){
 	body {
@@ -1066,9 +1090,6 @@
 	h2, .screen .text {
 		padding-bottom: 16px;
 	}
-	.foot_widgets .foot_widget{
-		padding: 0 0 0 60px;
-	}
 	.foot_box, .foot_widgets, .copyright {
 		padding-left: 50px;
 		padding-right: 50px;
@@ -1085,13 +1106,36 @@
 		padding-bottom: 15px;
 	}
 	.copyright, .copyright a{
-		font-size: 18px;
+		font-size: 15px;
 	}
 	body.footer_visible .wrapper{
-		top: -575px;
+		top: -522px;
 	}
 	.footer_bottom .footer{
-		bottom: -575px;
+		bottom: -522px;
+	}
+	.mobile_footer_visible.footer_bottom .footer{
+		bottom: 0;
+	}
+}
+@media only screen and (max-width: 1440px) and (min-width: 1330px){
+	.foot_widget .menu>li>a, .side{
+		font-size: 23px;
+		line-height: 25px;
+	}
+	.foot_widgets .foot_widget{
+		padding: 0 0 0 92px;
+	}
+}
+@media only screen and (max-width: 1380px) and (min-width: 1025px){
+	.page-template-marine-page{
+		.fl_specs .img h2 {
+			font-size: 38px;
+			line-height: 40px;
+		}
+		.fl_specs .img{
+			padding-left: 15px;
+		}
 	}
 }
 @media only screen and (max-width: 1365px){
@@ -1128,8 +1172,13 @@
 	.specs {
 		width: 546px;
 	}
+	.page-template-the-group-page{
+		.specs {
+			width: 594px;
+		}
+	}
 	.specs_list ul li{
-		padding: 0 0 17px
+		padding: 0 0 17px 21px;
 	}
 	.page-template-stages-page{
 		.stage_screen_btns_wrapper .stage_screen_btns span {
@@ -1157,6 +1206,23 @@
 	}
 }
 @media only screen and (max-width: 1150px){
+	.page-template-marine-page{
+		.three_cols{
+			br{
+				display: none;
+			}
+		}
+	}
+	.three_cols ul li{
+		height: 500px;
+	}
+	.three_cols .three_cols_subtitle{
+		position: relative;
+		left: 0;
+		margin: 13px auto;
+		max-width: 90%;
+		@include transform(translate(0 ,0));
+	}
 	.back_top{
 		width: 64px;
 		height: 64px;
@@ -1165,7 +1231,7 @@
 		}
 	}
 	.foot_widgets .foot_widget {
-		padding: 0 0 0 20px;
+		padding: 0 0 0 42px;
 	}
 	.foot_box, .foot_widgets, .copyright {
 		padding-left: 20px;
@@ -1183,10 +1249,13 @@
 		padding-top: 41px;
 	}
 	body.footer_visible .wrapper{
-		top: -553px;
+		top: -522px;
 	}
 	.footer_bottom .footer{
-		bottom: -553px;
+		bottom: -522px;
+	}
+	.mobile_footer_visible.footer_bottom .footer{
+		bottom: 0;
 	}
 	.single-stage .stage_box{
 		height: 828px;
@@ -1487,6 +1556,10 @@
 			width: 100%;
 			height: 100%;
 		}
+	}
+	.mobile_footer_visible.footer_bottom .footer{
+		bottom: 0;
+		top: 0;
 	}
 	.foot_share {
 		padding-top: 23px;
@@ -2213,8 +2286,8 @@
 		height: auto;
 	}
 	.page-template-marine-page{
-		.block_inner {
-			padding: 34px 16px 40px;
+		.block .block_inner {
+			padding: 34px 20px 40px;
 		}
 		.fl_specs .img {
 			padding: 20% 0;
@@ -3237,8 +3310,96 @@
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	
+	.page-template-about-page, .page-template-facilities-page{
+		padding-top: 58px;
+	}
+	.chairman_dream,
+	.chairman_dream .text .flexslider,
+	.chairman_dream .text .slides,
+	.chairman_dream .text li.slick-slide,
+	.chairman_dream .text .slides .text_box {
+		height: auto !important;
+	}
+	.chairman_dream .text .slides li.slick-slide {
+		float: none !important;
+		margin-right: 0 !important;
+		display: block !important;
+		opacity: 1 !important;
+	}
+	.quote-slider{
+		.slick-list{
+			height: auto !important;
+		}
+		.slick-slide{
+			float: none !important;
+			position: static !important;
+			opacity: 1 !important;
+		}
+	}
+	.chairman_dream .text,
+	.chairman_dream .text .slides .text_box {
+		border-radius: 0;
+	}
+	.quote-slider .text {
+		position: relative;
+		width: auto;
+		height: auto;
+		margin: 0;
+		top: auto;
+		left: auto;
+		right: auto;
+	}
+	.quote-section .quote-slider .slider_btns .slider_next, .quote-section .quote-slider .slider_btns .slider_prev{
+		display: none;
+	}
+	.quote-slider .text, .quote-slider.text .slides .text_box {
+		border-radius: 0;
+	}
+	.quote-section .quote-slider .quote-content {
+		padding: 22px 20px 20px;
+	}
+	.quote-section{
+		.slider_btns{
+			display: none;
+		}
+	}
+	.quote-section .mobile_bg img{
+		width: 100%;
+	}
+	.quote-section .slick-slide:not(.grey){
+		cite{
+			display: none;
+		}
+	}
+	.quote-section .quote-slider .quote_left{
+		display: block;
+		height: 30px;
+		background-size: auto 100%;
+	}
+	
+	.page-template-marine-page{
+		.three_cols ul li{
+			width: 100%;
+			float: none;
+			padding-bottom: 50%;
+			height: auto;
+		}
+		.three_cols .text {
+			font-size: 18px;
+			line-height: 24px;
+		}
+		.three_cols .text_box {
+			font-size: 28px;
+			line-height: 34px;
+		}
+	}
 }
 @media only screen and (max-width: 769px){
+	.gallery h3{
+		font-size: 24px;
+		line-height: 28px;
+	}
 	.block_box_title_wrapper h2{
 		font-size: 48px;
 		line-height: 56px;
@@ -3270,9 +3431,9 @@
 	.stage_detail_slider .slick-arrow,
 	#gallery_slider_slick .slick-arrow{
 		width: 40px;
-		&:before{
-			background-size: 40px;
-		}
+		//&:before{
+		//	background-size: 40px;
+		//}
 		&:after{
 			background-position: 18px 50%;
 		}
@@ -3343,6 +3504,18 @@
 			font-size: 15px;
 			line-height: 18px;
 		}
+	}
+	.apply_form_item .wrong{
+		bottom: 15px;
+		font-size: 11px;
+		line-height: 25px;
+		top: auto;
+	}
+	.apply_box h3{
+		line-height: 29px;
+	}
+	.stage_detail_slider .slick-arrow:before{
+		background-size: 40px auto !important;
 	}
 }
 @media only screen and (max-width: 850px){
@@ -3452,12 +3625,32 @@
 	}
 }
 @media only screen and (max-width: 640px){
+	.page-template-marine-page .three_cols .text_box {
+		font-size: 22px;
+		line-height: 26px;
+	}
+	.quote-section .quote-slider .author,
+	.quote-section .quote-slider .position{
+		font-size: 14px;
+		line-height: 18px;
+	}
+	.quote-section .quote-slider .author{
+		padding: 15px 0 0;
+		margin: 15px 0 0;
+		&:before{
+			width: 19px;
+			margin-left: -10px;
+		}
+	}
 	.home{
 		a.btn.incentive_btn{
 			padding: 6px 16px;
 			line-height: 14px;
 			font-size: 10px;
 		}
+	}
+	.stage_detail_slider .slick-slide{
+		min-height: 220px;
 	}
 	.page-template-media-center-page .gallery, .page-template-media-center-page .news{
 		padding-left: 20px;

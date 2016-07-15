@@ -288,15 +288,16 @@
         /* Header drop down menu */
         var $header_menu = $('#header-menu');
         function changeTab($dest){
-            $('.tab.tab-active').removeClass('tab-active');
-            $dest.addClass('tab-active');
-            var h = 0;
-            if($('#header').length>0){
-                h = $('#header').height();
+            if($dest.length>0){
+                $('.tab.tab-active').removeClass('tab-active');
+                $dest.addClass('tab-active');
+                var h = 0;
+                if($('#header').length>0){
+                    h = $('#header').height();
+                }
+                var scrollTo =  $dest.offset().top - h;
+                $('html, body').animate({scrollTop: scrollTo})
             }
-            var scrollTo =  $dest.offset().top - h;
-            $('html, body').animate({scrollTop: scrollTo})
-
         }
         $('.screen_btns .sync-item').click(function(){
             var dest = $(this).attr('href');
@@ -356,7 +357,7 @@
             $('.screen_btns .active').removeClass('active');
             $('.screen_btns').find('.animate_up').eq(index).find('a').addClass('active');
             $('.sv_icons .active').removeClass('active');
-            $('.sv_icons a[href^='+dest+']').closest('li').addClass('active');
+            $('.sv_icons a[href^="'+dest+'"]').closest('li').addClass('active');
             $(this).closest('li').addClass('active');
             changeTab($dest);
             return false;
@@ -369,8 +370,9 @@
                 console.log($('.screen_btns a[href^="' + hash + '"]'));
                 console.log('.screen_btns a[href^="' + hash + '"]');
                 $('.sv_icons .active').removeClass('active');
-                $('.sv_icons a[href^=' + hash + ']').closest('li').addClass('active');
-                $header_menu.find('a[href^=' + hash + ']').closest('li').addClass('active');
+                $('.sv_icons a[href^="' + hash + '"]').closest('li').addClass('active');
+                $header_menu.find('.active').removeClass('active');
+                $header_menu.find('a[href^="' + hash + '"]').closest('li').addClass('active');
                 hash = hash.replace('#', '');
                 if(hash == 'news'){
                     $('body').addClass('show_cats');
@@ -385,7 +387,7 @@
                 $('#header-menu').find('li').eq(0).addClass('active');
                 $('body').addClass('show_cats');
             }
-            if($('body').hasClass('page-template-services-page')){
+            if($('body').hasClass('page-template-services-page') || $('body').hasClass('page-template-marine-page') || $('body').hasClass('page-template-prod-offices-page')){
                 $('.screen_btns .animate_up').eq(0).find('a').addClass('active');
                 $('#header-menu').find('li').eq(0).addClass('active');
             }
@@ -626,7 +628,7 @@
 
         /* Job filter */
         var $job_list = $('#job_list');
-        $('.filter_location li').click(function(){
+        $('.filter_location li').click(function(e){
             var target = $(this).attr('data-location');
             $('.filter_location .active').removeClass('active');
             var title = $(this).addClass('active').html();
@@ -642,9 +644,19 @@
             }else{
                 $job_list.find('.job[data-location=' + target + ']').show();
             }
-
+            if($('.filter_location').hasClass('open')){
+                $('.filter_location').removeClass('open');
+            }
+            e.preventDefault();
+            return false;
         });
-        $('.filter_title li').click(function(){
+        if($(window).width()<1025){
+            $('.filter_box .span').click(function(){
+                $(this).find('ul').addClass('open');
+            })
+        }
+        $('.filter_title li').click(function(e){
+
             var target = $(this).attr('data-title');
             var title = $(this).addClass('active').html();
 
@@ -659,6 +671,12 @@
             }else{
                 $job_list.find('.job[data-title=' + target + ']').show();
             }
+            if($('.filter_title').hasClass('open')){
+                console.log('lll');
+                $('.filter_title').removeClass('open');
+            }
+            e.preventDefault();
+            return false;
         });
         $('.filter_reset').click(function(){
             $job_list.find('.job').show();
