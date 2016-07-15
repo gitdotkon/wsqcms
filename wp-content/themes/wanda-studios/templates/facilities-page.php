@@ -19,7 +19,7 @@ if($page_list):?>
                     <div class="mobile_bg" style="background-image: url(<?php echo $page['background_image']['sizes']['large']; ?>)">
 
                     </div>
-                    <a href="<?php echo $page['page_link']?:'#'; ?>">
+                    <a href="<?php echo get_permalink($page['page_link'])?:'#'; ?>">
                         <div class="table">
                             <div class="td">
                                 <h2><?php echo $page['title']; ?></h2>

@@ -196,6 +196,7 @@ function foundation_scripts_and_styles() {
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.min.js', null, null, true );
 	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/plugins/jquery.flexslider-min.js', null, null, true );
 	wp_enqueue_script( 'scrollbar', get_template_directory_uri() . '/js/plugins/jquery.scrollbar.min.js', null, null, true );
+	wp_enqueue_script( 'nicescroll', get_template_directory_uri() . '/js/plugins/jquery.nicescroll.min.js', null, null, true );
 	wp_enqueue_script( 'mh', get_template_directory_uri() . '/js/plugins/jquery.matchHeight-min.js', null, null, true );
 	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/js/plugins/imagesloaded.pkgd.min.js', null, null, true );
 	wp_enqueue_script( 'masonry', get_template_directory_uri() . '/js/plugins/masonry.pkgd.min.js', null, null, true );
@@ -348,7 +349,7 @@ add_action('admin_head', 'admin_style');
 	function wordpress_login_styling() { ?>
 		<style type="text/css">
 			.login #login h1 a {
-				background-image: url('<?php echo get_header_image(); ?>');
+				background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/images/sign-in-logo.png');
 				background-size: contain;
 				background-position: 50% 50%;
 				width: auto;
@@ -403,6 +404,7 @@ $dynamic_admin = new DynamicAdmin();
 $dynamic_admin->addField('page',    'template', 'Page Template', 'template_detail_field_for_page');
 $dynamic_admin->addField('team',    'position', 'Position',      'position_detail_field_for_team');
 $dynamic_admin->addField('career',  'area',     'Area',          'area_field_for_career');
+$dynamic_admin->addField('stage',  'stage_cat',     'Stage category',          'stage_cat_field_for_stage');
 
 $dynamic_admin->run();
 //
@@ -412,6 +414,10 @@ $dynamic_admin->run();
 
 function get_custom_class(){
 	$class = ' ';
+	if(is_page_template('templates/stages-page.php')){
+		$class .= ' footer_bottom';
+		return $class;
+	}
 	if(!is_front_page() && !is_page_template('templates/about-page.php') && !is_page_template('templates/facilities-page.php')){ // if not front and stage page
 		$class .= 'footer_visible';
 	}else{

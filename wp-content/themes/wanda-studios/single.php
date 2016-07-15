@@ -13,7 +13,7 @@ if(have_posts()){
         <div class="press_detail">
             <div class="press_detail_inner">
                 <div class="back_box">
-                    <a href="<?php echo get_field('news_page', 'options')?:"#"; ?>" class="back_btn">
+                    <a href="<?php echo get_field('news_page_link', 'options')?get_field('news_page_link', 'options').'#news':"#"; ?>" class="back_btn">
                         <?php _w('Back'); ?>
                         <span class="icon-7"></span>
                     </a>

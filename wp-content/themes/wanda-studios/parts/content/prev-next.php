@@ -2,14 +2,28 @@
 /**
  * PrevNext parts
  */
-// Left link info
-$left_link = get_field('left_page_link');
-$left_link_title = get_field('left_title');
-$left_link_background = get_field('left_background_image');
+
+if(is_singular('stage')){
+    // Left link info
+    $stage_tax = get_the_terms(get_the_ID(), 'stage_cat');
+    $stage_tax           = $stage_tax[0];
+    $left_link = get_field('stage_prev_link_url', 'options') . '#' . $stage_tax->name;
+    $left_link_title = get_field('stage_prev_title', 'options');
+    $left_link_background = get_field('stage_prev_background', 'options');
 // Right link info
-$right_link = get_field('right_page_link');
-$right_link_title = get_field('right_title');
-$right_link_background = get_field('right_background_image');
+    $right_link = get_field('stage_next_link_url', 'options');
+    $right_link_title = get_field('stage_next_title', 'options');
+    $right_link_background = get_field('stage_next_background', 'options');
+}else{
+    // Left link info
+    $left_link = get_field('left_page_link');
+    $left_link_title = get_field('left_title');
+    $left_link_background = get_field('left_background_image');
+// Right link info
+    $right_link = get_field('right_page_link');
+    $right_link_title = get_field('right_title');
+    $right_link_background = get_field('right_background_image');
+}
 
 if($left_link_background || $right_link_background):?>
     <div class="page-nav-container">

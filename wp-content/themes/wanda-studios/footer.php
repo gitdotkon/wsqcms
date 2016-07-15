@@ -84,8 +84,14 @@ $map = get_field('view_3d_map', 'option');
     <video id="video_palyer" src=""></video>
     <a href="#" class="lightbox_close"></a>
 </div>
+<div class="lightbox" id="lightbox3">
+    <ul id="gallery_slider_slick">
+        
+    </ul>
+    <a href="#" class="lightbox_close"></a>
+</div>
 <?php
-
+show_template('content/main-menu');
 wp_footer(); ?>
 </body>
 </html>

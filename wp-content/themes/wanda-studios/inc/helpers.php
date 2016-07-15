@@ -129,6 +129,16 @@ function area_field_for_career($column_name, $post_id){
     }
     return;
 }
+
+function stage_cat_field_for_stage($column_name, $post_id){
+    if($column_name == 'stage_cat'){
+        $stage_cats = get_the_terms($post_id, 'stage_cat');
+        if($stage_cats && isset($stage_cats[0])){
+            echo $stage_cats[0]->name;
+        }
+    }
+    return;
+}
 /**
 * Return country code by IP
  */
@@ -201,3 +211,43 @@ function get_workshop_menu_list($id){
     }
     return false;
 }
+
+function show_spec($text){
+    $text_arr = explode("\n", $text);
+    if($text_arr){
+        if(count($text_arr)>0){
+            echo $text_arr[0];
+            for($i=1; $i<count($text_arr); $i++){
+                echo '<div class="tree_line">';
+                echo $text_arr[$i];
+                echo '</div>';
+            }
+        }else{
+            echo $text_arr[0];
+        }
+    }
+}
+
+function get_count_stage($tax_id){
+    return get_term($tax_id, 'stage_cat')->count;
+}
+
+function get_word($num){
+    $words = array(
+        __('One'),
+        __('two'),
+        __('third'),
+        __('four'),
+        __('five'),
+        __('six'),
+        __('seven'),
+        __('eight'),
+        __('nine'),
+        __('ten')
+    );
+    return $words[$num-1];
+}
+function trim_excerpt($text) {
+    return rtrim($text,'[...]');
+}
+add_filter('get_the_excerpt', 'trim_excerpt');

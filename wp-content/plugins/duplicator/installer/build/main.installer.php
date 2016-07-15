@@ -1,6 +1,6 @@
 <?php
 /*
-  Copyright 2011-12 Cory Lamle  lifeinthegrid.com
+  Copyright 2011-16  lifeinthegrid.com
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -87,9 +87,6 @@ if (file_exists('dtoken.php')) {
 /* ==============================================================================================
 ADVANCED FEATURES - Allows admins to perform aditional logic on the import.
 
-$GLOBALS['TABLES_SKIP_COLS']
-	Add Known column names of tables you don't want the search and replace logic to run on.
-
 $GLOBALS['REPLACE_LIST']
 	Add additional search and replace items to step 2 for the serialize engine.  
 	Place directly below $GLOBALS['REPLACE_LIST'] variable below your items
@@ -98,6 +95,14 @@ $GLOBALS['REPLACE_LIST']
 		array_push($GLOBALS['REPLACE_LIST'], array('search' => 'ftps://oldurl/',   'replace' => 'ftps://newurl/'));
   ================================================================================================= */
 
+//COMPARE VALUES
+$GLOBALS['FW_CREATED']		= '%fwrite_created%';
+$GLOBALS['FW_VERSION_DUP']	= '%fwrite_version_dup%';
+$GLOBALS['FW_VERSION_WP']	= '%fwrite_version_wp%';
+$GLOBALS['FW_VERSION_DB']	= '%fwrite_version_db%';
+$GLOBALS['FW_VERSION_PHP']	= '%fwrite_version_php%';
+$GLOBALS['FW_VERSION_OS']	= '%fwrite_version_os%';
+//GENERAL
 $GLOBALS['FW_TABLEPREFIX'] = '%fwrite_wp_tableprefix%';
 $GLOBALS['FW_URL_OLD'] = '%fwrite_url_old%';
 $GLOBALS['FW_URL_NEW'] = '%fwrite_url_new%';
@@ -136,7 +141,6 @@ $GLOBALS['DBCHARSET_DEFAULT'] = 'utf8';
 $GLOBALS['DBCOLLATE_DEFAULT'] = 'utf8_general_ci';
 
 //UPDATE TABLE SETTINGS
-$GLOBALS['TABLES_SKIP_COLS'] = array('');
 $GLOBALS['REPLACE_LIST'] = array();
 
 
@@ -187,7 +191,9 @@ if ($_POST['action_step'] == 1) {
 
 @@CLASS.UTILS.PHP@@
 
-@@CLASS.CONFIG.PHP@@
+@@CLASS.CONF.WP.PHP@@
+
+@@CLASS.CONF.SRV.PHP@@
 
 @@CLASS.SERIALIZER.PHP@@
 

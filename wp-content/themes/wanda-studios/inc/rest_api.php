@@ -35,6 +35,14 @@ function fa_register_api_hooks()
         'methods' => 'GET',
         'callback' => 'get_galleries',
     ));
+    register_rest_route(FA_API_NAMESPACE, '/gallery-items/', array(
+        'methods' => 'GET',
+        'callback' => 'get_galleries_images',
+    ));
+    register_rest_route(FA_API_NAMESPACE, '/search/', array(
+        'methods' => 'GET',
+        'callback' => 'get_search_result',
+    ));
 }
 function check_code($c1, $c2){
     return trim(md5($c1)) == $c2;
@@ -42,29 +50,32 @@ function check_code($c1, $c2){
 function apply_career(){
     $return = '';
     $emailto = $_POST['apply_email'];
-    $body = '
-        <b>Job title:</b>'.$_POST['job_title']?:"".'
-        <b>Name: </b>'.$_POST['name']?:"".'<br /><br />
-        <b>Phone: </b>'.$_POST['phone']?:"".'<br /><br />
-        <b>Email: </b>'.$_POST['email']?:"".'<br /><br />
-        <b>Message: </b><br />'.$_POST['message']?:"".'<br />';
+    $message_template = get_field('career_apply_email_body', 'options');
+    $message_prepared = str_replace(array('[job_title]', '[name]', '[phone]', '[email]', '[message]'), array(
+        $_POST['job_title']?:"",
+        $_POST['name']?:"",
+        $_POST['phone']?:"",
+        $_POST['email']?:"",
+        $_POST['message']
+    ), $message_template);
+    $body = apply_filters('the_content', $message_prepared);
 
     $mail = new PHPMailer;
 
-
+    $email = get_field('email_for_apply_career', 'options');
     $mail->isSMTP();
     $mail->SMTPDebug = 0;
     $mail->SMTPAuth = true;
-    $mail->Port = 25;
-    $mail->Host = 'mail.wanda.com.cn';
-    $mail->Port = '25';
-    $mail->Username = 'fc_0206';
-    $mail->Password = 'd5ntfh03';
-    $mail->setFrom('fc_0206@wanda.com.cn');
+    $mail->Port = get_field('smtp_host', 'options')?:25;
+    $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
+    $mail->Port = get_field('smtp_port', 'options')?:'25';
+    $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
+    $mail->Password = get_field('password', 'options')?:'d5ntfh03';
+    $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
     //$mail->addAddress('dylan@flow.asia', 'Dylan');
-    $mail->addAddress('dimonpdaa@gmail.com', 'Chris');
+    $mail->addAddress(get_field('email_for_apply_career', 'options')?:'dylan@flow.asia', 'Dylan');
     //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
-    $mail->Subject = 'Contact from Wanda Studios';
+    $mail->Subject = get_field('career_apply_subject', 'options')?:'Contact from Wanda Studios';
     $mail->msgHTML($body);
     if(isset($_FILES['file'])){
         $mail->AddAttachment($_FILES['file']['tmp_name'],
@@ -72,12 +83,7 @@ function apply_career(){
     }
 //
 ////send the message, check for errors
-    $r = $mail->send();
-    if($r){
-        $return['status'] = '1';
-    }else{
-        $return['status'] = '0';
-    }
+    $mail->send();
     $return['status'] = '1';
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
@@ -105,28 +111,29 @@ function validate_captcha(){
 function send_mail(){
     $return = '';
 
-
-    $body = '
-        <b>Subject: </b>'.$_POST['subject']?:"".'<br /><br />
-        <b>Name: </b>'.$_POST['name']?:"".'<br /><br />
-        <b>Email: </b>'.$_POST['email']?:"".'<br /><br />
-        <b>Company name: </b>'.$_POST['company']?:"".'<br /><br />
-        <b>Message: </b><br />'.$_POST['message']?:"".'<br />';
-
+    $message_template = get_field('contact_us_email_body', 'options');
+    $message_prepared = str_replace(array('[subject]', '[name]', '[email]', '[company]', '[message]'), array(
+        $_POST['subject']?:"",
+        $_POST['name']?:"",
+        $_POST['email']?:"",
+        $_POST['company']?:"",
+        $_POST['message']?:""
+    ), $message_template);
+    $body = apply_filters('the_content', $message_prepared);
     $mail = new PHPMailer;
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
+    $mail->SMTPDebug = 0;
     $mail->SMTPAuth = true;
-    $mail->Port = 25;
-    $mail->Host = 'mail.wanda.com.cn';
-    $mail->Port = '25';
-    $mail->Username = 'fc_0206';
-    $mail->Password = 'd5ntfh03';
-    $mail->setFrom('fc_0206@wanda.com.cn');
+    $mail->Port = get_field('smtp_port', 'options')?:25;
+    $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
+    $mail->Port = get_field('smtp_port', 'options')?:'25';
+    $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
+    $mail->Password = get_field('password', 'options')?:'d5ntfh03';
+    $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
     //$mail->addAddress('dylan@flow.asia', 'Dylan');
-    $mail->addAddress('dimonpdaa@gmail.com', 'Chris');
+    $mail->addAddress(get_field('email_for_contact_us', 'options')?:'dylan@flow.asia', 'Dylan');
     //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
-    $mail->Subject = 'Contact from Wanda Studios';
+    $mail->Subject = get_field('contact_us_subject', 'options')?:__('Contact from Wanda Studios');
     $mail->msgHTML($body);
 //
 ////send the message, check for errors
@@ -136,16 +143,59 @@ function send_mail(){
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;
 }
-function fa_get_all_team()
+function get_search_result()
 {
     $return = '';
-
+    if($_GET['s']){
+        $args = array(
+            's' => $_GET['s'],
+            'posts_per_page' => -1,
+            'post_type' => array('post', 'page')
+        );
+        $search_result = get_query_posts($args);
+        $results = array();
+        if($search_result){
+            foreach ($search_result as $item){
+                $results[] = array(
+                    'title' => $item->post_title,
+                    'url' => get_permalink($item->ID),
+                    'excerpt' => apply_filters('the_content', $item->post_excerpt)
+                );
+            }
+        }
+        $return['results'] = $results;
+    }
     
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;
 }
-
+function get_galleries_images(){
+    $return = '';
+    if($_GET['gallery_id']){
+        $images_prepared = get_site_transient('galley_images_'.$_GET['gallery_id']);
+        if(!$images_prepared){
+            $images = get_field('images', $_GET['gallery_id']);
+            $images_prepared = array();
+            if($images){
+                foreach ($images as $image){
+                    $images_prepared[] = array(
+                        'full' => $image['url'],
+                        'mobile' => $image['sizes']['large']
+                    );
+                }
+                set_site_transient('galley_images_'.$_GET['gallery_id'], $images_prepared, 3600);
+            }
+        }
+        $return['images_list'] = $images_prepared;
+    }else{
+        $return['status'] = 0;
+    }
+    
+    $response = new WP_REST_Response($return);
+    $response->header('Access-Control-Allow-Origin', '*');
+    return $response;
+}
 function fa_get_item_detail(){
     $return = '';
     if(isset($_GET['id'])){
@@ -254,21 +304,28 @@ function get_news(){
     if($_GET['news_per_page']){
         $per_page = $_GET['news_per_page'];
     }
+    
     $args = array(
         'post_type' => 'post',
         'posts_per_page' => $per_page,
         'offset' => $offset
     );
+    if($_GET['cat']){
+        $args['category_name'] = $_GET['cat'];
+    }
     $news_list = get_query_posts($args);
     if($news_list){
         foreach ($news_list as $news){
+            $cats = get_the_category($news->ID);
+            $cat = $cats[0]->name;
             $return['news'][] = array(
                 'title' => get_field('short_title', $news->ID)?:$news->post_title,
                 'url' => get_permalink($news->ID),
                 'excerpt' => $news->post_excerpt,
                 'thumb' => get_attached_img_url($news->ID),
                 'month' => date('M', strtotime($news->post_date)),
-                'day' => date('d', strtotime($news->post_date))
+                'day' => date('d', strtotime($news->post_date)),
+                'cat' => $cat?:__('News')
             );
         }
         if(count($news_list)<= $per_page){

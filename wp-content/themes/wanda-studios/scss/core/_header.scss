@@ -12,6 +12,10 @@
 			display: none;
 		}
 	}
+	&.static{
+		position: static;
+		height: 100px;
+	}
 	&.stiky{
 		.red-logo{
 			display: none;
@@ -20,7 +24,7 @@
 	&.white-header{
 		background: #fff;
 		.livechat_btn{
-			color: #ab081a;
+			color: $red;
 		}
 		.white-logo{
 			display: none;
@@ -29,7 +33,7 @@
 			display: block;
 		}
 		.menu_btn{
-			color: #ab081a;
+			color: $red;
 		}
 		.header-menu{
 			display: block;

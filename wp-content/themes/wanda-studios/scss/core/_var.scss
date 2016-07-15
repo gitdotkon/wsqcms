@@ -13,16 +13,16 @@ $max_tablet_land: max-width 1024px;
 //@include breakpoint-set('to ems', true);
 
 /* Fonts */
-$avenir_r: 'Avenir Roman';
-$l_regular: 'latoregular';
-$l_light: 'latolight';
-$l_bold: 'latobold';
+$avenir_r: 'Avenir Roman', sans-serif;
+$l_regular: 'latoregular', sans-serif;
+$l_light: 'latolight', sans-serif;
+$l_bold: 'latobold', sans-serif;
 
-$futura_br: 'futura_lt_bookregular';
-$avenir_mb: 'avenir_lt_65_mediumblack';
-$avenir_rr: 'avenir_lt_55_romanroman';
-$avenir_rh: 'avenir_lt_55_romanheavy';
-$avenir_ll: 'avenir_lt_35_lightlight';
+$futura_br: 'futura_lt_bookregular', sans-serif;
+$avenir_mb: 'avenir_lt_65_mediumblack', sans-serif;
+$avenir_rr: 'avenir_lt_55_romanroman', sans-serif;
+$avenir_rh: 'avenir_lt_55_romanheavy', sans-serif;
+$avenir_ll: 'avenir_lt_35_lightlight', sans-serif;
 /* Social colors */
 $facebook: #4d6abb;
 $twitter: #2d96e8;
@@ -31,3 +31,5 @@ $youtoube: #dd4630;
 $triangle_color: #fff;
 
 $red: #ab081a;
+$light_red: #de302f;
+$black: #000;

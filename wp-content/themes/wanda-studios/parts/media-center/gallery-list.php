@@ -20,8 +20,8 @@ if($gallery_list):?>
                 <?php foreach ($gallery_list as $key => $gallery):
                     $gallery_images = get_field('images', $gallery->ID);
                     if($gallery_images):?>
-                        <li <?php if($key%3 == 0){echo 'class="no_ml"';} ?>>
-                            <a href="#lightbox3" class="show_gallery view_video">
+                        <li <?php if($key%3 == 0){echo 'class="no_ml"';} ?> >
+                            <a href="#lightbox3" class="show_gallery view_gallery" data-id="<?php echo $gallery->ID; ?>">
                                 <div class="img" style="background-image: url(<?php echo $gallery_images[0]['url']?:get_stylesheet_directory_uri().'/images/gallery.jpg'; ?>)">
                                     <div class="text">
                                         <div class="table">
@@ -59,6 +59,17 @@ if($gallery_list):?>
                     </div>
                 </a>
             </li>
+            <% }); %>
+        </script>
+        <script id="gallery_slider" type="text/template">
+            <% _.each(slides, function(item, index){ %>
+                <li>
+                    <div class="table">
+                        <div class="td">
+                            <img src="<%= item.full %>" alt="">
+                        </div>
+                    </div>
+                </li>
             <% }); %>
         </script>
     </div>

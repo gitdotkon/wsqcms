@@ -23,7 +23,7 @@ if($background):?>
                 <?php if($links): ?>
                     <div class="sv_icons">
                         <ul>
-                            <?php foreach ($links as $key=>$link): // <?php if(reset($links) == $link){echo 'class="active"';} ?> ?>
+                            <?php foreach ($links as $key=>$link): ?>
                                 <li <?php if(reset($links) == $link){echo 'class="active"';} ?>>
                                     <a href="#<?php echo prepare_id($link['title']); ?>">
                                         <span class="icon icon_<?php echo $key+1; ?>">

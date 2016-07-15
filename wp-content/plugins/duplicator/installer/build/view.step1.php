@@ -1,14 +1,13 @@
 <?php
 	// Exit if accessed directly
 	if (! defined('DUPLICATOR_INIT')) {
-		$_baseURL =  strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
-		$_baseURL =  "http://" . $_baseURL;
+		$_baseURL = "http://" . strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: $_baseURL");
 		exit; 
 	}
 	//DETECT ARCHIVE FILES
-	$zip_files = DupUtil::get_zip_files();
+	$zip_files = DUPX_Util::get_zip_files();
 	$zip_count = count($zip_files);
 	
 	if ($zip_count > 1) {
@@ -43,11 +42,12 @@
 	* Timeout (10000000 = 166 minutes) */
 	Duplicator.runDeployment = function() {
 		
-		var $form = $('#dup-step1-input-form');
-		$form.parsley('validate');
-		if (! $form.parsley('isValid')) {
-			return;
-		}
+        var $form = $('#dup-step1-input-form');
+        $form.parsley().validate();
+        if (!$form.parsley().isValid()) {
+            return;
+        }
+
 	
 		var msg =  "Continue installation with the following settings?\n\n";
 			msg += "Server: " + $("#dbhost").val() + "\nDatabase: " + $("#dbname").val() + "\n\n";
@@ -77,7 +77,7 @@
 						$("#ajax-dbname").val($("#dbname").val());
 						$("#ajax-dbcharset").val($("#dbcharset").val());
 						$("#ajax-dbcollate").val($("#dbcollate").val());
-						$("#ajax-logging").val($("#logging").val());
+						$("#ajax-logging").val($("input:radio[name=logging]:checked").val());
 						$("#ajax-json").val(escape(JSON.stringify(data)));
 						setTimeout(function() {$('#dup-step1-result-form').submit();}, 1000);
 						$('#progress-area').fadeOut(700);
@@ -125,7 +125,7 @@
 		});
 		
 		$('#dbconn-test-msg').html("Attempting Connection.  Please wait...");
-		$("#dup-step1-dbconn-status").show(500);
+		$("#s1-dbconn-status").show(500);
 		
 	};
 	
@@ -137,7 +137,7 @@
 	
 	Duplicator.togglePort = function () {
 		
-		$('#dup-step1-dbport-btn').hide();
+		$('#s1-dbport-btn').hide();
 		$('#dbport').show();
 	}
 	
@@ -154,22 +154,20 @@
 
 <!-- =========================================
 VIEW: STEP 1- INPUT -->
-<form id='dup-step1-input-form' method="post" class="content-form"  parsley-validate>
+<form id='dup-step1-input-form' method="post" class="content-form"  data-parsley-validate="true" data-parsley-excluded="input[type=hidden], [disabled], :hidden">
 	<input type="hidden" name="action_ajax" value="1" />
 	<input type="hidden" name="action_step" value="1" />
 	<input type="hidden" name="package_name"  value="<?php echo $zip_name ?>" />
 	
-	<div class="dup-logfile-link">
+	<!--div class="dup-logfile-link">
 		<select name="logging" id="logging">
 		    <option value="1" selected="selected">Light Logging</option>
 		    <option value="2">Detailed Logging</option>
-			<!--option value="3">Debug Logging</option-->
 		</select>
+	</div-->
+	<div class="hdr-main">
+		Step 1: Deploy Files &amp; Database
 	</div>
-	<h3 style="margin-bottom:5px">
-	    Step 1: Files &amp; Database
-	</h3>
-	<hr size="1" />
 	
 	<!-- CHECKS: FAIL -->
 	<?php if ( $total_req == 'Fail')  :	?>
@@ -184,7 +182,7 @@ VIEW: STEP 1- INPUT -->
 			</div> 
 		</div><br/>
 	
-    	<i id="dup-step1-sys-req-msg">
+    	<i id="s1-sys-req-msg">
 			This installation will not be able to proceed until the system requirements pass. Please validate your system requirements by clicking on the button above. 
 			In order to get these values to pass please contact your server administrator, hosting provider or visit the online FAQ.
 		</i><br/>
@@ -213,15 +211,15 @@ VIEW: STEP 1- INPUT -->
     	<div class="title-header">
     	    MySQL Database
     	</div>
-    	<table class="dup-step1-inputs">
+    	<table class="s1-opts">
 			<tr>
 				<td>Action</td>
 				<td>
-					<div class="dup-step1-modes">
+					<div class="s1-modes">
 						<input type="radio" name="dbaction" id="dbaction-create" value="create" checked="checked" />
 						<label for="dbaction-create">Create New Database</label>
 					</div>
-					<div class="dup-step1-modes">
+					<div class="s1-modes">
 						<input type="radio" name="dbaction" id="dbaction-empty" value="empty" />
 						<label for="dbaction-empty">Connect and Remove All Data</label>						
 					</div>
@@ -230,18 +228,24 @@ VIEW: STEP 1- INPUT -->
     	    <tr>
 				<td>Host</td>
 				<td>
-					<input type="text" name="dbhost" id="dbhost" parsley-required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBHOST']); ?>" placeholder="localhost" style="width:410px" />
-					<input id="dup-step1-dbport-btn" type="button" onclick="Duplicator.togglePort()" style="" value="Port: <?php echo htmlspecialchars($GLOBALS['FW_DBPORT']); ?>" />
-					<input name="dbport" id="dbport" type="text" style="width:80px; display:none" value="<?php echo htmlspecialchars($GLOBALS['FW_DBPORT']); ?>" />
+					<table class="s1-opts-dbhost">
+						<tr>
+							<td><input type="text" name="dbhost" id="dbhost" required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBHOST']); ?>" placeholder="localhost" style="width:410px" /></td>
+							<td style="vertical-align:top">
+								<input id="s1-dbport-btn" type="button" onclick="Duplicator.togglePort()" class="s1-small-btn" value="Port: <?php echo htmlspecialchars($GLOBALS['FW_DBPORT']); ?>" />
+								<input name="dbport" id="dbport" type="text" style="width:80px; display:none" value="<?php echo htmlspecialchars($GLOBALS['FW_DBPORT']); ?>" />
+							</td>
+						</tr>
+					</table>
 				</td>
 			</tr>
 			<tr>
 				<td>Name</td>
-				<td><input type="text" name="dbname" id="dbname"  parsley-required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBNAME']); ?>"  placeholder="new or existing database name"  /></td>
+				<td><input type="text" name="dbname" id="dbname"  required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBNAME']); ?>"  placeholder="new or existing database name"  /></td>
 			</tr>
 			<tr>
 				<td>User</td>
-				<td><input type="text" name="dbuser" id="dbuser" parsley-required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBUSER']); ?>" placeholder="valid database username" /></td>
+				<td><input type="text" name="dbuser" id="dbuser" required="true" value="<?php echo htmlspecialchars($GLOBALS['FW_DBUSER']); ?>" placeholder="valid database username" /></td>
 			</tr>
     	    <tr>
 				<td>Password</td>
@@ -252,13 +256,13 @@ VIEW: STEP 1- INPUT -->
 		
 		<!-- =========================================
 		DIALOG: DB CONNECTION CHECK  -->
-		<div id="dup-step1-dbconn">
-			<input id="dup-step1-dbconn-btn" type="button" onclick="Duplicator.dlgTestDB()" style="" value="Test Connection" />
-			<div id="dup-step1-dbconn-status" style="display:none">
+		<div id="s1-dbconn">
+			<input type="button" onclick="Duplicator.dlgTestDB()" class="s1-small-btn" value="Test Connection" />
+			<div id="s1-dbconn-status" style="display:none">
 				<div style="padding: 0px 10px 10px 10px;">		
 					<div id="dbconn-test-msg" style="min-height:80px"></div>
 				</div>
-				<small><a href="javascript:void()" onclick="$('#dup-step1-dbconn-status').hide(1000)">Hide Connection Details</a></small>
+				<small><input type="button" onclick="$('#s1-dbconn-status').hide(500)" class="s1-small-btn" value="Hide Message" /></small>
 			</div>
 		</div>
 
@@ -275,17 +279,45 @@ VIEW: STEP 1- INPUT -->
     		    
     	<a href="javascript:void(0)" onclick="$('#dup-step1-adv-opts').toggle(250)"><b>Advanced Options...</b></a>
     	<div id='dup-step1-adv-opts' style="display:none">
-    	    <table class="dup-step1-inputs">
-    		<tr><td colspan="2"><input type="checkbox" name="zip_manual"  id="zip_manual" value="1" /> <label for="zip_manual">Manual package extraction</label></td></tr>
-    		<tr><td colspan="2"><input type="checkbox" name="ssl_admin" id="ssl_admin" <?php echo ($GLOBALS['FW_SSL_ADMIN']) ? "checked='checked'" : ""; ?> /> <label for="ssl_admin">Enforce SSL on Admin</label></td></tr>
-			<tr><td colspan="2"><input type="checkbox" name="ssl_login" id="ssl_login" <?php echo ($GLOBALS['FW_SSL_LOGIN']) ? "checked='checked'" : ""; ?> /> <label for="ssl_login">Enforce SSL on Login</label></td></tr>
-			<tr><td colspan="2"><input type="checkbox" name="cache_wp" id="cache_wp" <?php echo ($GLOBALS['FW_CACHE_WP']) ? "checked='checked'" : ""; ?> /> <label for="cache_wp">Keep Cache Enabled</label></td></tr>
-			<tr><td colspan="2"><input type="checkbox" name="cache_path" id="cache_path" <?php echo ($GLOBALS['FW_CACHE_PATH']) ? "checked='checked'" : ""; ?> /> <label for="cache_path">Keep Cache Home Path</label></td></tr>
-    		<tr><td colspan="2"><input type="checkbox" name="dbnbsp" id="dbnbsp" value="1" /> <label for="dbnbsp">Fix non-breaking space characters</label></td></tr>
-    		<tr><td style="width:130px">MySQL Charset</td><td><input type="text" name="dbcharset" id="dbcharset" value="<?php echo $_POST['dbcharset'] ?>" /> </td></tr>
-    		<tr><td>MySQL Collation </td><td><input type="text" name="dbcollate" id="dbcollate" value="<?php echo $_POST['dbcollate'] ?>" /> </tr>
+			<table class="s1-opts">
+				<tr><td><input type="checkbox" name="zip_manual"  id="zip_manual" value="1" /> <label for="zip_manual">Manual package extraction</label></td></tr>
+				<tr><td><input type="checkbox" name="dbnbsp" id="dbnbsp" value="1" /> <label for="dbnbsp">Fix non-breaking space characters</label></td></tr>
+			</table>
+			
+			
+    	    <table class="s1-opts s1-advopts">
+				<tr>
+					<td>Logging</td>
+					<td colspan="2">
+						<input type="radio" name="logging" id="logging-light" value="1" checked="true"> <label for="logging-light">Light</label> &nbsp; 
+						<input type="radio" name="logging" id="logging-detailed" value="2"> <label for="logging-detailed">Detailed</label> &nbsp; 
+						<input type="radio" name="logging" id="logging-debug" value="3"> <label for="logging-debug">Debug</label>
+					</td>
+				</tr>	
+				<tr>
+					<td>Config Cache</td>
+					<td style="width:125px"><input type="checkbox" name="cache_wp" id="cache_wp" <?php echo ($GLOBALS['FW_CACHE_WP']) ? "checked='checked'" : ""; ?> /> <label for="cache_wp">Keep Enabled</label></td>
+					<td><input type="checkbox" name="cache_path" id="cache_path" <?php echo ($GLOBALS['FW_CACHE_PATH']) ? "checked='checked'" : ""; ?> /> <label for="cache_path">Keep Home Path</label></td>
+				</tr>	
+				<tr>
+					<td>Config SSL</td>
+					<td><input type="checkbox" name="ssl_admin" id="ssl_admin" <?php echo ($GLOBALS['FW_SSL_ADMIN']) ? "checked='checked'" : ""; ?> /> <label for="ssl_admin">Enforce on Admin</label></td>
+					<td><input type="checkbox" name="ssl_login" id="ssl_login" <?php echo ($GLOBALS['FW_SSL_LOGIN']) ? "checked='checked'" : ""; ?> /> <label for="ssl_login">Enforce on Login</label></td>
+				</tr>				
     	    </table>
+			
+			<table class="s1-opts s1-advopts">
+				<tr><td style="width:130px">MySQL Charset</td><td><input type="text" name="dbcharset" id="dbcharset" value="<?php echo $_POST['dbcharset'] ?>" /> </td></tr>
+				<tr><td>MySQL Collation </td><td><input type="text" name="dbcollate" id="dbcollate" value="<?php echo $_POST['dbcollate'] ?>" /> </tr>
+    	    </table>
+			<small><i>For an overview of these settings see the <a href="?help=1" target="_blank">help page</a></i></small><br/>
+			
     	</div>
+		
+		
+		<div class="dup-step1-gopro">
+			*Create the database and users <b>from the installer</b> with <a target="_blank" href="https://snapcreek.com/?free-install-step1">Duplicator Pro!</a> - Requires cPanel.
+		</div>	
 
 		<!-- NOTICES  -->
     	<div id="dup-step1-warning">
@@ -323,11 +355,12 @@ VIEW: STEP 1- INPUT -->
 			<div id="dup-step1-warning-emptydb">
 				The remove action will delete <u>all</u> tables and data from the database!
 			</div>
-    	</div><br/><br/><br/>
+    	</div><br/><br/>
     		    
     	<div class="dup-footer-buttons">
     	    <input id="dup-step1-deploy-btn" type="button" value=" Run Deployment " onclick="Duplicator.runDeployment()" />
-    	</div>				
+    	</div>		
+
 	<?php endif; ?>	
 </form>
 
@@ -349,8 +382,9 @@ Auto Posts to view.step2.php  -->
 	<input type="hidden" name="dbcollate" id="ajax-dbcollate" />
 	
     <div class="dup-logfile-link"><a href="installer-log.txt" target="_blank">installer-log.txt</a></div>
-	<h3>Step 1: Files &amp; Database</h3>
-	<hr size="1" />
+	<div class="hdr-main">
+		Step 1: Deploy Files &amp; Database
+	</div>
 	    
 	<!--  PROGRESS BAR -->
 	<div id="progress-area">
@@ -401,12 +435,12 @@ PANEL: SERVER CHECKS  -->
 		</td>
 	</tr>
 	<tr>
-		<td>Safe Mode Off</td>
-		<td class="<?php echo ($req02 == 'Pass') ? 'dup-pass' : 'dup-fail' ?>"><?php echo $req02; ?></td>
-	</tr>
-	<tr>
 		<td><a href="http://us2.php.net/manual/en/mysqli.installation.php" target="_blank">MySQLi Support</a></td>
 		<td class="<?php echo ($req03 == 'Pass') ? 'dup-pass' : 'dup-fail' ?>"><?php echo $req03; ?></td>
+	</tr>	
+	<tr>
+		<td>Safe Mode Off</td>
+		<td class="<?php echo ($req02 == 'Pass') ? 'dup-pass' : 'dup-fail' ?>"><?php echo $req02; ?></td>
 	</tr>
 	<tr>
 		<td valign="top">
@@ -463,7 +497,7 @@ PANEL: SERVER CHECKS  -->
 	<!-- SAPI -->
 	<b>PHP SAPI:</b>  <?php echo php_sapi_name(); ?><br/>
 	<b>PHP ZIP Archive:</b> <?php echo class_exists('ZipArchive') ? 'Is Installed' : 'Not Installed'; ?> <br/>
-	<b>CDN Accessible:</b> <?php echo ( DupUtil::is_url_active("ajax.aspnetcdn.com", 443) && DupUtil::is_url_active("ajax.googleapis.com", 443)) ? 'Yes' : 'No'; ?> <br/>
+	<b>CDN Accessible:</b> <?php echo ( DUPX_Util::is_url_active("ajax.aspnetcdn.com", 443) && DUPX_Util::is_url_active("ajax.googleapis.com", 443)) ? 'Yes' : 'No'; ?> <br/>
 	Need an <a href='http://lifeinthegrid.com/duplicator-hosts' target='_blank'>approved</a> Duplicator hosting provider?
 
 </div>

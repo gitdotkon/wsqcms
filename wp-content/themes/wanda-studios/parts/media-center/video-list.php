@@ -20,7 +20,7 @@ if($video_list): ?>
                 $video_file = get_field('video', $video->ID);
                 ?>
                 <li <?php if($key%3 == 0){echo 'class="no_ml"';} ?>>
-                    <a href="#lightbox2" class="video-gallery view_video" data-id="<?php echo $video_file['url']; ?>">
+                    <a href="#lightbox2" class="video-gallery view_video" data-id="<?php echo $video_file; ?>">
                         <div class="img" style="background-image: url(<?php echo get_attached_img_url($video->ID)?:get_stylesheet_directory_uri().'/images/gallery.jpg'; ?>)">
                             <div class="text">
                                 <div class="table">

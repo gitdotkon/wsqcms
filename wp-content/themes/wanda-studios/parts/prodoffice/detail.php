@@ -33,6 +33,7 @@ if($section):?>
                                         <?php foreach ($about_content as $item): ?>
                                             <li class="text-line">
                                                 <strong><?php echo $item['subtitle']; ?></strong>
+                                                <span class="dot"></span>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
