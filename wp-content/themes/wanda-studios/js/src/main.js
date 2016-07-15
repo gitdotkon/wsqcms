@@ -365,7 +365,9 @@
         if(hash){
             if(!$('body').hasClass('page-template-stages-page')) {
                 changeTab($(hash));
-                $('.screen_btns a[href^=' + hash + ']').addClass('active');
+                $('.screen_btns a[href^="' + hash + '"]').addClass('active');
+                console.log($('.screen_btns a[href^="' + hash + '"]'));
+                console.log('.screen_btns a[href^="' + hash + '"]');
                 $('.sv_icons .active').removeClass('active');
                 $('.sv_icons a[href^=' + hash + ']').closest('li').addClass('active');
                 $header_menu.find('a[href^=' + hash + ']').closest('li').addClass('active');
