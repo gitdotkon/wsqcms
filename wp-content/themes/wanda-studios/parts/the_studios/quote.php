@@ -3,11 +3,13 @@
  * Quote Section for Sity page
  */
 $blockquote_background_image = get_field('blockquote_background_image');
+$blockquote_mobile_background_image = get_field('blockquote_mobile_background_image');
+
 $blockquote_list = get_field('blockquote_list');
 if($blockquote_list):?>
     <div class="quote-section bg" style="background-image: url(<?php echo $blockquote_background_image['url']; ?>)">
         <div class="mobile_bg">
-            <img src="<?php echo $blockquote_background_image['sizes']['large']; ?>" alt="">
+            <img src="<?php echo $blockquote_mobile_background_image['url']?:$blockquote_background_image['url']; ?>" alt="">
         </div>
         <script>
             (function($){

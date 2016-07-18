@@ -9,7 +9,12 @@ if($section_list):?>
     <div class="round_nav rn_animate_fade">
         <div class="round_nav_inner">
             <div class="round_nav_icon">
-                <div class="icon-35"></div>
+<!--                <div class="icon-35"></div>-->
+                <?php foreach ($section_list as $key => $page): ?>
+                    <?php if($page['page_link'] == get_the_ID()): ?>
+                        <div class="<?php echo $page['hexagonal_menu_icon']; ?>"></div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
             <div class="round_nav_inner_box">
                 <?php foreach ($section_list as $key => $page): ?>
@@ -20,7 +25,7 @@ if($section_list):?>
         <div class="round_nav_ul">
             <ul>
                 <?php foreach ($section_list as $key => $page): ?>
-                    <li>
+                    <li class="<?php if($page['page_link'] == get_the_ID()){echo 'active';} ?>">
                         <a href="<?php echo get_permalink($page['page_link']); ?>" class="round_nav_a_<?php echo $key+1; ?>">
                             <span><?php echo $page['title']; ?></span>
                             <div class="<?php echo $page['hexagonal_menu_icon']; ?>"></div>

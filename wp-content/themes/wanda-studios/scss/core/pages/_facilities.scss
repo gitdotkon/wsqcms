@@ -228,6 +228,12 @@
 	margin-left: 13px;
 	opacity: 1;
 }
+.round_nav_ul li.active a{
+	&:after,
+	&:before{
+		opacity: 1;
+	}
+}
 /* WORKSHOP PAGE */
 .work_shops {
 	position: relative;
@@ -796,6 +802,18 @@
 .stage_detail_slider .slides > li {
 	position: relative;
 	z-index: 1111;
+}
+.stage_detail_slider .slick-slide{
+	@include breakpoint(min-width 640px){
+		background: none !important;
+	}
+	@include breakpoint(max-width 640px){
+		background-size: cover;
+		min-height: 300px;
+		img{
+			display: none;
+		}
+	}
 }
 .stage_detail_slider{
 	.slides img {

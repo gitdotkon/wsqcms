@@ -15,10 +15,11 @@ if($page_list):?>
             <?php endforeach; ?>
         </div>
         <ul class="page-list-description" id="page_list_desc">
-            <?php foreach ($page_list as $page): ?>
+            <?php foreach ($page_list as $page):
+                ?>
                 <li>
                     <div class="mobile_bg" style="background-image: url(<?php echo $page['background_image']['sizes']['large']; ?>)">
-
+                        <img src="<?php echo $page['mobile_background_image']['url']?:$page['background_image']['sizes']['large']; ?>" alt="">
                     </div>
                     <a href="<?php echo get_permalink($page['page_link'])?:'#'; ?>">
                         <div class="table">

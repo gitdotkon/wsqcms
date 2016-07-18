@@ -219,7 +219,7 @@ function foundation_scripts_and_styles()
             wp_enqueue_script('nicefile', get_template_directory_uri() . '/js/plugins/jquery.nicefileinput.min.js', null, null, true);
             wp_enqueue_script('validation', get_template_directory_uri() . '/js/plugins/Validform_v5.3.2_min.js', null, null, true);
         }
-        wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', null, null, true); /* This should go first */
+        wp_enqueue_script('global', get_template_directory_uri() . '/js/src/main.js', null, null, true); /* This should go first */
         wp_enqueue_script('animate', get_template_directory_uri() . '/js/animate.js', null, null, true); /* This should go first */
         $js_options = array(
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -228,14 +228,14 @@ function foundation_scripts_and_styles()
         );
 
         if (is_page_template('templates/template-contact.php')) {
-            $options = get_option('theme_settings');
+            //$options = get_option('theme_settings');
             if (isChina()) { // client located in China, use Baidu map
-                $baidu_code = $options['baidu_map_key'];
+                $baidu_code = get_field('baidu_key', 'options');
                 wp_register_script('baidu-maps-script-api', 'http://api.map.baidu.com/api?v=2.0&ak=' . $baidu_code, false, true);
                 wp_enqueue_script('baidu-maps-script-api');
                 $js_options['map_type'] = 'baidu';
             } else {
-                $google_code = $options['google_map_key'];
+                $google_code = get_field('google_key', 'options');
                 wp_register_script('google-maps-script-api', 'http://maps.google.cn/maps/api/js?key=' . $google_code, false, true);
                 wp_enqueue_script('google-maps-script-api');
                 $js_options['map_type'] = 'google';
@@ -460,42 +460,7 @@ function fixed_height()
 }
 
 
-function alx_browser_body_class($classes)
-{
-    global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
-    if ($is_lynx) $classes[] = 'lynx';
-    elseif ($is_gecko) $classes[] = 'gecko';
-    elseif ($is_opera) $classes[] = 'opera';
-    elseif ($is_NS4) $classes[] = 'ns4';
-    elseif ($is_safari) $classes[] = 'safari';
-    elseif ($is_chrome) $classes[] = 'chrome';
-    elseif ($is_IE) {
-        $browser = $_SERVER['HTTP_USER_AGENT'];
-        $browser = substr("$browser", 25, 8);
-        if ($browser == "MSIE 7.0") {
-            $classes[] = 'ie7';
-            $classes[] = 'ie';
-        } elseif ($browser == "MSIE 6.0") {
-            $classes[] = 'ie6';
-            $classes[] = 'ie';
-        } elseif ($browser == "MSIE 8.0") {
-            $classes[] = 'ie8';
-            $classes[] = 'ie';
-        } elseif ($browser == "MSIE 9.0") {
-            $classes[] = 'ie9';
-            $classes[] = 'ie';
-        } else {
-            $classes[] = 'ie';
-        }
-    } else $classes[] = 'unknown';
-
-    if ($is_iphone) $classes[] = 'iphone';
-
-    return $classes;
-}
-
-add_filter('body_class', 'alx_browser_body_class');
 //function save_order_function( $post_ID ) {
 //	$old_status = $_POST['post_status'];
 //	$new_status = $_POST['order_status'];

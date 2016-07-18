@@ -88,7 +88,7 @@ body.main_nav_visible .main_nav {
 						padding: 0;
 						position: relative;
 					}
-					&.active a{ // Need check active class
+					&.current-menu-item a{ // Need check active class
 						color: $light_red;
 					}
 				}
@@ -294,6 +294,9 @@ body.main_nav_visible .main_nav {
 .lang_switcher {
 	clear: both;
 	padding: 70px 0 0 0;
+	@include breakpoint(max-height 899px){
+		padding-top: 47px;
+	}
 	&,
 	a{
 		color: #141414;

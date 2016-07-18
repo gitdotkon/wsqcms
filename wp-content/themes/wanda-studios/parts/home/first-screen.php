@@ -7,11 +7,12 @@ $first_title = get_field('first_title', $id);
 $second_title = get_field('second_title', $id);
 $third_title = get_field('third_title', $id);
 $map = get_field('3d_map', $id);
+$mobile_bg = get_field('mobile_background');
 ?>
 <div class="slide slide_active slide_animating">
     <div class="slide_bg slide_bg_ed" style="background-image: url(<?php echo $home_bg['url']; ?>)"></div>
     <img src="<?php echo $home_bg['url']; ?>" alt="" class="image_loader"/>
-    <div class="mobile_slide_bg" style="background-image: url(<?php echo $home_bg['sizes']['large']; ?>)"></div>
+    <div class="mobile_slide_bg" style="background-image: url(<?php echo $mobile_bg['url']?:$home_bg['sizes']['large']; ?>)"></div>
     <div class="table">
         <div class="td">
             <div class="home_screen">

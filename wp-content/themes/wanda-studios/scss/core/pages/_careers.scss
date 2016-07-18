@@ -53,6 +53,14 @@
 	line-height: 30px;
 	text-align: center;
 	text-shadow: none;
+	@include breakpoint(max-width 1025px){
+		ul.filter_box.open{
+			display: block;
+		}
+		ul.filter_location.open{
+			display: block;
+		}
+	}
 }
 .filter_box span, .filter_box .span {
 	display: inline-block;
@@ -88,8 +96,13 @@
 	top: 44px;
 	right: 0;
 }
-.filter_box span:hover ul, .filter_box .span:hover ul {
+.filter_box ul.open{
 	display: block;
+}
+.filter_box span:hover ul, .filter_box .span:hover ul {
+	@include breakpoint(min-width 1025px){
+		display: block;
+	}
 }
 .filter_reset {
 	color: #ab081a;

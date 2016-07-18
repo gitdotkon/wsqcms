@@ -11,7 +11,7 @@ if(have_posts()){
         show_template('content/header-with-menu', array(
                 'class' => 'stiky fixed',
                 'menu_list' => get_about_menu_list($post->post_parent),
-                'menu_item_class' => ''
+                'menu_item_class' => 'vertical-delimiter'
         ));
         // First screen
         show_template('the_studios/first-screen');
