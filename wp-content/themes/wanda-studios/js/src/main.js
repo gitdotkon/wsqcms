@@ -758,7 +758,7 @@
                 return false;
             })
         }
-        $('.page-template-templatesit-services-php, .page-template-services-page').find('.landing_grids_inner a').click(function(){
+        $('.page-template-templatesit-services-php, .page-template-services-page').find('.landing_grids_inner a.r_f').click(function(){
             return false;
         });
         /// Load more
