@@ -1,7 +1,7 @@
 <?php
 
 add_action('admin_init', 'theme_settings_init');
-add_action('admin_menu', 'add_settings_page');
+//add_action('admin_menu', 'add_settings_page');
 
 function theme_settings_init(){
     register_setting('theme_settings', 'theme_settings');

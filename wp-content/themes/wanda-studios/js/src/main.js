@@ -387,7 +387,10 @@
                 $('#header-menu').find('li').eq(0).addClass('active');
                 $('body').addClass('show_cats');
             }
-            if($('body').hasClass('page-template-services-page') || $('body').hasClass('page-template-marine-page') || $('body').hasClass('page-template-prod-offices-page')){
+            if($('body').hasClass('page-template-services-page')
+                || $('body').hasClass('page-template-marine-page')
+                || $('body').hasClass('page-template-prod-offices-page')
+                || $('body').hasClass('page-template-partner-directory')){
                 $('.screen_btns .animate_up').eq(0).find('a').addClass('active');
                 $('#header-menu').find('li').eq(0).addClass('active');
             }

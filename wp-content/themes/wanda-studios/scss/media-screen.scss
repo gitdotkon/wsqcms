@@ -710,6 +710,9 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+	.about_qd.fl_specs .text{
+		padding: 0 85px;
+	}
 	.page-template-marine-page{
 		.block {
 			padding-left: 30px;
@@ -1272,6 +1275,12 @@
 	}
 }
 @media only screen and (max-width: 1025px){
+	.main_nav_inner{
+		padding: 70px 0 0;
+	}
+	.main_nav_header{
+		z-index: 1000;
+	}
 	.btn, a.btn {
 		color: #fff;
 		font-size: 20px;
@@ -4243,7 +4252,6 @@
 	.page-template-facilities-page .page-list-description li {
 		height: 50%;
 		max-height: 270px;
-		min-height: 350px;
 	}
 	.single-stage .text_box a.btn{
 		margin-bottom: 15px;
@@ -4356,6 +4364,21 @@
 		.page-list-description li{
 			min-height: 320px;
 		}
+	}
+	
+	.first-screen{
+		min-height: 400px;
+	}
+	.page-template-services-page .facilities-page-screen h1{
+		margin-top: 0;
+	}
+	.sv_icons ul li{
+		width: 22%;
+	}
+	.sv_icons ul li .icon{
+		width: 60px;
+		height: 60px;
+		background-size: 41% !important;
 	}
 }
 @media only screen and (max-height: 800px){

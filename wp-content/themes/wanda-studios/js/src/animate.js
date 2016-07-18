@@ -84,8 +84,10 @@
             if (!$span.hasClass('active')) {
                 animate(index);
                 $('.stage_screen_btns').find('.active').removeClass('active');
+                $('.stage_screen_btns').find('span').eq(index-1).addClass('active');
                 $(this).closest('.animate_up').addClass('active');
                 $(this).closest('span').addClass('active');
+                console.log('T');
             }
 
             $('.mobile_stages_slider_nav').find('.active').removeClass('active');
