@@ -42,7 +42,7 @@
 				background: url(../images/sv_3.png) no-repeat 50% 50%;
 			}
 			&.icon_4 {
-				background: url(../images/sv_3.png) no-repeat 50% 50%;
+				background: url(../images/sv_4.png) no-repeat 50% 50%;
 			}
 		}
 		&.active{
@@ -120,4 +120,8 @@
 	h2{
 		text-transform: uppercase;
 	}
+}
+
+.stage_detail_slider .slick-dots li button{
+	margin: 0 ;
 }

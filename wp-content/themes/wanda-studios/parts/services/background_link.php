@@ -11,7 +11,7 @@ if($data && !empty($data['link_list'])):?>
                     <?php foreach ($data['link_list'] as $item): ?>
                         <li <?php if($item['wide_link']){echo 'class="fw"';} ?>>
                             <div class="img" style="background-image: url(<?php echo $item['background']['url']; ?>)"></div>
-                            <a href="<?php echo $item['link']?:"#"; ?>">
+                            <a href="<?php echo $item['link']?:"#"; ?>" class="<?php if(!$item['link']){echo 'r_f';} ?>">
                                 <div class="table">
                                     <div class="td">
                                         <h2><?php echo $item['title']; ?></h2>
