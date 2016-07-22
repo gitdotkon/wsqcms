@@ -5,7 +5,7 @@
 
     $(window).load(function(){
         if($(window).width()<1025){
-            console.log('ready');
+
             prepareMobileStage();
         }else{
             resetMobile();
@@ -62,7 +62,7 @@
                         slider.flexAnimate(index);
                     }
                 }, function(){
-                    console.log('hide');
+
                     var self = $(this);
                     timer = setTimeout(function () {
                         var $slider_box = $(self).closest('.screen_slide').attr('data-slider');
@@ -87,7 +87,7 @@
                 $('.stage_screen_btns').find('span').eq(index-1).addClass('active');
                 $(this).closest('.animate_up').addClass('active');
                 $(this).closest('span').addClass('active');
-                console.log('T');
+
             }
 
             $('.mobile_stages_slider_nav').find('.active').removeClass('active');
@@ -482,9 +482,9 @@
                 $('html, body').animate({
                     scrollTop: 0
                 }, 600);
-                console.log('Top');
+
             } else {
-                console.log('Top');
+
                 $body.removeClass('stages_header_bg');
                 $body.removeClass('mobile_footer_visible');
                 $('.wrapper').removeAttr('class').addClass('wrapper');
@@ -559,7 +559,7 @@
                     return false;
                 });
                 $mobile_stage.find('ul').on('afterChange', function(slick, currentSlide){
-                    console.log(currentSlide);
+
                     // $('.mobile_stages_slider_nav').find('.active').removeClass('active');
                     // $('.mobile_stages_slider_nav li').eq(currentSlide).addClass('active');
 

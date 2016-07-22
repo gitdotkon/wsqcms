@@ -41,6 +41,15 @@
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','/wp-content/themes/wanda-studios/js/analytics.js','ga');
         ga('create', 'UA-69842059-1', 'auto'); ga('send', 'pageview');
     </script>
+    <script>
+        var timeout = setTimeout(function(){
+            var g = document.getElementById('open-sans-css');
+            if(g){
+                g.remove();
+                clearTimeout(timeout);
+            }
+        },200);
+    </script>
 </head>
 
 <body <?php body_class(get_custom_class()); ?>>

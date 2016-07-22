@@ -262,6 +262,30 @@
 }
 @media only screen and (max-width: 1440px) and (min-width: 1025px){
 	/* Home page */
+	.main_nav_list .left ul ul{
+		padding-top: 3px;
+	}
+	.main_nav_list .left ul ul li{
+		margin-bottom: 8px;
+	}
+	.main_nav_list ul li {
+		padding: 15px 0 0;
+	}
+	.search_form{
+		padding-bottom: 20px;
+	}
+	.main_nav_list .left li{
+		padding-top: 14px;
+	}
+	.lang_switcher {
+		padding-top: 37px;
+	}
+	.main_nav_list .middle ul li.menu-item-has-children ul, .main_nav_list .right ul li.menu-item-has-children ul, .main_nav_list ul{
+		padding-top: 1px;
+	}
+	.main_nav_list, .search-result-container{
+		margin-top: 15px;
+	}
 	.light{
 		font-size: 30px;
 		line-height: 38px;
@@ -917,7 +941,13 @@
 
 	.single-stage{
 		.specs {
-			width: 920px;
+			width: 850px;
+		}
+		.specs_inner{
+			padding: 0 1% 0 1.9%;
+		}
+		.stage_box{
+			height: 800px;
 		}
 		.text_box{
 			h2{
@@ -1131,7 +1161,10 @@
 		padding: 0 0 0 92px;
 	}
 	.single-stage .specs_inner{
-		padding: 0 1% 0 8.9%;
+		padding: 0 1% 0 1.9%;
+	}
+	.single-stage .text_box a.btn{
+		display: inline-block;
 	}
 }
 @media only screen and (max-width: 1380px) and (min-width: 1025px){
@@ -1143,6 +1176,19 @@
 		.fl_specs .img{
 			padding-left: 15px;
 		}
+	}
+	.main_nav_inner{
+		padding-top: 80px;
+	}
+	.main_nav_list ul li {
+		padding: 11px 0 0;
+	}
+	.main_nav_list ul li a [class*=" icon-"], .main_nav_list ul li a [class^=icon-]{
+		font-size: 20px;
+	}
+	.main_nav_list ul li a{
+		font-size: 18px;
+		padding: 4px 0 4px 57px;
 	}
 }
 @media only screen and (max-width: 1365px){
@@ -3407,6 +3453,9 @@
 			line-height: 34px;
 		}
 	}
+	.page-template-the-group-page .specs{
+		width: 100%;
+	}
 }
 @media only screen and (max-width: 769px){
 	.gallery h3{
@@ -3558,6 +3607,9 @@
 	.hws ul li {
 		width: auto;
 		float: none;
+	}
+	.sc_notes{
+		margin: 20px 0;
 	}
 	.apply_box h3{
 		font-size: 24px;
@@ -4361,6 +4413,18 @@
 	.first-screen{
 		min-height: 570px;
 	}
+	.foot_mobile .clear{
+		position: relative;
+		.back_top{
+			position: absolute;
+			top: 0;
+			right: 15px;
+		}
+	}
+	.footer .qrcode{
+		display: none;
+	}
+	
 }
 @media only screen and (max-height: 380px) and (orientation: landscape){
 	.page-template-about-page,
