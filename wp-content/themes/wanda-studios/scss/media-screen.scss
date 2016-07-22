@@ -68,8 +68,8 @@
 	.foot_box,
 	.foot_widgets,
 	.copyright{
-		padding-left: 100px;
-		padding-right: 100px;
+		padding-left: 46px;
+		padding-right: 54px;
 	}
 	.foot_share li a{
 		width: 90px;
@@ -1128,7 +1128,10 @@
 	}
 	.foot_box, .foot_widgets, .copyright {
 		padding-left: 50px;
-		padding-right: 50px;
+		padding-right: 44px;
+	}
+	.foot_box .btn.map_btn {
+		padding-right: 17px;
 	}
 	.foot_widget .menu > li > a {
 		font-size: 20px;
@@ -1267,6 +1270,12 @@
 				display: none;
 			}
 		}
+	}
+	.menu_btn{
+		right: 20px;
+	}
+	.logo{
+		left: 20px;
 	}
 	.three_cols ul li{
 		height: 500px;

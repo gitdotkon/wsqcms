@@ -150,11 +150,14 @@ body.footer_visible .footer {
 @include breakpoint(1025px){
 	.foot_box{
 		background: #000;
-		padding: 35px 150px;
+		padding: 35px 46px;
 		.btn, a.btn{
 			float: right;
 			background: #0f0f0f;
 			margin-top: 22px;
+		}
+		.btn.map_btn{
+			padding-right: 0;
 		}
 	}
 	.foot_logo {
@@ -164,7 +167,7 @@ body.footer_visible .footer {
 		opacity: 0.7;
 	}
 	.foot_widgets{
-		padding: 30px 150px 32px;
+		padding: 30px 46px 32px;
 		color: #fff;
 		font-size: 20px;
 		font-family: $avenir_r;
