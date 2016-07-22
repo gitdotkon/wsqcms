@@ -40,7 +40,7 @@ if($news_list):?>
                 $post_cat = get_the_category($news->ID);
                 ?>
                 <div class="news_item <?php echo get_news_class($i++); ?>">
-                    <a href="<?php get_permalink($news->ID); ?>" class="img" style="background-image: url(<?php echo get_attached_img_url($news->ID); ?>)">
+                    <a href="<?php echo get_permalink($news->ID); ?>" class="img" style="background-image: url(<?php echo get_attached_img_url($news->ID); ?>)">
                         <div class="date">
                             <div class="table">
                                 <div class="td">
