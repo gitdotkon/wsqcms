@@ -11,7 +11,7 @@ if($services_list):?>
                     <?php foreach ($services_list as $service): ?>
                         <li>
                             <div class="img" style="background-image: url(<?php echo $service['background']['url']; ?>)"></div>
-                            <a href="#">
+                            <a href="javascript:">
                                 <div class="table">
                                     <div class="td">
                                         <h2>
