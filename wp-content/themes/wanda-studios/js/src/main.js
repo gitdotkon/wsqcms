@@ -265,12 +265,16 @@
                     });
                 }else{
                     $('.our_team_list_ul ul li').click(function () {
-                        $('.our_team_list_ul .active').removeClass('active').find('.text').slideUp(300);
-                        $(this).addClass('active');
-                        var $self = $(this);
-                        $(this).find('.text').slideDown(300, function(){
-                            $('body, html').animate( { scrollTop: $self.offset().top - $('#header').height()-15 }, 360);
-                        });
+		    	if($(this).hasClass('active')) {
+				$(this).removeClass('active').find('.text').slideUp(300);	
+			} else {
+                        	$('.our_team_list_ul .active').removeClass('active').find('.text').slideUp(300);
+                        	$(this).addClass('active');
+                        	var $self = $(this);
+                        	$(this).find('.text').slideDown(300, function(){
+                            		$('body, html').animate( { scrollTop: $self.offset().top - $('#header').height()-15 }, 360);
+                        	});
+			}
 
                     });
                 }
