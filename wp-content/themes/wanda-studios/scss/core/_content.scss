@@ -587,9 +587,12 @@ body.home_screen_invisible .social_btns{
 .tab{
 	position: absolute;
 	left: -99999px;
+	top: -99999px;
 	width: 100%;
 	&.tab-active{
-		position: static;
+		position: relative;
+		top: 0;
+		left: 0;
 	}
 }
 .no-found-results{

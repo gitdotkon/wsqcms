@@ -404,7 +404,7 @@ body.page-template-the-city-page{
 		position: absolute;
 		bottom: 24px;
 		z-index: 200;
-		@include breakpoint(max-width 1025px){
+		@include breakpoint(max-width 1000px){
 			display: none;
 		}
 		&.left{
@@ -548,7 +548,7 @@ body.page-template-the-city-page{
 				color: $red;
 			}
 		}
-		@include breakpoint(min-width 1024px){
+		@include breakpoint(min-width 1025px){
 			&.vertical-delimiter{
 				a{
 					&:after{

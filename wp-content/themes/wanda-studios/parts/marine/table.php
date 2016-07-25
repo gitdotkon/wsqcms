@@ -6,6 +6,9 @@
  */
 if($table):
     ?>
+    <div class="swipe-guide">
+        <?php _w('Please swipe to left'); ?>
+    </div>
     <table class="specs_table">
         <tbody>
         <?php foreach ($table as $row): ?>

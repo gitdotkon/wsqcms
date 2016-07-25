@@ -13,6 +13,9 @@ if($section_list):?>
                             <div class="table">
                                 <div class="td">
                                     <h2><?php echo $section['title']; ?></h2>
+                                    <span class="btn_medium">
+                                        <?php _w('View'); ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>

@@ -279,9 +279,12 @@
                 if($(window).width() > 1024){
                     $('.our_team_list_ul ul li').click(function () {
                         var $this = $(this),
+                            ul_index = $(this).closest('ul').index(),
                             index = parseInt($(this).attr('data-index'));
                         //index = $this.index();
-
+                        if(ul_index>0){
+                            index+=$('.our_team_list_ul ul').eq(0).find('li').length;
+                        }
                         if (!$this.hasClass('active')) {
                             $('.our_team_list_ul .active').removeClass('active');
                             $this.addClass('active');
@@ -990,6 +993,8 @@
     $(window).resize(function(){
         if($(window).width<1024) {
             scrollScreen();
+        }else{
+
         }
     });
 
