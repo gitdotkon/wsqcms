@@ -5,10 +5,15 @@
 $latitude = get_field('latitude');
 $longitude = get_field('longitude');
 ?>
-<div id="map"></div>
-<script>
-    var lat = <?php echo $latitude; ?>;// 120.381916;
-    var lng = <?php echo $longitude; ?>;//36.067874;
+<?php if($map = get_field('map_image')): ?>
+    <div class="map">
+        <img src="<?php echo $map['url']; ?>" alt="">
+    </div>
+<?php endif; ?>
+<!--<div id="map"></div>-->
+<!--<script>
+    var lat = <?php //echo $latitude; ?>;// 120.381916;
+    var lng = <?php //echo $longitude; ?>;//36.067874;
     var map;
     function include(url) {
         console.log(url);
@@ -29,7 +34,7 @@ $longitude = get_field('longitude');
         map.setMapStyle({style: 'grayscale'});
         //map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
         var pt = new BMap.Point(lat, lng);
-        var icon = new BMap.Icon("<?php echo get_template_directory_uri(); ?>/images/marker.png", new BMap.Size(88, 96));
+        var icon = new BMap.Icon("<?php //echo get_template_directory_uri(); ?>/images/marker.png", new BMap.Size(88, 96));
         var marker = new BMap.Marker(pt, {icon: icon});  // 创建标注
         map.addOverlay(marker);              // 将标注添加到地图中
 
@@ -44,14 +49,14 @@ $longitude = get_field('longitude');
         var marker = new google.maps.Marker({
             position: {lat: lng, lng: lat},
             map: map,
-            icon: "<?php echo get_template_directory_uri(); ?>/images/marker.png"
+            icon: "<?php //echo get_template_directory_uri(); ?>/images/marker.png"
         });
     }
 
     (function($){
-        var ln_code = '<?php echo ICL_LANGUAGE_CODE; ?>';
-        var google_code = '<?php echo get_field('google_key', 'options'); ?>';
-        var baidu_code = '<?php echo get_field('baidu_key', 'options'); ?>';
+        var ln_code = '<?php //echo ICL_LANGUAGE_CODE; ?>';
+        var google_code = '<?php //echo get_field('google_key', 'options'); ?>';
+        var baidu_code = '<?php //echo get_field('baidu_key', 'options'); ?>';
         $(document).ready(function(){
             var lastI = window.location.href.lastIndexOf('/');
             var url = window.location.href.substr(0, lastI) + '/';
@@ -72,4 +77,4 @@ $longitude = get_field('longitude');
 //            });
         });
     })(jQuery);
-</script>
+</script>-->

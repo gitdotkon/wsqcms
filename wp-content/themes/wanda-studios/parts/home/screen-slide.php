@@ -19,7 +19,7 @@ if($section):?>
                             </a>
                         <?php endif; ?>
                         <?php if($section['3d_map_link']): ?>
-                            <a href="#lightbox" data-id="<?php echo $section['3d_map_link'] ?>" class="btn hover_btn map_btn lightbox_btn">
+                            <a href="<?php echo $section['3d_map_link'] ?>" data-id="<?php echo $section['3d_map_link'] ?>" target="_blank" class="go-to btn hover_btn map_btn lightbox_btn">
                                 <span>
                                     <?php echo _w('View 3D Map'); ?><span class="icon-8"></span>
                                 </span></a>

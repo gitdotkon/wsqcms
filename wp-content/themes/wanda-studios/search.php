@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<?php if ( have_posts() ) : ?>
+
 	<?php // Header
 	show_template('content/header-with-menu', array(
 		'class' => 'white-header fixed'
@@ -19,14 +19,20 @@ get_header(); ?>
 			<!-- Cut into form.php -->
 			<?php get_search_form(); ?>
 			<!-- -->
-			<?php while ( have_posts() ) : the_post(); ?>
-				<div class="result-article">
-					<h2><a href="<?php echo get_permalink(get_the_ID()); ?>"><?php the_title(); ?></a></h2>
-					<div class="short">
-						<?php the_excerpt(); ?>
+			<?php if ( have_posts() ) : ?>
+				<?php while ( have_posts() ) : the_post(); ?>
+					<div class="result-article">
+						<h2><a href="<?php echo get_permalink(get_the_ID()); ?>"><?php the_title(); ?></a></h2>
+						<div class="short">
+							<?php echo str_replace('[&hellip', '', get_the_excerpt()) . '...'; ?>
+						</div>
 					</div>
+				<?php endwhile; ?>
+			<?php else: ?>
+				<div class="no-found-results">
+					<h1><?php _w('Sorry, nothing found'); ?></h1>
 				</div>
-			<?php endwhile; ?>
+			<?php endif ?>
 		</div>
 
 	</div>
@@ -60,15 +66,13 @@ get_header(); ?>
 			$(document).ready(function(){
 				var query = '<?php echo get_search_query(); ?>';
 				console.log(query);
-				$('#search-result-container').find('.short p').replaceText(query.toLowerCase(), '<i>'+query+'</i>');
-				$('#search-result-container').find('.short p').replaceText(query, '<i>'+query+'</i>');
+				$('#search-result-container').find('.short').replaceText(query.toLowerCase(), '<i>'+query+'</i>');
+				$('#search-result-container').find('.short').replaceText(query, '<i>'+query+'</i>');
 
 				$('#search-result-container').find('h2 a').replaceText(query.toLowerCase(), '<i>'+query+'</i>');
 				$('#search-result-container').find('h2 a').replaceText(query, '<i>'+query+'</i>');
 			})
 		})(jQuery);
 	</script>
-<?php endif ?>
-
 
 <?php get_footer(); ?>

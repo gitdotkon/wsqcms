@@ -4,23 +4,7 @@
  */
 ?>
 <!DOCTYPE html>
-<!--[if !(IE)]><!-->
-<html <?php language_attributes(); ?> class="<?php fixed_height(); ?>"> <!--<![endif]-->
-<!--[if IE]>
-<script src="<?php bloginfo('template_url'); ?>/js/plugins/html5shiv.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/js/plugins/flexibility.js"></script>
-<![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9 ie8 <?php fixed_height(); ?>" lang="en"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js <?php fixed_height(); ?>" <?php language_attributes(); ?>> <!--<![endif]-->
-<!--[if gte IE 9]>
-<style type="text/css">
-    .gradient {
-        filter: none;
-    }
-</style>
-<![endif]-->
+<html>
 
 <head>
     <!-- Set up Meta -->

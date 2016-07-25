@@ -402,7 +402,11 @@
 			max-width: 100%;
 		}
 		.screen_btns{
-			padding-top: 123px;
+			padding-top: 43px;
+			visibility: hidden;
+			@include breakpoint(max-width 1024px){
+				display: none;
+			}
 		}
 	}
 }
@@ -921,5 +925,10 @@
 .page-template-prod-offices-page{
 	.facilities-page-screen .screen_btns {
 		padding-top: 75px;
+	}
+}
+.page-template-workshops-page{
+	.footer{
+		position: static;
 	}
 }

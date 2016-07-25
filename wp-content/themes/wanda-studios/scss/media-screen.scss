@@ -971,7 +971,7 @@
 			}
 			a.btn{
 				font-size: 15px;
-				padding: 6px 18px;
+				padding: 6px 9px;
 				display: block;
 				max-width: 178px;
 				margin-bottom: 20px;
@@ -3662,6 +3662,11 @@
 		width: 100%;
 		margin-left: 0;
 		display: block;
+	}
+}
+@media only screen and (max-width: 769px){
+	.single-stage .specs .dot{
+		display: none;
 	}
 }
 @media only screen and (min-width: 640px) and (max-width: 1024px){

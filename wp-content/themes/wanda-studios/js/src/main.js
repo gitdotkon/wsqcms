@@ -143,29 +143,34 @@
                 });
             }
         }
-        $(document).on('click', '.lightbox_btn, .video-gallery, .show_gallery', function () {
-            var $lightbox = $($(this).attr('href'));
-
-            if (!$lightbox.hasClass('lightbox_visible')) {
-                var src = $(this).attr('data-id');
-                if(src){
-                    if($(this).hasClass('view_video')){
-                        $('#video_palyer').attr('src', src);
-                        var vid = document.getElementById('video_palyer');
-                        vid.play();
-                        $('html').addClass('video_playing');
-                    }else if($(this).hasClass('view_gallery')){
-                        // Show and init gallery slider
-                        gallery_slider(src);
-                    }else{
-                        $lightbox.find('iframe').attr('src', src);
-                    }
-                }
-                $('.lightbox_visible').removeClass('lightbox_visible');
-                $lightbox.addClass('lightbox_visible');
-                $('html').addClass('has_lightbox_visible');
+        $(document).on('click', '.lightbox_btn, .video-gallery, .show_gallery', function (e) {
+            if($(this).hasClass('go-to')){
+                return true;
             }
-            return false;
+            var $lightbox = $($(this).attr('href'));
+            if($lightbox.length>0){
+                    if (!$lightbox.hasClass('lightbox_visible')) {
+                    var src = $(this).attr('data-id');
+                    if(src){
+                        if($(this).hasClass('view_video')){
+                            $('#video_palyer').attr('src', src);
+                            var vid = document.getElementById('video_palyer');
+                            vid.play();
+                            $('html').addClass('video_playing');
+                        }else if($(this).hasClass('view_gallery')){
+                            // Show and init gallery slider
+                            gallery_slider(src);
+                        }else{
+                            $lightbox.find('iframe').attr('src', src);
+                        }
+                    }
+                    $('.lightbox_visible').removeClass('lightbox_visible');
+                    $lightbox.addClass('lightbox_visible');
+                    $('html').addClass('has_lightbox_visible');
+                }
+                return false;
+            }
+
         });
         $('.lightbox_close').click(function () {
             $('.lightbox_visible').removeClass('lightbox_visible');
@@ -457,6 +462,11 @@
                         changeTabW();
                         var index = $(this).index();
                         window.location.hash = "#"+$(this).attr('id');
+                        $('#header-menu').find('.active').removeClass('active');
+                        $('#header-menu').find('li').eq(index).addClass('active');
+
+                        $('.screen_btns').find('.active').removeClass('active');
+                        $('.screen_btns').find('.animate_up').eq(index).find('a').addClass('active');
                         $slider.flexAnimate(index);
                     });
                 },
@@ -479,6 +489,9 @@
                 $header_menu.find('.active').removeClass('active');
                 $('.screen_btns').find('.active').removeClass('active');
                 window.location.hash = '';
+                $('html, body').animate({
+                    scrollTop: $('.first-screen').height() - $('#header').addClass('white-header').height()
+                }, 360);
                 return false;
             })
         }

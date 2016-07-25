@@ -592,3 +592,36 @@ body.home_screen_invisible .social_btns{
 		position: static;
 	}
 }
+.no-found-results{
+	h1{
+		color: #000000;
+		text-shadow: none;
+		font-size: 70px;
+		line-height: 76px;
+		margin: 100px 0;
+		text-align: center;
+		text-transform: uppercase;
+		font-family: $avenir_mb;
+		@include breakpoint(max-width 1025px){
+			font-size: 50px;
+			line-height: 56px;
+			margin: 70px auto;
+		}
+		@include breakpoint(max-width 640px){
+			font-size: 36px;
+			line-height: 40px;
+			margin: 50px auto 20px;
+		}
+	}
+}
+.map{
+	img{
+		display: block;
+		width: 100%;
+	}
+}
+.single-stage{
+	.stage_box{
+		padding-top: 100px;
+	}
+}

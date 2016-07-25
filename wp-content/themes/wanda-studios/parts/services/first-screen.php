@@ -41,7 +41,7 @@ if($background):?>
         </div>
         <?php if($map_code): ?>
             <div class="fl_btn_box left animate_left">
-                <a href="#lightbox" data-id="<?php echo $map_code; ?>" class="btn lightbox_btn">
+                <a href="<?php echo $map_code; ?>" data-id="<?php echo $map_code; ?>"target="_blank" class="btn go-to lightbox_btn">
                     <span class="icon-8"></span>
                     <?php _w('View 3D Map'); ?>
                 </a>

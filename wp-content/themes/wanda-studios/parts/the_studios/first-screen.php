@@ -37,7 +37,7 @@ if($background_image):?>
         </a>
         <?php if($map_code): ?>
             <div class="fl_btn_box left animate_left">
-                <a href="#lightbox" data-id="https://sketchfab.com/models/<?php echo $map_code; ?>/embed" class="btn lightbox_btn">
+                <a href="<?php echo $map_code; ?>" data-id="<?php echo $map_code; ?>" target="_blank" class="go-to btn lightbox_btn">
                     <span class="icon-8"></span>
                     <?php _w('View 3D Map'); ?>
                 </a>

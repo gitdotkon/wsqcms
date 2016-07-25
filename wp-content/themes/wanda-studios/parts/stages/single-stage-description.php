@@ -6,7 +6,7 @@
  */
 ?>
 <?php if($map = get_field('3d_map')): ?>
-    <a href="#lightbox" data-id="<?php echo $map; ?>" class="btn map_btn lightbox_btn">
+    <a href="<?php echo $map; ?>" data-id="<?php echo $map; ?>" target="_blank" class="go-to btn map_btn lightbox_btn">
             <span><?php _w('View 3D Map'); ?>
                 <span class="icon-8"></span>
             </span>
@@ -22,12 +22,17 @@
                 <strong><?php echo __('Connected with ') . get_the_title(); ?></strong>
                 <?php the_content(); ?>
             </div>
-            <a href="" class="btn hover_btn btn_mr_30 btn_hide" target="_blank">
-                <span><?php _w('Download CAD Map'); ?></span>
-            </a>
-            <a href="" class="btn hover_btn" target="_blank">
-                <span><?php _w('Download PDF Map'); ?></span>
-            </a>
+            <?php if($cad_map = get_field('cad_map')): ?>
+                <a href="<?php echo $cad_map['url']; ?>" class="btn hover_btn btn_mr_30 btn_hide" target="_blank" download>
+                    <span><?php _w('CAD Drawing'); ?></span>
+                </a>
+            <?php endif; ?>
+            <?php if($pdf_map = get_field('pdf_map')): ?>
+                <a href="<?php echo $pdf_map['url']; ?>" class="btn hover_btn" target="_blank" download>
+                    <span><?php _w('Download PDF Profile'); ?></span>
+                </a>
+            <?php endif; ?>
+
         </div>
     </div>
     
