@@ -172,14 +172,35 @@ class acf_field_sketchfab_model extends acf_field {
 			</div>
 			<div class="sketchfab-control">
 				<label for="<?php echo esc_attr($field['key']); ?>annotation">
-					<input type="checkbox" name="<?php echo esc_attr($field['key']); ?>[annotation_c]" id="<?php echo esc_attr($field['key']); ?>annotation"  <?php if($field['value']['annotation']){echo 'checked'; } ?>>
+					<input type="checkbox"
+						   class="annotations-setting-visible"
+						   name="<?php echo esc_attr($field['key']); ?>[annotation_c]"
+						   id="<?php echo esc_attr($field['key']); ?>annotation"
+						   <?php if($field['value']['annotation']){echo 'checked'; } ?>>
 					Annotation
 				</label>
 			</div>
-			<div class="sketchfab-control">
-				<label for="<?php echo esc_attr($field['key']); ?>annotation_cycle">
-					<input type="number" id="<?php echo esc_attr($field['key']); ?>annotation_cycle" name="<?php echo esc_attr($field['key']); ?>[annotation_cycle]" value="<?php echo $field['value']['annotation_cycle']?:0; ?>" step="1" min="0">
-				</label>
+			<div class="sketchfab-control-group-numbers" style="display: <?php if($field['value']['annotation']){echo 'block;';}else{echo 'none;';} ?>">
+				<div class="sketchfab-control">
+					<label for="<?php echo esc_attr($field['key']); ?>annotation_num">
+						<span><?php echo __('Annotation point number: ') ?></span>
+						<input type="number"
+							   id="<?php echo esc_attr($field['key']); ?>annotation_num"
+							   name="<?php echo esc_attr($field['key']); ?>[annotation_num]"
+							   value="<?php echo $field['value']['annotation_num']?:0; ?>"
+							   step="1" min="0">
+					</label>
+				</div>
+				<div class="sketchfab-control">
+					<label for="<?php echo esc_attr($field['key']); ?>annotation_cycle">
+						<span><?php echo __('Annotation time period: '); ?></span>
+						<input type="number"
+							   id="<?php echo esc_attr($field['key']); ?>annotation_cycle"
+							   name="<?php echo esc_attr($field['key']); ?>[annotation_cycle]"
+							   value="<?php echo $field['value']['annotation_cycle']?:0; ?>"
+							   step="1" min="0">
+					</label>
+				</div>
 			</div>
 		</div>
 
@@ -398,6 +419,7 @@ class acf_field_sketchfab_model extends acf_field {
 		$res['annotation']        = $_REQUEST[$key]["annotation_c"]?1:0;
 		$res['autostart']         = $_REQUEST[$key]["autostart_c"]?1:0;
 		$res['annotation_cycle']  = $_REQUEST[$key]["annotation_cycle"]?:0;
+		$res['annotation_num']    = $_REQUEST[$key]["annotation_num"]?:0;
 		$res['value']             = $value;
 		return $res;
 	}
@@ -427,10 +449,18 @@ class acf_field_sketchfab_model extends acf_field {
 		if(empty($value['value'])){
 			return false;
 		}
-		$url = 'https://sketchfab.com/models/'.$value['value'].'/embed?autostart='.($value['autostart']?'1':'0').'&preload='.($value['preload']?'1':'0').'&camera='.($value['camera']?'1':'0').'&annotation='.($value['annotation']?'1':'0');
+		$url = 'https://sketchfab.com/models/'.$value['value'].'/embed?autostart='.($value['autostart']?'1':'0').'&preload='.($value['preload']?'1':'0').'&camera='.($value['camera']?'1':'0');
 		// bail early if no value
-		if($value['annotation'] && $value['annotation_cycle']){
+		if($value['annotation'] && $value['annotation_cycle']>0){
 			$url .= '&annotation_cycle='.$value['annotation_cycle'];
+		}
+		if($value['annotation'] && $value['annotation_num']){
+			if($value['annotation'] && $value['annotation_cycle']>0){
+				$url .= '&annotation='.($value['annotation_num']-1);
+			}else{
+				$url .= '&annotation='.$value['annotation_num'];
+			}
+
 		}
 		
 		

@@ -10,3 +10,7 @@
 .link-to{
 	display: none;
 }
+.sketchfab-control span{
+	display: inline-block;
+	width: 180px ;
+}

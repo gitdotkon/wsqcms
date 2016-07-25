@@ -66,8 +66,9 @@
 	}
 
 	$(document).ready(function(){
-		$('.sketchfab-container input[type=checkbox]').change(function(){
-
+		$('.sketchfab-container input[type=checkbox].annotations-setting-visible').change(function(){
+			console.log('change');
+			$(this).closest('.sketchfab-container').find('.sketchfab-control-group-numbers').toggle();
 		});
 	});
 
