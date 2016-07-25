@@ -143,6 +143,31 @@
                 });
             }
         }
+        $('.inactive').click(function(){
+            return false;
+        });
+        if($('body').hasClass('single-stage')){
+            $('.mobile_stages_slider_nav a').click(function(){
+                var index = $(this).closest('li').index();
+                if(!$('.mobile_stages_slider_nav').hasClass('is_open')){
+                    $('.mobile_stages_slider_nav').addClass('is_open');
+                    return false;
+                }else{
+                    if($(this).closest('li').hasClass('active')){
+                        $('.mobile_stages_slider_nav').removeClass('is_open');
+                        return false;
+                    }
+                }
+                $('.mobile_stages_slider_nav').removeClass('is_open');
+                $('.mobile_stages_slider_nav').find('.active').removeClass('active');
+                $('.mobile_stages_slider_nav li').eq(index).addClass('active');
+
+                $('html, body').animate({
+                    scrollTop: $('#mobile_stage').offset().top - $('#header').height()
+                }, 360);
+                return false;
+            });
+        }
         $(document).on('click', '.lightbox_btn, .video-gallery, .show_gallery', function (e) {
             if($(this).hasClass('go-to')){
                 return true;

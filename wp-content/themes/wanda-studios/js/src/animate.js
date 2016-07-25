@@ -79,7 +79,9 @@
         $('.stage_screen_btns_wrapper a, .stage_screen_btns a').click(function () {
             var $span = $(this).parent('span'),
                 index = $span.index() + 1;
-
+           if($('body').hasClass('single-stage')){
+               return true;
+           }
 
             if (!$span.hasClass('active')) {
                 animate(index);

@@ -49,6 +49,11 @@ if(have_posts()){
                 </a>
             </div>
         <?php endif;
+        if($pdf_file = get_field('pdf_file')):?>
+            <div class="fl_btn_box right animate_right">
+                <a href="<?php echo $pdf_file['url']?:"#"; ?>" class="btn hover_btn" target="_blank"><?php _w('Download PDF profile'); ?></a>
+            </div>
+        <?php endif;
 
         show_template('stages/stage-nav', array(
             'stage_cat' => $stage_tax_list

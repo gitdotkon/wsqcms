@@ -44,7 +44,6 @@ $background = get_field('background');
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
     </div>

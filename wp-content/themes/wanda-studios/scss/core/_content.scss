@@ -622,6 +622,12 @@ body.home_screen_invisible .social_btns{
 }
 .single-stage{
 	.stage_box{
-		padding-top: 100px;
+		margin-top: 100px;
+	}
+}
+.inactive{
+	cursor: default;
+	.icon-5{
+		display: none;
 	}
 }

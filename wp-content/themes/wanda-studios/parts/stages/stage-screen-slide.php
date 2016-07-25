@@ -36,7 +36,7 @@ $stages = get_query_posts($stages_args);
                     <div class="table">
                         <div class="td">
                             <?php foreach ($stages as $stage): ?>
-                                <a href="<?php echo get_permalink($stage->ID); ?>" class="stage_item_trigger">
+                                <a href="<?php echo get_permalink($stage->ID); ?>" class="stage_item_trigger <?php if(get_field('is_visible', $stage->ID) === false){echo 'inactive';} ?>">
                                     <div class="stage_list_a">
                                         <span class="stage_index">
                                             <?php echo $stage->post_title; ?>
