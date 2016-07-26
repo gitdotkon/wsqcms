@@ -467,6 +467,7 @@
                         changeTabW();
                         var index = $(this).closest('.animate_up').index();
                         $slider.flexAnimate(index);
+                        return false;
                     });
 
                     $header_menu.find('a').click(function(){
@@ -492,10 +493,10 @@
                         window.location.hash = "#"+$(this).attr('id');
                         $('#header-menu').find('.active').removeClass('active');
                         $('#header-menu').find('li').eq(index).addClass('active');
-
                         $('.screen_btns').find('.active').removeClass('active');
                         $('.screen_btns').find('.animate_up').eq(index).find('a').addClass('active');
                         $slider.flexAnimate(index);
+                        return false;
                     });
                 },
                 before: function ($slider) {
@@ -506,9 +507,8 @@
 
                     $header_menu.find('.active').removeClass('active');
                     $header_menu.find('li').eq(index).addClass('active');
-                    $('html, body').animate({
-                        scrollTop: $('.first-screen').height() - $('#header').addClass('white-header').height()
-                    }, 360);
+
+                    $('html, body').scrollTop($('.tabs').offset().top-$('#header').height());
                 }
             });
             $('#work_shops_close').click(function(){
