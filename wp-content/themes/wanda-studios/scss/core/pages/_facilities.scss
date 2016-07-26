@@ -249,6 +249,10 @@
 		visibility: hidden;
 		margin-top: 20px;
 		@include transition(all 1s cubic-bezier(.19,1,.22,1));
+		@include breakpoint(max-width 1025px){
+			opacity: 1;
+			visibility: visible;
+		}
 	}
 	&:hover{
 		.btn_medium{
@@ -939,10 +943,5 @@
 .page-template-prod-offices-page{
 	.facilities-page-screen .screen_btns {
 		padding-top: 75px;
-	}
-}
-.page-template-workshops-page{
-	.footer{
-		position: static;
 	}
 }

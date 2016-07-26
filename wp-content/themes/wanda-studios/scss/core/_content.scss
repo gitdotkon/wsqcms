@@ -630,7 +630,31 @@ body.home_screen_invisible .social_btns{
 }
 .inactive{
 	cursor: default;
-	.icon-5{
+	.icon-5,
+	.stage_pic_inner .view_btn{
 		display: none;
+	}
+}
+.sc_notes{
+	margin-top: 20px;
+}
+.mobile_nav_list{
+	display: none;
+	@include breakpoint(max-width 1025px){
+		display: block;
+	}
+}
+.middle,
+.right{
+	&.only_mobile{
+		display: none;
+		@include breakpoint(max-width 1025px){
+			display: block;
+		}
+	}
+	&.only_desktop{
+		@include breakpoint(max-width 1025px){
+			display: none;
+		}
 	}
 }

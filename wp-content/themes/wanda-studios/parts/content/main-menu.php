@@ -6,18 +6,25 @@
 <div class="main_nav">
     <div class="main_nav_inner">
         <div class="main_nav_box">
+
             <!-- Cut into form.php -->
             <?php get_search_form(); ?>
             <!-- -->
-            
+
             <div class="main_nav_list">
+                <div class="middle only_mobile">
+                    <?php wp_nav_menu( array( 'theme_location' => 'middle-main-menu' )); ?>
+                </div>
+                <div class="right only_mobile">
+                    <?php wp_nav_menu( array( 'theme_location' => 'right-main-menu' )); ?>
+                </div>
                 <div class="left">
                     <?php wp_nav_menu( array( 'theme_location' => 'left-main-menu' )); ?>
                 </div>
-                <div class="middle">
+                <div class="middle only_desktop">
                     <?php wp_nav_menu( array( 'theme_location' => 'middle-main-menu' )); ?>
                 </div>
-                <div class="right">
+                <div class="right only_desktop">
                     <?php wp_nav_menu( array( 'theme_location' => 'right-main-menu' )); ?>
                 </div>
                 <div class="clear"></div>

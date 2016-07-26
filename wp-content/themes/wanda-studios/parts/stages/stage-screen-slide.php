@@ -53,7 +53,7 @@ $stages = get_query_posts($stages_args);
                 <div class="table stage_list_trigger">
                     <div class="td">
                         <?php foreach ($stages as $stage): ?>
-                            <div class="stage_pic stage_item_trigger">
+                            <div class="stage_pic stage_item_trigger  <?php if(get_field('is_visible', $stage->ID) === false){echo 'inactive';} ?>">
                                 <div class="stage_pic_inner">
                                     <div class="stage_pic_bg"></div>
                                     <div class="table">

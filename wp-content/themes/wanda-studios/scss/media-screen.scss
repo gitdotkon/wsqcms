@@ -3515,7 +3515,7 @@
 	}
 }
 @media only screen and (max-width: 769px){
-	.vendors_tenants.block_box ul li,
+
 	.pre_production .pre_production_inner ul li{
 		width: 100%;
 	}
@@ -3642,6 +3642,11 @@
 	}
 	.stage_detail_slider .slick-arrow:before{
 		background-size: 40px auto !important;
+	}
+}
+@media only screen and (max-width: 767px){
+	.vendors_tenants.block_box ul li{
+		width: 100%;
 	}
 }
 @media only screen and (max-width: 850px){

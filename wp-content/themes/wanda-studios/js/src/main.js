@@ -517,9 +517,10 @@
                 $header_menu.find('.active').removeClass('active');
                 $('.screen_btns').find('.active').removeClass('active');
                 window.location.hash = '';
-                $('html, body').animate({
-                    scrollTop: $('.first-screen').height() - $('#header').addClass('white-header').height()
-                }, 360);
+                $('html, body').scrollTop($('.first-screen').height() - $('#header').addClass('white-header').height());
+                // $('html, body').animate({
+                //     scrollTop: $('.first-screen').height() - $('#header').addClass('white-header').height()
+                // }, 360);
                 return false;
             })
         }
