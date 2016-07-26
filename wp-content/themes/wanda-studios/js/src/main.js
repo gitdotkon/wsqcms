@@ -485,6 +485,7 @@
                             }
                         }
                         $slider.flexAnimate(index);
+                        return false;
                     });
 
                     $('#workshop_four_tile .work_shops_tile').click(function(){
