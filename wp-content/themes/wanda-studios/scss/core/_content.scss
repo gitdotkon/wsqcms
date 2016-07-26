@@ -618,6 +618,9 @@ body.home_screen_invisible .social_btns{
 	}
 }
 .map{
+	@include breakpoint(max-width 1025px){
+		display: none;
+	}
 	img{
 		display: block;
 		width: 100%;
