@@ -455,15 +455,12 @@ class acf_field_sketchfab_model extends acf_field {
 			$url .= '&annotation_cycle='.$value['annotation_cycle'];
 		}
 		if($value['annotation'] && $value['annotation_num']){
-			if($value['annotation'] && $value['annotation_cycle']>0){
+			if($value['annotation_cycle']>0){
 				$url .= '&annotation='.($value['annotation_num']-1);
 			}else{
 				$url .= '&annotation='.$value['annotation_num'];
 			}
-
 		}
-		
-		
 		// return
 		return $url;
 	}
