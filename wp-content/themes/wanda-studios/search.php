@@ -30,7 +30,7 @@ get_header(); ?>
 				<?php endwhile; ?>
 			<?php else: ?>
 				<div class="no-found-results">
-					<h1><?php _w('Sorry, nothing found'); ?></h1>
+					<h1><?php _w('YOUR SEARCH YIELDED NO RESULTS'); ?></h1>
 				</div>
 			<?php endif ?>
 		</div>
@@ -66,11 +66,12 @@ get_header(); ?>
 			$(document).ready(function(){
 				var query = '<?php echo get_search_query(); ?>';
 				console.log(query);
-				$('#search-result-container').find('.short').replaceText(query.toLowerCase(), '<i>'+query+'</i>');
-				$('#search-result-container').find('.short').replaceText(query, '<i>'+query+'</i>');
-
-				$('#search-result-container').find('h2 a').replaceText(query.toLowerCase(), '<i>'+query+'</i>');
-				$('#search-result-container').find('h2 a').replaceText(query, '<i>'+query+'</i>');
+				var queries = [];
+				queries = query.split(' ');
+				for(var i=0; i<queries.length; i++){
+					$('#search-result-container').find('h2 a').replaceText(queries[i].toLowerCase(), '<i>'+query+'</i>');
+					$('#search-result-container').find('h2 a').replaceText(queries[i], '<i>'+query+'</i>');
+				}
 			})
 		})(jQuery);
 	</script>

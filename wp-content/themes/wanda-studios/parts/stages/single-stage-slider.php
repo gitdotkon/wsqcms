@@ -3,7 +3,7 @@
  * Slider for Stage detail page
  */
 $slides = get_field('slides');
-?>
+if($slides && count($slides)>0):?>
 <div class="stage_detail_slider normal_slider">
     <div class="flexslider">
         <ul>
@@ -16,3 +16,4 @@ $slides = get_field('slides');
         </ul>
     </div>
 </div>
+<?php endif; ?>

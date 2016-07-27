@@ -964,12 +964,12 @@
             var $submenu = $li.find('.sub-menu');
             if($li.hasClass('open')){
                 $li.removeClass('open');
-                $submenu.slideUp();
+                $submenu.slideUp(200);
             }else{
                 $('.main_nav_list .open .sub-menu').slideUp();
                 $('.main_nav_list .open').removeClass('open');
                 $li.addClass('open');
-                $submenu.slideDown();
+                $submenu.slideDown(200);
             }
 
         });

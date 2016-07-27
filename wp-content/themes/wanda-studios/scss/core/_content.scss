@@ -618,8 +618,14 @@ body.home_screen_invisible .social_btns{
 	}
 }
 .map{
+	&.mobile-map{
+		display: none;
+	}
 	@include breakpoint(max-width 1025px){
 		display: none;
+		&.mobile-map{
+			display: block;
+		}
 	}
 	img{
 		display: block;

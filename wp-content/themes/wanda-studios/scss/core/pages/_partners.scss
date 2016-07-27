@@ -27,10 +27,17 @@
 		li{
 			display: inline-block;
 			height: 133px;
+
 			padding: 0 30px;
 			@include breakpoint(1025px){
 				vertical-align: middle;
-				display: table-cell;
+				display: inline-block;
+				width: 32%;
+				height: auto;
+				margin-bottom: 30px;
+				img{
+					max-width: 80% !important;
+				}
 			}
 			a{
 				display: block;
