@@ -950,6 +950,7 @@
                 $(this).closest('li').addClass('current_page_item');
                 $(this).closest('.menu').find('.menu-item-has-children').removeClass('current_page_item');
             }
+            $(this).attr('title', '');
         });
         $('.menu a').click(function(){
              var $redirect_link = $(this).closest('.menu').find('.hash-redirect');

@@ -49,9 +49,9 @@ if($blockquote_list):?>
                         <div class="quote-content">
                             <div class="table">
                                 <div class="td">
-                                    <?php if($key%2 != 0): ?>
-                                        <div class="quote_left"></div>
-                                    <?php endif; ?>
+<!--                                    --><?php //if($key%2 != 0): ?>
+<!--                                        <div class="quote_left"></div>-->
+<!--                                    --><?php //endif; ?>
                                     <blockquote>
                                         <?php echo $quote['blockquote_text']; ?>
                                         <cite>
