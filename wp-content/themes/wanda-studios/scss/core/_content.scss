@@ -596,12 +596,12 @@ body.home_screen_invisible .social_btns{
 	}
 }
 .no-found-results{
-	h1{
+	padding: 62px 0 313px;
+	text-align: center;
+	h2{
 		color: #000000;
 		text-shadow: none;
-		font-size: 70px;
-		line-height: 76px;
-		margin: 100px 0;
+		margin: 50px 0;
 		text-align: center;
 		text-transform: uppercase;
 		font-family: $avenir_mb;
@@ -616,6 +616,10 @@ body.home_screen_invisible .social_btns{
 			margin: 50px auto 20px;
 		}
 	}
+	color: #141414;
+	line-height: 26px;
+	font-size: 18px;
+	font-family: avenir_lt_55_romanroman,sans-serif;
 }
 .map{
 	&.mobile-map{
@@ -685,4 +689,9 @@ body.home_screen_invisible .social_btns{
 .home .wrapper .social_btns,
 #menu-item-1284 .menu-expand{
 	display: none !important;
+}
+.page-template-the-studios-page{
+	.home_screen{
+		max-width: 80%;
+	}
 }

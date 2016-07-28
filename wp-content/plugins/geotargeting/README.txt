@@ -3,8 +3,8 @@ Contributors: timersys
 Donate link: https://timersys.com/geotargeting/
 Tags: geolocation, geotargeting, wordpress geotargeting, geo target, cloudflare, reblaze, sucuri, geo targeting, ip geo detect, country redirection, redirect by country, geotargeted popups, geotargeted widgets, ezoic, akamai, woocommerce, ip2location
 Requires at least: 3.6
-Tested up to: 4.5
-Stable tag: 1.1.9
+Tested up to: 4.5.3
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ With a simple shortcode you will be able to specify which countries are capable 
 
 Compatible with [Wordpress Popups Plugin](https://wp.timersys.com/popups/?utm_source=geot-readme&utm_medium=link&utm_term=popus%20premium&utm_campaign=Popups%20premium). You can now geotarget your popups
 
-If you use popular firewall services such as Cloudflare, Reblaze or Sucuri, the plugin will auto detect real IP from users.
+If you use popular firewall services such as Cloudflare, Reblaze, Sucuri, Ezoic, Akamai or Clouways the plugin will auto detect real IP from users.
 
 Now also compatible with *Cloudflare Geolocation*. Simple add define('GEOT_CLOUDFLARE',true); to your wp-config.php file to enable it!
 
@@ -40,10 +40,11 @@ Usage:
 > * Editor button to easily add shortcodes
 > * Create multiple regions (group of countries or cities) to use with shortcodes
 > * Exclude countries, cities and regions shortcode
-> * Dropdown Widget to let users change their country
+> * Dropdown Widget to let users change their country (with flags)
 > * Complete set of PHP functions
-> * Hide Woocommerce products. Works with any plugin
+> * Hide Woocommerce or Easy digital downloads products. Works with any plugin
 > * AJAX mode that make plugin compatible with Cache plugins
+> * Geotarget menu items, widgets, everything
 > * Upcoming integration with other populars plugins
 > * Premium support
 > 
@@ -83,6 +84,11 @@ If you have content that want to be display to USA's users but then you want to 
 `[geot exclude_country="United States"] Everyone except USA will see this [/geot]`
 
 == Changelog ==
+
+= 1.2 =
+* Updated db
+* Updated country db list of iso codes
+* Added clouways real ip detection
 
 = 1.1.9 =
 * Updated db

@@ -30,7 +30,8 @@ get_header(); ?>
 				<?php endwhile; ?>
 			<?php else: ?>
 				<div class="no-found-results">
-					<h1><?php _w('YOUR SEARCH YIELDED NO RESULTS'); ?></h1>
+					<h2><?php _w('YOUR SEARCH YIELDED NO RESULTS'); ?></h2>
+					<p><?php _w('Check if your spelling is correct. <br>Remove quotes around phrases to match each word individually: "blue smurf" will match less than blue smurf. <br>Consider loosening your query with OR: blue smurf will match less than blue OR smurf.') ?></p>
 				</div>
 			<?php endif ?>
 		</div>

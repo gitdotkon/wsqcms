@@ -73,6 +73,23 @@
     $(document).ready(function(){
         var $home_page = $('#home_page');
         var hash = window.location.hash;
+        function ReplaceAll(Source, stringToFind, stringToReplace) {
+            var temp = Source;
+            var index = temp.indexOf(stringToFind);
+
+            while (index != -1) {
+                temp = temp.replace(stringToFind, stringToReplace);
+                index = temp.indexOf(stringToFind);
+            }
+
+            return temp;
+        }
+        $('#searchform').submit(function(){
+            var s = ReplaceAll($('#s').val(), '"', '');
+            s = ReplaceAll(s, "'", '');
+            s = ReplaceAll(s, "&quot;", '');
+            $('#s').val(s);
+        });
 
         // Search
         // $('#close_search').click(function(){

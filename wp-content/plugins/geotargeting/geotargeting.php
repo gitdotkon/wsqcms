@@ -16,7 +16,7 @@
  * Plugin Name:       GeoTargeting Lite
  * Plugin URI:        https://timersys.com/geotargeting/
  * Description:       Geo Targeting for WordPress will let you country-target your content based on users IP's and Geocountry Ip database
- * Version:           1.1.9
+ * Version:           1.2
  * Author:            Timersys
  * Author URI:        https://timersys.com/geotargeting/
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 @session_start();
-define( 'GEOT_VERSION' , '1.1.9');
+define( 'GEOT_VERSION' , '1.2');
 define( 'GEOT_PLUGIN_FILE' , __FILE__);
 define( 'GEOT_PLUGIN_DIR' , plugin_dir_path(__FILE__) );
 define( 'GEOT_PLUGIN_URL' , plugin_dir_url(__FILE__) );

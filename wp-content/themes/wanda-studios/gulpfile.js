@@ -39,11 +39,13 @@ gulp.task('compass', function() {
             css: 'css',
             sass: 'scss',
             sourcemap: true
-        }))
-        .pipe(plumber())
+        })).on('error', function(error){
+            console.log(error);
+        })
+
         .pipe(minifyCss({compatibility: 'ie8'}))
-        .pipe(plumber())
-        .pipe(gulp.dest('css'));
+
+        .pipe(gulp.dest('css'))
 });
 gulp.task('compress', function() {
     return gulp.src('js/src/*.js')
