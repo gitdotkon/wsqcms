@@ -71,6 +71,10 @@
         //scrollScreen();
     });
     $(document).ready(function(){
+
+        $('.page-template-facilities-page .page-list-description li:last-child a').click(function(){
+           return false;
+        });
         var $home_page = $('#home_page');
         var hash = window.location.hash;
         function ReplaceAll(Source, stringToFind, stringToReplace) {

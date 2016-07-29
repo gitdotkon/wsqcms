@@ -671,7 +671,12 @@ body.home_screen_invisible .social_btns{
 		}
 	}
 }
-
+li.only-mobile{
+	display: none;
+	@include breakpoint(max-width 1025px){
+		display: block;
+	}
+}
 
 /// Hide elements
 .livechat_btn,
@@ -687,7 +692,9 @@ body.home_screen_invisible .social_btns{
 .page-template-media-center-page .screen_btns .animate_up:last-child,
 .page-template-media-center-page .header-menu li.news-item a:after,
 .home .wrapper .social_btns,
-#menu-item-1284 .menu-expand{
+#menu-item-1284 .menu-expand,
+.page-template-facilities-page .page-list-description li:last-child .btn_medium,
+.search_form{
 	display: none !important;
 }
 .page-template-the-studios-page{
