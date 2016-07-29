@@ -19,7 +19,10 @@
             <h2><?php the_title(); ?></h2>
             <h3><?php echo $stage_tax_size_m . __('sqm'). ' / ' . $stage_tax_size_ft . __('sqf'); ?></h3>
             <div class="stage-desc">
-                <strong><?php echo __('Connected with ') . get_the_title(); ?></strong>
+                <?php if($c_title = get_field('c_title')): ?>
+                    <strong><?php echo $c_title; ?></strong><?php //echo __('Connected with ') . get_the_title(); ?>
+                <?php endif; ?>
+
                 <?php the_content(); ?>
             </div>
             <?php if($cad_map = get_field('cad_map')): ?>
