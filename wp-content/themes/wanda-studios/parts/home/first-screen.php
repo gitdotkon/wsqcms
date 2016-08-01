@@ -39,4 +39,7 @@ $mobile_bg = get_field('mobile_background');
             <span class="next_screen_mousewheel"></span>
         </span>
     </a>
+    <a href="#" class="home-screen-down">
+        <span class="icon-10"></span>
+    </a>
 </div>

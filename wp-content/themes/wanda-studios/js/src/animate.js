@@ -507,7 +507,17 @@
             return false;
         });
 
-
+        $('.home-screen-down').click(function () {
+            $('.wrapper').removeAttr('class').addClass('wrapper');
+            $body.removeClass('footer_visible');
+            $('.wrapper').data({'swipe-index': 1});
+            $('.wrapper').addClass('wrapper_1');
+            setTimeout(function () {
+                $('.nav_container ul li').first().find('a').trigger('click');
+                animate(1);
+            }, 100);
+            return false;
+        })
     });
 
 

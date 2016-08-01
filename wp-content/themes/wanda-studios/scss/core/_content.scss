@@ -702,3 +702,15 @@ li.only-mobile{
 		max-width: 80%;
 	}
 }
+.home-screen-down{
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	@include transform(translate(-50%, 0));
+	@include breakpoint(max-width 1025px){
+		display: block;
+		color: #fff;
+		font-size: 27px;
+	}
+}

@@ -36,7 +36,7 @@ $stages = get_query_posts($stages_args);
                     <div class="table">
                         <div class="td">
                             <?php foreach ($stages as $stage): ?>
-                                <a href="<?php echo get_permalink($stage->ID); ?>" class="stage_item_trigger <?php if(get_field('is_visible', $stage->ID) === false){echo 'inactive';} ?>">
+                                <a href="<?php if(get_field('is_visible', $stage->ID) === false){echo 'javascript:void(0);';}else{echo get_permalink($stage->ID);}  ?>" class="stage_item_trigger <?php if(get_field('is_visible', $stage->ID) === false){echo 'inactive';} ?>">
                                     <div class="stage_list_a">
                                         <span class="stage_index">
                                             <?php echo $stage->post_title; ?>
@@ -62,7 +62,7 @@ $stages = get_query_posts($stages_args);
                                             <div class="stage_pic_text">
                                                 <?php _w('Cluster :'); echo '<strong>'.get_field('clusters', $stage->ID).'</strong>'; ?>
                                             </div>
-                                            <a href="<?php echo get_permalink($stage->ID) ?>" class="view_btn"><?php _w('View'); ?></a>
+                                            <a href="<?php if(get_field('is_visible', $stage->ID) === false){echo 'javascript:void(0);';}else{echo get_permalink($stage->ID);}  ?>" class="view_btn"><?php _w('View'); ?></a>
                                         </div>
                                     </div>
                                 </div>
