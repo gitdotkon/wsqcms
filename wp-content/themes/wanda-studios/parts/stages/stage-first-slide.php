@@ -35,7 +35,7 @@ $background = get_field('background');
                                             <div class="td">
                                                 <?php echo $stage_tax_size_m .  __('m') . '<sup>2</sup>'; ?>
                                                 <div class="stage_btn_hr"></div>
-                                                <?php echo $stage_tax_size_ft . __('m') . '<sup>2</sup>'; ?>
+                                                <?php echo $stage_tax_size_ft . __('ft') . '<sup>2</sup>'; ?>
                                             </div>
                                         </div>
                                     </div>
