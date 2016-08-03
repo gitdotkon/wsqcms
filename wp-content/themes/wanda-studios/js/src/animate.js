@@ -4,6 +4,38 @@
 
 
     $(window).load(function(){
+        $('.stage_screen_btns_wrapper a, .stage_screen_btns a').click(function () {
+
+
+            var $span = $(this).parent('span'),
+                index = $span.index() + 1;
+            if($('body').hasClass('single-stage')){
+                //alert('Single stage');
+                return true;
+            }
+
+            $('.mobile_stages_slider_nav').find('.active').removeClass('active');
+            $('.mobile_stages_slider_nav li').eq(index-1).addClass('active');
+            if($(window).width()<=1025){
+
+                $('#mobile_stage').find('ul').slick('slickGoTo', index-1);
+                $('html, body').animate({
+                    scrollTop: $('#mobile_stage').offset().top - $('#header').height()
+                }, 360);
+            }
+
+            if (!$span.hasClass('active')) {
+                animate(index);
+                $('.stage_screen_btns').find('.active').removeClass('active');
+                $('.stage_screen_btns').find('span').eq(index-1).addClass('active');
+                $(this).closest('.animate_up').addClass('active');
+                $(this).closest('span').addClass('active');
+
+            }
+
+
+            return false;
+        });
         if($(window).width()<1025){
 
             prepareMobileStage();
@@ -495,42 +527,7 @@
 
 
     $(document).ready(function(){
-        $('.stage_screen_btns_wrapper a, .stage_screen_btns a').click(function () {
-            // if($('body').hasClass('look')){
-            //     return false;
-            // }
-            // alert('Click')
-            var $span = $(this).parent('span'),
-                index = $span.index() + 1;
-            if($('body').hasClass('single-stage')){
-                //alert('Single stage');
-                return true;
-            }
-            // alert(index);
-            // alert($(window).width());
 
-            $('.mobile_stages_slider_nav').find('.active').removeClass('active');
-            $('.mobile_stages_slider_nav li').eq(index-1).addClass('active');
-            if($(window).width()<=1025){
-
-                $('#mobile_stage').find('ul').slick('slickGoTo', index-1);
-                $('html, body').animate({
-                    scrollTop: $('#mobile_stage').offset().top - $('#header').height()
-                }, 360);
-            }
-
-            if (!$span.hasClass('active')) {
-                animate(index);
-                $('.stage_screen_btns').find('.active').removeClass('active');
-                $('.stage_screen_btns').find('span').eq(index-1).addClass('active');
-                $(this).closest('.animate_up').addClass('active');
-                $(this).closest('span').addClass('active');
-
-            }
-
-
-            return false;
-        });
     });
     $(window).resize(function(){
         if($(window).width()<1025){
