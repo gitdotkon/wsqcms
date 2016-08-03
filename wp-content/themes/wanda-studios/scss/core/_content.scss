@@ -713,3 +713,18 @@ li.only-mobile{
 		font-size: 27px;
 	}
 }
+.stage_screen_tile{
+	display: none;
+}
+#screen_visible_1,
+#screen_visible_2,
+#screen_visible_3,
+#screen_visible_4,
+#screen_visible_5,
+#screen_visible_6,
+#screen_visible_7,
+#screen_visible_8,
+#screen_visible_9,
+#screen_visible_10{
+	display: block;
+}
