@@ -82,11 +82,17 @@ if(have_posts()){
                                         <?php _w('The email address you entered is not valid'); ?>
                                     </span>
                                 </div>
-                                <div class="apply_form_item">
-                                    <input type="file" accept="image/jpeg,image/jpg,application/pdf,application/doc, application/docx," name="file" data-title="<?php _w('Upload Your Resume'); ?>" class="nicefileinput nice"/>
+                                <div class="apply_form_item fileinput">
+                                    <span class="wrong"><?php _w('File is large'); ?></span>
+                                    <input type="file" id="file" accept="image/jpeg,image/jpg,application/pdf,application/doc, application/docx," name="file" data-title="<?php _w('Upload Your Resume'); ?>" class="nicefileinput nice"/>
                                 </div>
                                 <div class="apply_form_item">
                                     <textarea name="message" placeholder="<?php _w('Drop a line...'); ?>"></textarea>
+                                </div>
+                                <div class="apply_form_item field_captcha">
+                                    <input type="text" name="captcha" placeholder="Captcha"/>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/captcha.php" class="reload_image" alt=""/>
+                                    <!--<span class="wrong">Wrong Captcha</span>-->
                                 </div>
                                 <div class="apply_form_item">
                                     <input type="submit" value="<?php _w('Submit'); ?>"/>

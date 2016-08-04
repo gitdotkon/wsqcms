@@ -25,10 +25,10 @@ if($background):?>
                             <ul>
                             <?php foreach ($icons as $key=>$icon): ?>
                                 <li>
-                                    <a href="">
+                                    <div class="a">
                                         <div class="icon icon_<?php echo $key+1; ?>" style="background-image: url(<?php echo $icon['icon']['url']; ?>)"></div>
                                         <?php echo $icon['title']; ?>
-                                    </a>
+                                    </div>
                                 </li>
                             <?php endforeach; ?>
                             </ul>

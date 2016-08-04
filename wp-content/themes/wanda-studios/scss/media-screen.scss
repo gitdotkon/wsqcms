@@ -870,7 +870,7 @@
 		top: 34px;
 	}
 
-	.cr_cols, .cr_cols a {
+	.cr_cols, .cr_cols .a {
 		color: #fff;
 		font-size: 24px;
 		line-height: 28px;
@@ -2895,7 +2895,7 @@
 		margin-top: 5px;
 	}
 
-	.cr_cols, .cr_cols a {
+	.cr_cols, .cr_cols .a {
 		font-size: 21px;
 		line-height: 20px;
 	}
@@ -3680,6 +3680,9 @@
 	}
 }
 @media only screen and (max-width: 767px){
+	.apply_form_item.field_captcha img{
+		top: 9px;
+	}
 	.hws ul li {
 		width: auto;
 		float: none;
@@ -4247,7 +4250,7 @@
 		}
 	}
 
-	.cr_cols, .cr_cols a {
+	.cr_cols, .cr_cols .a {
 		font-size: 17px;
 		line-height: 20px;
 	}

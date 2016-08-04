@@ -49,42 +49,46 @@ function check_code($c1, $c2){
 }
 function apply_career(){
     $return = '';
-    $emailto = $_POST['apply_email'];
-    $message_template = get_field('career_apply_email_body', 'options');
-    $message_prepared = str_replace(array('[job_title]', '[name]', '[phone]', '[email]', '[message]'), array(
-        $_POST['job_title']?:"",
-        $_POST['name']?:"",
-        $_POST['phone']?:"",
-        $_POST['email']?:"",
-        $_POST['message']
-    ), $message_template);
-    $body = apply_filters('the_content', $message_prepared);
+    if($_SESSION['captcha'] == md5($_POST['captcha'])){
+        $emailto = $_POST['apply_email'];
+        $message_template = get_field('career_apply_email_body', 'options');
+        $message_prepared = str_replace(array('[job_title]', '[name]', '[phone]', '[email]', '[message]'), array(
+            esc_html($_POST['job_title'])?esc_html($_POST['job_title']):"",
+            esc_html($_POST['name'])?esc_html($_POST['name']):"",
+            esc_html($_POST['phone'])?esc_html($_POST['phone']):"",
+            esc_html($_POST['email'])?esc_html($_POST['email']):"",
+            esc_html($_POST['message'])
+        ), $message_template);
+        $body = apply_filters('the_content', $message_prepared);
 
-    $mail = new PHPMailer;
+        $mail = new PHPMailer;
 
-    $email = get_field('email_for_apply_career', 'options');
-    $mail->isSMTP();
-    $mail->SMTPDebug = 0;
-    $mail->SMTPAuth = true;
-    $mail->Port = get_field('smtp_host', 'options')?:25;
-    $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
-    $mail->Port = get_field('smtp_port', 'options')?:'25';
-    $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
-    $mail->Password = get_field('password', 'options')?:'d5ntfh03';
-    $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
-    //$mail->addAddress('dylan@flow.asia', 'Dylan');
-    $mail->addAddress(get_field('email_for_apply_career', 'options')?:'dylan@flow.asia', 'Dylan');
-    //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
-    $mail->Subject = get_field('career_apply_subject', 'options')?:'Contact from Wanda Studios';
-    $mail->msgHTML($body);
-    if(isset($_FILES['file'])){
-        $mail->AddAttachment($_FILES['file']['tmp_name'],
-            $_FILES['file']['name']);
+        $email = get_field('email_for_apply_career', 'options');
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = true;
+        $mail->Port = get_field('smtp_host', 'options')?:25;
+        $mail->Host = get_field('smtp_host', 'options')?:'mail.wanda.com.cn';
+        $mail->Port = get_field('smtp_port', 'options')?:'25';
+        $mail->Username = get_field('smtp_user', 'options')?:'fc_0206';
+        $mail->Password = get_field('password', 'options')?:'d5ntfh03';
+        $mail->setFrom(get_field('email_from', 'options')?:'fc_0206@wanda.com.cn');
+        //$mail->addAddress('dylan@flow.asia', 'Dylan');
+        $mail->addAddress(get_field('email_for_apply_career', 'options')?:'dylan@flow.asia', 'Dylan');
+        //    $mail->addAddress('info@wandastudios.com', 'Wanda Studios');
+        $mail->Subject = get_field('career_apply_subject', 'options')?:'Contact from Wanda Studios';
+        $mail->msgHTML($body);
+        if(isset($_FILES['file'])){
+            $mail->AddAttachment($_FILES['file']['tmp_name'],
+                $_FILES['file']['name']);
+        }
+    //
+    ////send the message, check for errors
+        $mail->send();
+        $return['status'] = '1';
+    }else{
+        $return['status'] = '-1';
     }
-//
-////send the message, check for errors
-    $mail->send();
-    $return['status'] = '1';
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;

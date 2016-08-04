@@ -636,29 +636,9 @@
 
                             });
                         }else{
-
                             $contact_form.find('.field_captcha').addClass('error');
                         }
                     });
-                    // $.post(url, {cookie: cookie, validation: $contact_form.find('.field_captcha input').val()}, function(cookie_valid){
-                    //
-                    //     if(cookie_valid == '"ok"'){
-                    //         $(this).addClass('wait');
-                    //         $.post(url, data, function (res) {
-                    //             $('.thank-you').show();
-                    //             $(self).removeClass('wait');
-                    //             setTimeout(function(){
-                    //                 window.location.reload();
-                    //             }, 2000);
-                    //         }).error(function () {
-                    //
-                    //         });
-                    //     }else{
-                    //
-                    //         $contact_form.find('.field_captcha').addClass('error');
-                    //     }
-                    //
-                    // })
                 }
                 return false;
             });
@@ -761,6 +741,7 @@
 
         $('.apply_btn').click(function () {
             $('.white_overlay').show();
+            $("#thank-you-interest").hide();
             $($(this).attr('href')).fadeIn();
             var title = $(this).closest('.job').attr('data-title');
             var email = $(this).closest('.job').attr('data-apply');
@@ -786,6 +767,14 @@
                 });
                 if(is_valid){
                     var data = new FormData($(this)[0]);
+                    var size = document.getElementById('file');
+                    if(size.files[0]){
+                        size = size.files[0].size;
+                        if(size>8388608){
+                            $('.fileinput').addClass('error');
+                            return false;
+                        }
+                    }
                     $apply_form.addClass('wait');
                     $.ajax( flow.api_base + routes.apply.route,{
                         contentType: false,
@@ -793,21 +782,32 @@
                         data: data,
                         type: 'POST',
                         success: function(res){
-                            if(res.status = '1'){
+                            if(res.status == '1'){
                                 $('.white_overlay').hide();
                                 $('.apply_wrapper').fadeOut();
                                 $apply_form[0].reset();
                                 $apply_form.removeClass('wait');
                                 $('.thank-you-interest').show();
+
+                            }
+                            if(res.status == '-1'){
+                                $("#apply_form").removeClass('wait');
+                                var $old_c = $('.apply_form_item.field_captcha img');
+                                var src = $old_c.attr('src');
+                                $old_c.remove();
+                                $('.apply_form_item.field_captcha').addClass('error');
+                                $('.apply_form_item.field_captcha').append('<img src="'+src+'" class="reload_image">');
                             }
                         },
                         error: function(e){
 
                         }
                     });
-                    setTimeout(function(){
-                        $('.thank-you-interest').show();
-                    }, 1000);
+                     setTimeout(function(){
+                         $apply_form[0].reset();
+                         $("#apply_form").removeClass('wait');
+                         $('.thank-you-interest').show();
+                     }, 2000);
                 }
                 return false;
             })

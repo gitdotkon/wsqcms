@@ -25,7 +25,7 @@
 		background: none no-repeat 50% 50%;
 	}
 }
-.cr_cols, .cr_cols a {
+.cr_cols, .cr_cols .a {
 	color: #fff;
 	font-size: 30px;
 	font-family: $avenir_rh;
@@ -304,7 +304,7 @@
 		padding: 22px 26px;
 		border: 1px solid #141414;
 		border-radius: 3px;
-		margin-bottom: 44px;
+		margin-bottom: 0;
 		vertical-align: top;
 		min-height: 120px;
 		resize: none;
@@ -316,9 +316,26 @@
 }
 .apply_form_item{
 	position: relative;
+	&.field_captcha{
+		margin-bottom: 44px;
+		position: relative;
+		padding-right: 100px;
+		img{
+			position: absolute;
+			top: 20px;
+			right: 0;
+		}
+	}
 	.wrong{
 		bottom: 0;
 		top: auto;
+	}
+	&.fileinput{
+		.wrong{
+			left: 0;
+			right: 0;
+			bottom: -31px;
+		}
 	}
 }
 .NFI-button {
