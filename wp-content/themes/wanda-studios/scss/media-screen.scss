@@ -4492,6 +4492,17 @@
 		width: 38px;
 		height: 38px;
 	}
+	.page-template-the-studios-page{
+		.home_screen{
+			.td{
+				max-width: 300px;
+			}
+		}
+		.home_screen {
+			max-width: 100%;
+			padding: 0;
+		}
+	}
 }
 @media only screen and (max-height: 568px) and(orientation: landscape){
 	.first-screen{
