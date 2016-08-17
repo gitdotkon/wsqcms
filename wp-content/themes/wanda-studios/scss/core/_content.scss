@@ -684,15 +684,15 @@ li.only-mobile{
 .lang_switcher,
 .round_nav .round_nav_ul li:last-child,
 #menu-footer_2  .sub-menu li:last-child,
-#menu-item-1284 .sub-menu li:first-child+li,
+//#menu-item-1284 .sub-menu li:first-child+li,
 #menu-item-1284 .sub-menu li:last-child,
-.page-template-media-center-page .header-menu li.news-item+li,
+//.page-template-media-center-page .header-menu li.news-item+li,
 .page-template-media-center-page .header-menu li:last-child,
-.page-template-media-center-page .screen_btns .animate_up+.animate_up,
+//.page-template-media-center-page .screen_btns .animate_up+.animate_up,
 .page-template-media-center-page .screen_btns .animate_up:last-child,
-.page-template-media-center-page .header-menu li.news-item a:after,
+.page-template-media-center-page .header-menu li.news-item +li a:after,
 .home .wrapper .social_btns,
-#menu-item-1284 .menu-expand,
+//#menu-item-1284 .menu-expand,
 .page-template-facilities-page .page-list-description li:last-child .btn_medium{
 	display: none !important;
 }
