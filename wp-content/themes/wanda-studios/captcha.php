@@ -41,12 +41,24 @@ function img_code($code){
 
     $color = imagecolorallocate($im, rand(0, 200), 0, rand(0, 200));
 
+    for ($i=0; $i<strlen($code); $i++)
+    {
+        $color = imagecolorallocate($im, rand(0, 255), rand(0, 200), rand(0, 255));
+        imageline($im, rand(0, 20), rand(1, 50), rand(150, 180), rand(1, 50), $color);
+    }
+
     $x = rand(0, 35);
     for($i = 0; $i < strlen($code); $i++) {
         $x+=15;
         $letter=substr($code, $i, 1);
         $color = imagecolorallocate($im, rand(0, 200), 0, rand(0, 200));
         imagettftext($im, $font_arr[0]["size"], rand(2, 4), $x, rand(40, 42), $color, img_dir . $font_arr[0]["fname"], $letter);
+    }
+
+    for ($i=0; $i<strlen($code); $i++)
+    {
+        $color = imagecolorallocate($im, rand(0, 255), rand(0, 200), rand(0, 255));
+        imageline($im, rand(0, 20), rand(1, 50), rand(150, 180), rand(1, 50), $color);
     }
     imagepng($im); //, img_dir . 'c.png'
     imagedestroy($im);
