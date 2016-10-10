@@ -315,7 +315,7 @@ function get_news(){
         'offset' => $offset
     );
     if($_GET['cat']){
-        $args['category_name'] = $_GET['cat'];
+        $args['cat'] = $_GET['cat'];
     }
     $news_list = get_query_posts($args);
     if($news_list){

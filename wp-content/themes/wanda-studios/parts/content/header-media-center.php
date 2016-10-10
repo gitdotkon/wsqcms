@@ -35,7 +35,7 @@ $post_cats = get_categories(array('type' => 'post'));
                 </li>
             <?php foreach ($post_cats as $post_cat): ?>
                 <li class="<?php if($_GET['cat'] == $post_cat->slug){echo 'active'; } ?>">
-                    <a href="<?php echo get_permalink(get_the_ID()); ?>?cat=<?php echo $post_cat->slug; ?>" data-slug="<?php echo $post_cat->slug; ?>"><?php echo $post_cat->name; ?></a>
+                    <a href="<?php echo get_permalink(get_the_ID()); ?>?cat=<?php echo $post_cat->slug; ?>" data-slug="<?php echo $post_cat->term_id; ?>"><?php echo $post_cat->name; ?></a>
                 </li>
             <?php endforeach; ?>
             </ul>
