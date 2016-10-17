@@ -978,6 +978,7 @@
              if($redirect_link.length>0){
                  var new_url = $redirect_link.find('>a').attr('href')+$(this).attr('href');
                  window.location = new_url;
+                 $('.main_nav_close').trigger('click');
              }
         });
         $(document).on('click', '.menu-expand', function(){

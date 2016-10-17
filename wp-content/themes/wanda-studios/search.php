@@ -30,8 +30,14 @@ get_header(); ?>
 				<?php endwhile; ?>
 			<?php else: ?>
 				<div class="no-found-results">
-					<h2><?php _w('YOUR SEARCH YIELDED NO RESULTS'); ?></h2>
-					<p><?php _w('Check if your spelling is correct. <br>Remove quotes around phrases to match each word individually: "blue smurf" will match less than blue smurf. <br>Consider loosening your query with OR: blue smurf will match less than blue OR smurf.') ?></p>
+					<?php if(ICL_LANGUAGE_CODE == 'en'): ?>
+						<h2><?php _w('YOUR SEARCH YIELDED NO RESULTS'); ?></h2>
+						<p><?php _w('Check if your spelling is correct. <br>Remove quotes around phrases to match each word individually: "blue smurf" will match less than blue smurf. <br>Consider loosening your query with OR: blue smurf will match less than blue OR smurf.') ?></p>
+					<?php else: ?>
+						<h2><?php _w('很抱歉，根据你在搜索框内输入的内容，我们没有搜索到任何内容。'); ?></h2>
+						<p><?php _w('请检查你的拼写是否正确。请尝试去掉引号：搜索带引号的“蓝精灵”的返回结果会小于搜索不带引号的蓝精灵。 <br>或者考虑放宽你的搜索条件：搜索蓝精灵的返回结果会小于搜索蓝色或精灵。') ?></p>
+					<?php endif; ?>
+
 				</div>
 			<?php endif ?>
 		</div>

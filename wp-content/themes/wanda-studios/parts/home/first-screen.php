@@ -28,7 +28,11 @@ $mobile_bg = get_field('mobile_background');
                 </div>
                 <div class="all_view_wrapper">
                     <a href="<?php echo $map; ?>" data-id="<?php echo $map; ?>" target="_blank" class="go-to lightbox_btn">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/360_view.png" class="all_view" alt=""/>
+                        <?php if(ICL_LANGUAGE_CODE == 'en'): ?>
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/360_view.png" class="all_view" alt=""/>
+                        <?php else: ?>
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/360_view_ch.png" class="all_view" alt=""/>
+                        <?php endif; ?>
                     </a>
                 </div>
             </div>

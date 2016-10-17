@@ -19,43 +19,43 @@ $background = get_field('background');
                 <div class="contact_form">
                     <form action="contact.php" id="contact_form">
                         <div class="field field_name">
-                            <label class="placeholder">Name<span class="red_required">*</span></label>
+                            <label class="placeholder"><?php _w('Name') ?><span class="red_required">*</span></label>
                             <input type="text" name="name" class="required name"/>
                                     <span class="wrong">
-                                        Please enter the correct format text
+                                        <?php _w('Please enter the correct format text') ?>
                                     </span>
                         </div>
                         <div class="field field_email">
-                            <label class="placeholder">Email<span class="red_required">*</span></label>
+                            <label class="placeholder"><?php _w('Email') ?><span class="red_required">*</span></label>
                             <input type="text" name="email" class="required email" />
                                     <span class="wrong">
-                                        Please enter the correct format text
+                                        <?php _w('Please enter the correct format text') ?>
                                     </span>
                         </div>
                         <div class="field">
-                            <label class="placeholder">Company Name</label>
+                            <label class="placeholder"><?php _w('Company Name') ?></label>
                             <input type="text" name="company"/>
                         </div>
                         <div class="field">
-                            <label class="placeholder">Subject</label>
+                            <label class="placeholder"><?php _w('Subject') ?></label>
                             <input type="text" name="subject"/>
                         </div>
                         <div class="field">
-                            <textarea name="message" placeholder="Drop a line...."></textarea>
+                            <textarea name="message" placeholder="<?php _w('Drop a line....') ?>"></textarea>
                         </div>
                         <div class="field field_captcha">
-                            <input type="text" name="captcha" placeholder="Captcha"/>
+                            <input type="text" name="captcha" placeholder="<?php _w('Captcha') ?>"/>
                             <img src="<?php echo get_template_directory_uri(); ?>/captcha.php" class="reload_image" alt=""/>
                             <!--<span class="wrong">Wrong Captcha</span>-->
                         </div>
-                        <input type="submit" value="Send"/>
+                        <input type="submit" value="<?php _w('Send') ?>"/>
                     </form>
                     <div class="thank-you">
                         <a href="#" class="close"></a>
                         <div class="table">
                             <div class="td">
-                                <strong>Thank You!</strong>
-                                <p>Thank you for interest in Wanda Studios Qingdao. A representative <br> will be in touch with you as soon as possible.</p>
+                                <strong><?php _w('Thank You!') ?></strong>
+                                <p><?php _w('Thank you for interest in Wanda Studios Qingdao. A representative <br> will be in touch with you as soon as possible.') ?></p>
                             </div>
                         </div>
                     </div>
