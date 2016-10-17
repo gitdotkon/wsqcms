@@ -511,6 +511,7 @@ body.page-template-the-city-page{
 		}
 	}
 }
+
 .header-menu{
 	text-align: center;
 	display: none;
@@ -577,6 +578,9 @@ body.page-template-the-city-page{
 		}
 
 	}
+}
+.header-menu li.vertical-delimiter.no-border a:after{
+	display: none;
 }
 body.admin-bar{
 	margin-top: 0 !important;

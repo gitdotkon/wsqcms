@@ -15,13 +15,13 @@ $post_cats = get_categories(array('type' => 'post'));
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/wanda-top-white.svg" class="white-logo" alt=""/>
     </a>
     <ul class="header-menu" id="header-menu">
-        <li class=" vertical-delimiter news-item">
+        <li class=" vertical-delimiter news-item  no-border">
             <a href="#news" class="sync-item"><?php _w('News'); ?></a>
         </li>
-        <li class="sync-item vertical-delimiter">
+        <li class="sync-item vertical-delimiter invisible">
             <a href="#photo"  class="sync-item"><?php _w('Photo gallery'); ?></a>
         </li>
-        <li class="sync-item vertical-delimiter">
+        <li class="sync-item vertical-delimiter invisible">
             <a href="#video"  class="sync-item"><?php _w('Video'); ?></a>
         </li>
     </ul>
