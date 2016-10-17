@@ -857,7 +857,6 @@
             $('.load_more').addClass('wait');
             response.success(function(data){
                 //hide wheel
-                console.log(data);
                 if(parseInt(data.available) == 0){
                     $('#more_news').hide();
                 }else{
