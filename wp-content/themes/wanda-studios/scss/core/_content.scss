@@ -683,7 +683,6 @@ li.only-mobile{
 /// Hide elements
 .livechat_btn,
 .foot_share,
-.lang_switcher,
 .round_nav .round_nav_ul li:last-child,
 #menu-footer_2  .sub-menu li:last-child,
 //#menu-item-1284 .sub-menu li:first-child+li,
@@ -704,6 +703,11 @@ li.only-mobile{
 .page-template-the-studios-page{
 	.home_screen{
 		max-width: 80%;
+	}
+}
+.lang_switcher{
+	li:last-child{
+		display: none;
 	}
 }
 .invisible{

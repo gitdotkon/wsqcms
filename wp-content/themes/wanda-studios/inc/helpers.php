@@ -243,7 +243,16 @@ function get_word($num){
         __('seven'),
         __('eight'),
         __('nine'),
-        __('ten')
+        __('ten'),
+        __('Eleven'),
+        //__('Twelve'),
+        __('Twelve'),
+        __('Thirteen'),
+        __('Fourteen'),
+        __('Fifteen'),
+        __('Sixteen'),
+        __('Eighteen'),
+        __('Nineteen'),
     );
     return $words[$num-1];
 }
