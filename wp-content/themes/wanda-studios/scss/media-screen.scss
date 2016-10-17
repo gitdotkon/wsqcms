@@ -75,7 +75,8 @@
 		width: 90px;
 		height: 90px;
 	}
-	.foot_share [class^=icon-]{
+	.foot_share [class^=icon-],
+	.foot_share .fa{
 		font-size: 39px;
 		line-height: 90px;
 	}
@@ -1328,7 +1329,8 @@
 		width: 70px;
 		height: 70px;
 	}
-	.foot_share [class^=icon-] {
+	.foot_share [class^=icon-],
+	.foot_share .fa{
 		font-size: 30px;
 		line-height: 70px;
 	}

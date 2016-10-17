@@ -19,7 +19,7 @@ $map = get_field('view_3d_map', 'option');
                 <?php foreach ($social as $item): ?>
                     <li>
                         <a href="<?php echo $item['url']?:''; ?>" target="_blank">
-                            <span class="<?php echo $item['icons']; ?>"></span>
+                            <span class="fa <?php echo $item['icons']; ?>"></span>
                         </a>
                     </li>
                 <?php endforeach; ?>

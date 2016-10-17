@@ -193,6 +193,7 @@ function foundation_scripts_and_styles()
         //core
         wp_enqueue_style('owl.carousel', get_template_directory_uri() . '/css/plugins/owl.carousel.css', null, null);
         wp_enqueue_style('jquery.scrollbar', get_template_directory_uri() . '/css/plugins/jquery.scrollbar.css', null, null);
+        wp_enqueue_style('fa', get_template_directory_uri() . '/css/plugins/font-awesome.min.css', null, null);
         wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css', null, null);
         wp_enqueue_style('custom', get_template_directory_uri() . '/css/custom.css', null, null);
         wp_enqueue_style('media-screen', get_template_directory_uri() . '/css/media-screen.css', null, null);

@@ -52,6 +52,12 @@
 		line-height: 102px;
 		@include transition(all .5s ease-in-out);
 	}
+	.fa{
+		font-size: 52px;
+		opacity: .3;
+		line-height: 102px;
+		@include transition(all .5s ease-in-out);
+	}
 	li{
 		display: inline-block;
 		margin: 0 18px;
@@ -77,7 +83,8 @@
 			}
 			&:hover{
 				[class^="icon-"],
-				[class^="icon-"]{
+				[class^="icon-"],
+				.fa{
 					opacity: 1;
 				}
 				&:before{
