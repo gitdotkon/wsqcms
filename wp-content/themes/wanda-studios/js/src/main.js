@@ -824,7 +824,8 @@
             var per_page = 6;
             var response = doAjax(routes.news, {
                 'news_per_page': per_page,
-                'cat': cat
+                'cat': cat,
+				'lng': $('#current_language').val()
             });
             $('.load_more').addClass('wait');
             response.success(function(data){
@@ -850,7 +851,8 @@
             var per_page = 6;
             var response = doAjax(routes.news, {
                 'news_per_page': per_page,
-                'cat': cat
+                'cat': cat,
+				'lng': $('#current_language').val()
             });
             $('.load_more').addClass('wait');
             response.success(function(data){
@@ -875,7 +877,8 @@
             var response = doAjax(routes.news, {
                 'news_count': news_count,
                 'news_per_page': per_page,
-                'cat': cat
+                'cat': cat,
+				'lng': $('#current_language').val()
             });
             $('.load_more').addClass('wait');
             response.success(function(data){
