@@ -98,7 +98,7 @@ $background = get_field('background');
                         <div class="social_btns">
                             <?php foreach ($social as $link): ?>
                                 <a href="<?php echo $link['url']?:'#'; ?>" target="_blank">
-                                    <span class="<?php echo $link['icons']; ?>"></span>
+                                    <span class="fa <?php echo $link['icons']; ?>"></span>
                                 </a>
                             <?php endforeach; ?>
                         </div>

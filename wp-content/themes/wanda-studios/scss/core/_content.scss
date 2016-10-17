@@ -500,11 +500,13 @@ body.home_screen_invisible .social_btns{
 		clear: both;
 	}
 	[class^="icon-"],
-	[class*=" icon-"]{
+	[class*=" icon-"],
+	.fa{
 		font-size: 22px;
 		line-height: 40px;
 	}
 	a{
+		text-align: center;
 		&:hover {
 			color: $red;
 			border: 2px solid $red;
