@@ -33,6 +33,7 @@ if($news_list):?>
             <input type="hidden" id="news_per_page" value="<?php echo $post_per_page; ?>">
             <input type="hidden" id="news_count" value="<?php if(count($news_list)<=$post_per_page){echo count($news_list);}else{echo $post_per_page;} ?>">
             <input type="hidden" id="news_category" value="<?php if($_GET['cat']){echo $_GET['cat'];} ?>">
+            <input type="hidden" id="current_language" value="<?php echo ICL_LANGUAGE_CODE; ?>">
             <?php $i=0; foreach ($news_list as $key => $news):
                 if($i>=6){
                     $i = 0;
