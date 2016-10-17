@@ -24,7 +24,7 @@ if($background):?>
                             </div>
                         </a>
                     </div>
-                    <div class="animate_up">
+                    <div class="animate_up  invisible">
                         <a href="#photo" class="hover_btn workshop_btn sync-item">
                             <div class="table">
                                 <div class="td">
@@ -33,11 +33,21 @@ if($background):?>
                             </div>
                         </a>
                     </div>
-                    <div class="animate_up">
+                    <div class="animate_up invisible">
                         <a href="#video" class="hover_btn workshop_btn sync-item">
                             <div class="table">
                                 <div class="td">
                                     <?php _w('Video <br> Gallery'); ?>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="animate_up visible">
+                        <a href="<?php echo get_field('download_center')?:'#'; ?>" class="hover_btn workshop_btn sync-item">
+                            <div class="table">
+                                <div class="td">
+                                    <?php _w('Download <br> Center'); ?>
                                 </div>
                             </div>
                         </a>
