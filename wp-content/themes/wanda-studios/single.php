@@ -23,8 +23,10 @@ if(have_posts()){
                     <?php show_template('content/share-round'); ?>
                 </div>
                 <div class="detail_meta">
+					<?php if(!in_array($post->ID, array(1999,2700))) { ?>
                     <?php the_date('Y.m.d'); ?>
                     <span class="detail_category"><?php _w("News"); ?></span>
+					<?php } ?>
                 </div>
                 <div class="content">
                     <?php if(has_post_thumbnail()): ?>
