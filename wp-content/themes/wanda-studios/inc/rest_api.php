@@ -301,10 +301,10 @@ function get_news(){
     $return = '';
     $offset = 0;
     $per_page = 6;
-    global $sitepress;
-    if (method_exists($sitepress, 'switch_lang') && isset($_GET['lng']) && $_GET['lng'] !== $sitepress->get_default_language()) {
-        $sitepress->switch_lang($_GET['lng'], true);
-    }
+	global $sitepress;
+	if (method_exists($sitepress, 'switch_lang') && isset($_GET['lng']) && $_GET['lng'] !== $sitepress->get_default_language()) {
+		$sitepress->switch_lang($_GET['lng'], true);
+	}
     $return['available'] = 1;
     if($_GET['news_count']){
         $offset = $_GET['news_count'];
@@ -325,7 +325,7 @@ function get_news(){
         $args['cat'] = (int)$_GET['cat'];
         $args_all['cat'] = (int)$_GET['cat'];
     }
-    $news_list = new WP_Query($args);
+	$news_list = new WP_Query($args);
     if($news_list->posts){
         foreach ($news_list->posts as $news){
             $cats = get_the_category($news->ID);
@@ -345,8 +345,9 @@ function get_news(){
     }else{
         $return['available'] = 0;
     }
-    $return['args'] = $args;
-    $return['ns'] = $news_list;
+    
+	$return['args'] = $args;
+	$return['ns'] = $news_list;
     $response = new WP_REST_Response($return);
     $response->header('Access-Control-Allow-Origin', '*');
     return $response;

@@ -229,21 +229,21 @@ function show_spec($text){
 }
 
 function get_count_stage($tax_id){
-    $args = array(
-        'post_type' => 'stage',
-        'posts_per_page' => -1,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'stage_cat',
-                'field'    => 'term_id',
-                'terms'    => $tax_id
-            )
-        )
-    );
-    $stages = get_query_posts($args);
-    if($stages){
-        return count($stages);
-    }
+	$args = array(
+		'post_type' => 'stage',
+		'posts_per_page' => '-1',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'stage_cat',
+				'field' => 'term_id',
+				'terms' => $tax_id
+			)
+		)
+	);
+	$stages = get_query_posts($args);
+	if($stages){
+		return count($stages);
+	}
     return get_term($tax_id, 'stage_cat')->count;
 }
 
