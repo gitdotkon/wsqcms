@@ -312,7 +312,10 @@ function get_news(){
     if($_GET['news_per_page']){
         $per_page = $_GET['news_per_page'];
     }
-    
+    $args_all = array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+    );
     $args = array(
         'post_type' => 'post',
         'posts_per_page' => $per_page,
@@ -320,6 +323,7 @@ function get_news(){
     );
     if($_GET['cat']){
         $args['cat'] = (int)$_GET['cat'];
+        $args_all['cat'] = (int)$_GET['cat'];
     }
     $news_list = new WP_Query($args);
     if($news_list->posts){
@@ -336,9 +340,8 @@ function get_news(){
                 'cat' => $cat?:__('News')
             );
         }
-        if(count($news_list)<= $per_page){
-            $return['available'] = 0;
-        }
+        $all_count = new WP_Query($args_all);
+        $return['available'] = count($all_count->posts);
     }else{
         $return['available'] = 0;
     }
