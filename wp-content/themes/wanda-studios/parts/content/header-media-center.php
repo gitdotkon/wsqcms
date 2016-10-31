@@ -38,6 +38,9 @@ $post_cats = get_categories(array('type' => 'post'));
                     <a href="<?php echo get_permalink(get_the_ID()); ?>?cat=<?php echo $post_cat->slug; ?>" data-slug="<?php echo $post_cat->term_id; ?>"><?php echo $post_cat->name; ?></a>
                 </li>
             <?php endforeach; ?>
+	    	<li>
+		    <a href="<?php echo get_field('download_center')?:'#'; ?>"><?php _w('Download Center'); ?></a>
+                </li>
             </ul>
         </div>
     <?php endif; ?>

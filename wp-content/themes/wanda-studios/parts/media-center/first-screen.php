@@ -42,16 +42,6 @@ if($background):?>
                             </div>
                         </a>
                     </div>
-
-                    <div class="animate_up visible">
-                        <a href="<?php echo get_field('download_center')?:'#'; ?>" class="hover_btn workshop_btn sync-item">
-                            <div class="table">
-                                <div class="td">
-                                    <?php _w('Download <br> Center'); ?>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
