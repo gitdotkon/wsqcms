@@ -139,7 +139,6 @@
         if ($('.group_property_ul li').length > 0) {
             $('.group_property_ul li').matchHeight();
         }
-
         /* Light box */
         function create_slider(images){
             var template = _.template($('#gallery_slider').html());
