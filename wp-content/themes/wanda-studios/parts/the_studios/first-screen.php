@@ -36,7 +36,7 @@ if($background_image):?>
             </span>
         </a>
         <?php if($map_code): ?>
-            <div class="fl_btn_box left animate_left">
+            <div class="fl_btn_box left animate_left fl-btn-map">
                 <a href="<?php echo $map_code; ?>" data-id="<?php echo $map_code; ?>" target="_blank" class="go-to btn lightbox_btn">
                     <span class="icon-8"></span>
                     <?php _w('View 3D Map'); ?>
@@ -44,7 +44,7 @@ if($background_image):?>
             </div>
         <?php endif; ?>
         <?php if($video_code): ?>
-            <div class="fl_btn_box right animate_right">
+            <div class="fl_btn_box right animate_right fl-btn-video">
                 <a href="#lightbox2" data-id="<?php echo $video_code; ?>" class="btn view_video lightbox_btn">
                     <span class="icon-22"></span>
                     <?php _w($video_title?:'View Video'); ?>

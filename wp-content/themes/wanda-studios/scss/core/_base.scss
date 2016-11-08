@@ -407,6 +407,21 @@ body.page-template-the-city-page{
 		@include breakpoint(max-width 767px){
 			display: none;
 		}
+		&.fl-btn-video{
+			@include breakpoint(max-width 767px){
+				display: block;
+			}
+			@include breakpoint(max-width 640px){
+			    a.view_video span{
+				    top: 12px !important;
+				    font-size: 30px !important;
+			    }
+				a.view_video{
+					font-size: 16px !important;
+					padding-left: 44px !important;
+				}
+			}
+		}
 		&.left{
 			left: 46px;
 		}
