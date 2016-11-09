@@ -990,17 +990,22 @@
                  $('.main_nav_close').trigger('click');
              }
         });
-        $(document).on('click', '.menu-expand', function(){
-             var $li = $(this).closest('li');
-            var $submenu = $li.find('.sub-menu');
-            if($li.hasClass('open')){
-                $li.removeClass('open');
-                $submenu.slideUp(200);
+        $(document).on('click', '.menu-expand', function(e){
+            //console.log(e);
+            if($('body').hasClass('page-template-home-page') && e.originalEvent && $(window).width()<=1024){
+                //console.log('Is home');
             }else{
-                $('.main_nav_list .open .sub-menu').slideUp();
-                $('.main_nav_list .open').removeClass('open');
-                $li.addClass('open');
-                $submenu.slideDown(200);
+                var $li = $(this).closest('li');
+                var $submenu = $li.find('.sub-menu');
+                if($li.hasClass('open')){
+                    $li.removeClass('open');
+                    $submenu.slideUp(200);
+                }else{
+                    $('.main_nav_list .open .sub-menu').slideUp();
+                    $('.main_nav_list .open').removeClass('open');
+                    $li.addClass('open');
+                    $submenu.slideDown(200);
+                }
             }
 
         });
