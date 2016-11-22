@@ -1361,6 +1361,9 @@
 	}
 }
 @media only screen and (max-width: 1025px){
+	.main_nav_list .left .menu > li > a{
+		margin-right: 30px;
+	}
 	.main_nav_inner{
 		padding: 70px 0 0;
 	}
@@ -3316,7 +3319,8 @@
 			border: none;
 		}
 	}
-	.main_nav_list span.menu-expand {
+	.main_nav_list .menu-expand {
+		cursor: pointer;
 		position: absolute;
 		top: 9px;
 		right: 0;
@@ -3325,6 +3329,8 @@
 		height: 27px;
 		background-size: auto;
 		background-position: center;
+		border: none;
+		padding: 0;
 	}
 	.main_nav_list .left li, .main_nav_list .left li a, .main_nav_list .middle ul li.menu-item-has-children>a, .main_nav_list .right ul li.menu-item-has-children>a{
 		display: block;

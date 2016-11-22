@@ -968,7 +968,7 @@
 
         // Menu scrips
 
-        $('.main_nav_list .menu-item-has-children>a').after('<span class="menu-expand"></span>');
+        $('.main_nav_list .menu-item-has-children>a').after('<button class="menu-expand"></button>');
 
         $('.middle, .right').find('.sub-menu a').each(function(){
 
