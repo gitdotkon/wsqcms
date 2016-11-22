@@ -845,7 +845,7 @@
             })
             return false;
         });
-        $('.news-category-list a').click(function(){
+        $('.news-category-list a:not(:last)').click(function(){
             var cat = $(this).attr('data-slug');
             $('.news-category-list .active').removeClass('active');
             $(this).closest('li').addClass('active');
