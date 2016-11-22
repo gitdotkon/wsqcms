@@ -1009,9 +1009,18 @@
         $(document).on('click', '.menu-expand', function(e){
             e.stopPropagation();
             if($('body').hasClass('page-template-home-page') && e.originalEvent && $(window).width()<=1024){
-                //alert('SSSS');
+                var $li = $(this).closest('li');
+                var $submenu = $li.find('.sub-menu');
+                if($li.hasClass('open')){
+                    $li.removeClass('open');
+                    $submenu.slideUp(200);
+                }else{
+                    $('.main_nav_list .open .sub-menu').slideUp();
+                    $('.main_nav_list .open').removeClass('open');
+                    $li.addClass('open');
+                    $submenu.slideDown(200);
+                }
             }else{
-
                 var $li = $(this).closest('li');
                 var $submenu = $li.find('.sub-menu');
                 if($li.hasClass('open')){
