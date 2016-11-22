@@ -208,6 +208,7 @@ function foundation_scripts_and_styles()
         wp_enqueue_script('underscore', get_template_directory_uri() . '/js/plugins/underscore.js', null, null, true);
         wp_enqueue_script('mousewheel', get_template_directory_uri() . '/js/plugins/jquery.mousewheel.min.js', null, null, true);
         wp_enqueue_script('swipe', get_template_directory_uri() . '/js/plugins/jquery.touchSwipe.min.js', null, null, true);
+        wp_enqueue_script('stouchswipe', get_template_directory_uri() . '/js/plugins/jquery.touchwipe.min.js', null, null, true);
         wp_enqueue_script('owl.carousel', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true);
         wp_enqueue_script('slick', get_template_directory_uri() . '/js/plugins/slick.min.js', null, null, true);
         wp_enqueue_script('flexslider', get_template_directory_uri() . '/js/plugins/jquery.flexslider-min.js', null, null, true);
