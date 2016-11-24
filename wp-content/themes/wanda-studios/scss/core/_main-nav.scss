@@ -156,6 +156,8 @@ body.main_nav_visible .main_nav {
 		margin-left: 16px;
 		top: -3px;
 		display: inline-block;
+		padding: 0;
+		border: none;
 	}
 	.open .menu-expand {
 		-webkit-transform: rotate(180deg);
