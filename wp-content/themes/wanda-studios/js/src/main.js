@@ -985,9 +985,30 @@
         $('.menu a').click(function(){
              var $redirect_link = $(this).closest('.menu').find('.hash-redirect');
              if($redirect_link.length>0){
-                 var new_url = $redirect_link.find('>a').attr('href')+$(this).attr('href');
-                 window.location = new_url;
-                 $('.main_nav_close').trigger('click');
+                 var link_url = $redirect_link.find('>a').attr('href');
+                 var escaped_url = window.location.href.replace(window.location.hash?window.location.hash:'', '');
+                 var hash =  $(this).attr('href');
+                 if(link_url == escaped_url){
+                     $('.main_nav_close').trigger('click');
+                     changeTab($(hash));
+                     $('.screen_btns a[href^="' + hash + '"]').addClass('active');
+                     $('.sv_icons .active').removeClass('active');
+                     $('.sv_icons a[href^="' + hash + '"]').closest('li').addClass('active');
+                     $header_menu.find('.active').removeClass('active');
+                     $header_menu.find('a[href^="' + hash + '"]').closest('li').addClass('active');
+                     hash = hash.replace('#', '');
+                     if(hash == 'news'){
+                         $('body').addClass('show_cats');
+                     }else{
+                         $('body').removeClass('show_cats');
+                     }
+                     $(this).closest('.sub-menu').find('.current_page_item').removeClass('current_page_item');
+                     $(this).closest('li').addClass('current_page_item');
+                     return false;
+                 }else{
+                     window.location = $redirect_link.find('>a').attr('href') + $(this).attr('href');
+                     $('.main_nav_close').trigger('click');
+                 }
              }
         });
         // $('.menu li a').click(function(){
